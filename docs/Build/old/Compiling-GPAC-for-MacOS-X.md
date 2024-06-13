@@ -13,10 +13,9 @@ git clone https://github.com/gpac/gpac.git
 ## (Re-)Installing
 
 If macports is installed, [uninstall it](http://guide.macports.org/chunked/installing.macports.uninstalling.html):
-
- ```
- sudo port -f uninstall installed
-sudo rm -rf /opt/local /Applications/DarwinPorts /Applications/MacPorts /Library/LaunchDaemons/org.macports.* /Library/Receipts/DarwinPorts*.pkg /Library/Receipts/MacPorts*.pkg Library/StartupItems/DarwinPortsStartup /Library/Tcl/darwinports1.0 /Library/Tcl/macports1.0 ~/.macports
+```
+sudo port -f uninstall installed
+sudo rm -rf /opt/local /Applications/DarwinPorts /Applications/MacPorts /Library/LaunchDaemons/org.macports.* /Library/Receipts/DarwinPorts*.pkg /Library/Receipts/MacPorts*.pkg /Library/StartupItems/DarwinPortsStartup /Library/Tcl/darwinports1.0 /Library/Tcl/macports1.0 ~/.macports
 ```
  
 [Install macport](http://distfiles.macports.org/MacPorts/). You MUST install a version >=1.9.x

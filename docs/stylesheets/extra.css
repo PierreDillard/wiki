@@ -1,3 +1,7 @@
+
+body {
+    line-height: 1.5em;
+}
 #welcome {
    text-align: center;
    margin-bottom: 1em;
@@ -29,6 +33,7 @@
     --md-accent-bg-color--light:         #d94412e0;
 
     --md-typeset-a-color: #d94412;
+    --md-icon-color: #8e8686;
     
     /* default is too bright on pourly calibrated screens */
     --md-code-bg-color:  #e0e0e0;
@@ -39,18 +44,22 @@
     .md-tabs__item .md-tabs__link {
         transition: unset !important;
         background: none !important;
-        color: inherit!important;
+        
         opacity: 1 !important;
+        transition:  border-bottom 0.3s ease;
+        color:#555555;
     }
     .md-tabs__item:focus,
     .md-tabs__item:hover {
-        background-color: #151515 !important;
-        color: #fff !important;
+       
+        color: black;
+    border-bottom: 2px solid #ff6600;
     }
 
     .md-tabs__item--active {
-        color: var(--md-typeset-a-color);
+        color: black;
         font-style: italic;
     }
+
 
 }

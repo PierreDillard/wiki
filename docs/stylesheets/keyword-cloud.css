@@ -1,0 +1,45 @@
+.words-cloud {
+  padding: 15px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.words-cloud h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.words-cloud ul {
+  list-style: none;
+  padding: 0;
+}
+
+.words-cloud li {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  transition: transform 0.3s;
+}
+
+.words-cloud a {
+  text-decoration: none;
+}
+
+.words-cloud .size-1 { font-size: 12px; }
+.words-cloud .size-2 { font-size: 14px; }
+.words-cloud .size-3 { font-size: 16px; }
+.words-cloud .size-4 { font-size: 18px; }
+.words-cloud .size-5 { font-size: 20px; }
+
+.words-cloud .color-1 { color: var(--md-accent-fg-color); }
+.words-cloud .color-2 { color: var(--md-primary-fg-color--light); }
+.words-cloud .color-3 { color: var(--md-primary-fg-color--dark); }
+.words-cloud .color-4 { color: var(--md-accent-bg-color--light); }
+
+.words-cloud li:hover {
+  transform: scale(1.2) !important;
+  text-decoration: underline;
+}

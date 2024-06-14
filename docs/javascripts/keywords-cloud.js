@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('Fetching keywords.json from: /data/keywords.json');
-    let count = 0;
+    
+    
 
     // Vérify if keywords are already cached
     let cachedKeywords = localStorage.getItem('keywordsCache');
@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   
     let currentPagePath = window.location.pathname;
-    console.log('Current page path:', currentPagePath);
 
     // delete '/' at the end of the path
     if (currentPagePath.endsWith('/')) {
@@ -44,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (cachedKeywords[currentPageMdPath]) {
         // If keywords are already cached, display them
-        console.log('Displaying cached keywords for:', currentPageMdPath);
+  
         displayKeywords(cachedKeywords[currentPageMdPath]);
     } else {
         // Fetch keywords from keywords.json
@@ -52,11 +51,11 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => {
              
                 if (!response.ok) {
-                    console.error('Network response was not ok:', response.statusText);
+                 
                     throw new Error('Network response was not ok');
                 }
-                count++;
-                console.log("count: " + count);
+             
+               
                 return response.json();
             })
             .then(data => {
@@ -66,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Obtain the keywords for the current page
                 const keywords = cachedKeywords[currentPageMdPath] || [];
-                console.log('Keywords for this page:', keywords);
+             
 
                 displayKeywords(keywords);
             })

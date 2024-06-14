@@ -4,6 +4,7 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   margin-top: 20px;
+  margin-right: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .hidden {
@@ -27,7 +28,7 @@
 
 .words-cloud li {
   display: inline-block;
-  padding:5px;
+  padding:7px;
   transition: transform 0.3s;
 }
 
@@ -43,10 +44,42 @@
 
 .words-cloud .color-1 { color: var(--md-accent-fg-color); }
 .words-cloud .color-2 { color: grey!important; }
-.words-cloud .color-3 { color:black!important; }
-.words-cloud .color-4 { color: var(--md-accent-bg-color--light); }
+.words-cloud .color-3 { color:#1E2229!important; }
+.words-cloud .color-4 { color:#d94412!important; }
 
 .words-cloud li:hover {
   transform: scale(1.2) !important;
   text-decoration: underline;
 }
+/* Toolptips Style */
+
+.tippy-box[data-theme~='custom'] {
+  background-color: #E8E8E8!important;
+  color:#1E2229!important;
+  border-radius: 5px;
+  padding: 8px 10px;
+  
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+}
+
+
+/* .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1000;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.words-cloud li:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+} */

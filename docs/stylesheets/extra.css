@@ -62,7 +62,13 @@ body {
         color: black;
         font-style: italic;
     }
-
+    .tippy-box[data-theme~='custom'] {
+        background-color:var(-md-primary-fg-color--dark);
+        color: #fff;
+        border-radius: 5px;
+        padding: 8px 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
 
 }
 

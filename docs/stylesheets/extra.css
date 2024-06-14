@@ -14,6 +14,7 @@ body {
 [data-md-color-scheme="slate"] {
     --md-hue: 217; 
     --md-typeset-a-color: #d94412 !important;
+    
 }
 
 [data-md-color-scheme="gpac"] {
@@ -63,3 +64,4 @@ body {
 
 
 }
+

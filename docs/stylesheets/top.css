@@ -1,14 +1,16 @@
 .md-top.md-icon {
-    margin-left: 70% !important;
+    margin-left: 75% !important;
     top: 90% !important;
-    border: 1px solid black !important;
+  
 }
 .md-top:focus, .md-top:hover 
     {
+  /* background-color: var(--md-accent-bg-color--light)!important; */
   background-color: none!important;
-    color: white;
+    color: var(--md-default-fg-color--light)!important;
     border: 1px solid var(--md-default-fg-color--light)!important;
 }
 .md-top[hidden]{
     transition-duration: 300ms!important;
 }
+

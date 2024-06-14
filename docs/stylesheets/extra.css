@@ -30,6 +30,7 @@ body {
   
     --md-accent-fg-color:                #d94412;
     --md-accent-fg-color--transparent:   #d944121f;
+    --md-accent-keywords-color:  hsla(0, 0, 25%, 1)!important;     ;
     --md-accent-bg-color:                #d94412;
     --md-accent-bg-color--light:         #d94412e0;
 

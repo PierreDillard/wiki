@@ -1,9 +1,5 @@
-
 document.addEventListener('DOMContentLoaded', function () {
-    
-    
-
-    // Vérify if keywords are already cached
+    // Verify if keywords are already cached
     let cachedKeywords = localStorage.getItem('keywordsCache');
     if (cachedKeywords) {
         cachedKeywords = JSON.parse(cachedKeywords);
@@ -12,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const displayKeywords = (keywords) => {
+        const wordCloudElement = document.querySelector('.words-cloud');
         const wordCloudList = document.getElementById('dynamic-words-cloud');
         wordCloudList.innerHTML = ''; // Clear the existing keywords
 
@@ -27,9 +24,14 @@ document.addEventListener('DOMContentLoaded', function () {
             li.appendChild(a);
             wordCloudList.appendChild(li);
         });
+
+        if (keywords.length > 0) {
+            wordCloudElement.classList.remove('hidden');
+        } else {
+            wordCloudElement.classList.add('hidden');
+        }
     };
 
-  
     let currentPagePath = window.location.pathname;
 
     // delete '/' at the end of the path
@@ -37,36 +39,29 @@ document.addEventListener('DOMContentLoaded', function () {
         currentPagePath = currentPagePath.slice(0, -1);
     }
 
-
     const currentPageMdPath = currentPagePath.replace('.html', '.md');
     console.log('Current page Markdown path:', currentPageMdPath);
 
     if (cachedKeywords[currentPageMdPath]) {
         // If keywords are already cached, display them
-  
-        displayKeywords(cachedKeywords[currentPageMdPath]);
+        const keywords = cachedKeywords[currentPageMdPath];
+        displayKeywords(keywords);
     } else {
         // Fetch keywords from keywords.json
         fetch('/data/keywords.json')
             .then(response => {
-             
                 if (!response.ok) {
-                 
                     throw new Error('Network response was not ok');
                 }
-             
-               
                 return response.json();
             })
             .then(data => {
-                // cache the keywords
+                // Cache the keywords
                 Object.assign(cachedKeywords, data);
                 localStorage.setItem('keywordsCache', JSON.stringify(cachedKeywords));
 
                 // Obtain the keywords for the current page
                 const keywords = cachedKeywords[currentPageMdPath] || [];
-             
-
                 displayKeywords(keywords);
             })
             .catch(error => console.error('Error fetching keywords:', error));

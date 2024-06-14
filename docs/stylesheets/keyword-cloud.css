@@ -6,7 +6,15 @@
   margin-top: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+.hidden {
+  display: none;
+}
+.words-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+}
 .words-cloud h2 {
   font-size: 18px;
   margin-bottom: 10px;
@@ -19,8 +27,7 @@
 
 .words-cloud li {
   display: inline-block;
-  margin-right: 10px;
-  margin-bottom: 5px;
+  padding:5px;
   transition: transform 0.3s;
 }
 
@@ -35,8 +42,8 @@
 .words-cloud .size-5 { font-size: 20px; }
 
 .words-cloud .color-1 { color: var(--md-accent-fg-color); }
-.words-cloud .color-2 { color: var(--md-primary-fg-color--light); }
-.words-cloud .color-3 { color: var(--md-primary-fg-color--dark); }
+.words-cloud .color-2 { color: grey!important; }
+.words-cloud .color-3 { color:black!important; }
 .words-cloud .color-4 { color: var(--md-accent-bg-color--light); }
 
 .words-cloud li:hover {

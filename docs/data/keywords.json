@@ -1,0 +1,5 @@
+{
+    "/Howtos/filters-oneliners": [  "MP4","ENCODE", "MUX", "REMUX", "ENCRYPT" ],
+    "/Howtos/inspecting": ["XML","INSPECT", "PID","PACKETS","SOURCE"]
+   
+}

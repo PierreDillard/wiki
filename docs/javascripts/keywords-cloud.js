@@ -22,23 +22,15 @@ document.addEventListener('DOMContentLoaded', function () {
             a.textContent = keyword;
             a.className = sizes[index % sizes.length] + ' ' + colors[index % colors.length];
 
-            // const tooltip = document.createElement('span');
-            // tooltip.className = 'tooltiptext';
-            // tooltip.textContent = 'Définition rapide du mot-clé'; 
+          
+            a.addEventListener('click', function (event) {
+                event.preventDefault();
+                openModal(); // Call the openModal(modal.js)
+            });
 
             li.appendChild(a);
-            // li.appendChild(tooltip);
             wordCloudList.appendChild(li);
 
-            tippy(a, {
-                content: 'Définition rapide du mot-clé', 
-                placement: 'top',
-                animation: 'scale-extreme',
-                theme: 'custom', 
-                arrow: false,
-                delay: [150, 50],
-                duration: [300, 20],
-            });
         });
 
         if (keywords.length > 0) {
@@ -72,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return response.json();
             })
             .then(data => {
-                // Cache the keywordsmore detailed information, it is highly recommended that you read:
+               
 
 
                 // Obtain the keywords for the current page

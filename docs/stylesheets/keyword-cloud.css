@@ -10,6 +10,16 @@
 .hidden {
   display: none;
 }
+.words-cloud__title{
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 15px;
+  color:black;
+  border-bottom: 1px solid #ddd;
+  
+}
 .words-container{
   display: flex;
   justify-content: center;
@@ -18,12 +28,23 @@
 }
 .words-cloud h2 {
   font-size: 18px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .words-cloud ul {
   list-style: none;
   padding: 0;
+}
+#dynamic-words-cloud{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  
 }
 
 .words-cloud li {

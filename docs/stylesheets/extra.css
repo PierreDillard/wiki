@@ -46,20 +46,21 @@ body {
     .md-tabs__item .md-tabs__link {
         transition: unset !important;
         background: none !important;
-        
+        color: inherit!important;
         opacity: 1 !important;
-        transition:  border-bottom 0.3s ease;
-        color:#555555;
+       
+    }
+    .hightlight{
+        z-index: 1000;
     }
     .md-tabs__item:focus,
     .md-tabs__item:hover {
-       
-        color: black;
-    border-bottom: 2px solid #ff6600;
+        background-color: #151515 !important;
+        color: #fff !important;
     }
 
     .md-tabs__item--active {
-        color: black;
+        color: var(--md-typeset-a-color);
         font-style: italic;
     }
     .tippy-box[data-theme~='custom'] {

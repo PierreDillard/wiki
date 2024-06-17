@@ -2,17 +2,17 @@ site_name: GPAC wiki
 site_url: https://wiki.gpac.io/
 site_author: GPAC contributors
 extra_javascript:
-   - javascripts/keywords.js
+   - javascripts/keywords-cloud.js
+   - javascripts/modal.js
    - data/keywords.json
    - https://unpkg.com/@popperjs/core@2
-   - https://unpkg.com/tippy.js@6
+   
 extra_css:
   - stylesheets/extra.css
-  - stylesheets/tabs-item.css
   - stylesheets/keyword-cloud.css
   - stylesheets/expertise_level.css
   - stylesheets/top.css
-  - https://unpkg.com/tippy.js@6/dist/tippy.css
+  - stylesheets/modal.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
 
 theme:
@@ -63,6 +63,7 @@ hooks:
   - scripts/mkdocs_hooks.py
 markdown_extensions:
 - attr_list
+- md_in_html
 - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg

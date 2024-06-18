@@ -1,20 +1,15 @@
 <div id="modal" class="modal hidden">
     <div class="modal-content">
         <button id="close-modal" class="modal-close">
-            
-
-<i class="fa-solid fa-square-xmark"></i>
+            <i class="fa-solid fa-square-xmark"></i>
         </button>
         <div class="modal-header">
-     
-                <i class="fa fa-book"></i>
-                <h2>ENCRYPT</h2>
-          
-            
+            <i class="fa fa-book"></i>
+            <h2 id="modal-title">ENCRYPT</h2> <!-- Ajout de l'identifiant modal-title -->
         </div>
-        <p class="modal-content__definition">
+        <p id="modal-definition" class="modal-content__definition">
             Encryption refers to the process of converting media streams into a secure format using algorithms like AES 128-bit, ensuring only authorized parties can decrypt and access the content.
-        </p>
+        </p> <!-- Ajout de l'identifiant modal-definition -->
     </div>
 </div>
 <script src="{{ base_url }}/javascripts/modal.js"></script>

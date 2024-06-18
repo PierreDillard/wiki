@@ -1,6 +1,18 @@
 {
-    "/Howtos/filters-oneliners": [  "MP4","ENCODE", "MUX", "REMUX", "ENCRYPT" ],
-    "/Howtos/inspecting": ["XML","INSPECT", "PID","PACKETS","SOURCE"]
-   
+    "pages": {
+        "/Howtos/filters-oneliners": ["MP4", "ENCODE", "MUX", "REMUX", "ENCRYPT"],
+        "/Howtos/inspecting": ["XML", "INSPECT", "PID", "PACKETS", "SOURCE"]
+    },
+    "definitions": {
+        "MP4": "MP4 is a standardized multimedia file format for storing video, audio, subtitles and still images. It is widely used for streaming and media storage.",
+        "ENCODE": "Encode means to convert multimedia data from a raw or other format into a specific format, often for compression or compatibility with other systems.",
+        "MUX": "Mux (or multiplexing) is the process of combining multiple audio, video and/or subtitle streams into a single container file, such as an MP4 file.",
+        "REMUX": "Remux (or remultiplexing) involves reassembling existing audio, video and/or subtitle streams into a new container file without modifying the streams themselves.",
+        "ENCRYPT": "Encrypt means to protect multimedia data by making it inaccessible without an appropriate decryption key. This is used to secure content against unauthorized access.",
+        "XML": "XML (eXtensible Markup Language) is a markup language used to structure and exchange data. In the multimedia context, it is often used to describe metadata and file configurations.",
+        "INSPECT": "Inspect in GPAC means to analyze a media file to extract and display detailed information about its tracks, codecs, durations, etc.",
+        "PID": "PID (Packet Identifier) is a unique identifier used in multimedia transport streams to distinguish between different types of data, such as audio and video, in a multiplexed stream.",
+        "PACKETS": "Packets are small units of data that are transmitted individually over a network or stored in a file. They contain pieces of audio, video or subtitle streams.",
+        "SOURCE": "Source in GPAC refers to the original file or media stream from which data is read or processed."
+    }
 }
-

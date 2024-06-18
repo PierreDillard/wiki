@@ -1,4 +1,13 @@
 {
-    "keywords": ["MP4", "ENCODE", "MUX", "REMUX", "ENCRYPT"]
+  "pages": {
+    "path/to/page1.md": ["MP4", "ENCODE", "MUX"],
+    "path/to/page2.md": ["REMUX", "ENCRYPT"]
+  },
+  "definitions": {
+    "MP4": "MP4 is a digital multimedia container format...",
+    "ENCODE": "Encoding is the process of converting data into a particular format...",
+    "MUX": "Multiplexing is the process of combining multiple signals...",
+    "REMUX": "Remuxing is the process of changing the container format without altering the actual data...",
+    "ENCRYPT": "Encryption refers to the process of converting media streams into a secure format using algorithms like AES 128-bit, ensuring only authorized parties can decrypt and access the content."
   }
-  
+}

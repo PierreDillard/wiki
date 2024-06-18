@@ -2,7 +2,10 @@ site_name: GPAC wiki
 site_url: https://wiki.gpac.io/
 site_author: GPAC contributors
 extra_javascript:
-   - javascripts/keywords-cloud.js
+   - javascripts/main.js
+   - javascripts/cache.js
+   - javascripts/display.js
+   - javascripts/fetch.js
    - javascripts/modal.js
    - data/keywords.json
    

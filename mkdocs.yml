@@ -5,15 +5,15 @@ extra_javascript:
    - javascripts/keywords-cloud.js
    - javascripts/modal.js
    - data/keywords.json
-   - https://unpkg.com/@popperjs/core@2
+   
    
 extra_css:
   - stylesheets/extra.css
   - stylesheets/keyword-cloud.css
-  - stylesheets/expertise_level.css
   - stylesheets/top.css
   - stylesheets/modal.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
+ 
 
 theme:
   name: material

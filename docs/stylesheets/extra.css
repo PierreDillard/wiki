@@ -50,9 +50,7 @@ body {
         opacity: 1 !important;
        
     }
-    .hightlight{
-        z-index: 1000;
-    }
+    
     .md-tabs__item:focus,
     .md-tabs__item:hover {
         background-color: #151515 !important;
@@ -73,3 +71,9 @@ body {
 
 }
 
+.md-sidebar__inner {
+    z-index: 1;
+}
+.hightlight{
+    z-index: 1000;
+}

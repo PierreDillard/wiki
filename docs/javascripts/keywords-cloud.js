@@ -21,16 +21,18 @@ document.addEventListener('DOMContentLoaded', function () {
             a.href = "#";
             a.textContent = keyword;
             a.className = sizes[index % sizes.length] + ' ' + colors[index % colors.length];
-
           
             a.addEventListener('click', function (event) {
                 event.preventDefault();
-                openModal(); // Call the openModal(modal.js)
+                if (typeof openModal === 'function') {
+                    openModal(); // Call the openModal(modal.js)
+                } else {
+                    console.error('openModal function is not defined');
+                }
             });
 
             li.appendChild(a);
             wordCloudList.appendChild(li);
-
         });
 
         if (keywords.length > 0) {
@@ -64,11 +66,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return response.json();
             })
             .then(data => {
-               
-
-
                 // Obtain the keywords for the current page
-                const keywords = cachedKeywords[currentPageMdPath] || [];
+                const keywords = data[currentPageMdPath] || [];
                 displayKeywords(keywords);
             })
             .catch(error => console.error('Error fetching keywords:', error));

@@ -4,3 +4,4 @@ site/
 __pycache__/
 site.*
 .DS_Store
+node_modules/

@@ -1,8 +1,5 @@
 {
-    "pages": {
-        "/Howtos/filters-oneliners": ["MP4", "ENCODE", "MUX", "REMUX", "ENCRYPT"],
-        "/Howtos/inspecting": ["XML", "INSPECT", "PID", "PACKETS", "SOURCE"]
-    },
+    
     "definitions": {
         "MP4": "MP4 is a standardized multimedia file format for storing video, audio, subtitles and still images. It is widely used for streaming and media storage.",
         "ENCODE": "Encode means to convert multimedia data from a raw or other format into a specific format, often for compression or compatibility with other systems.",

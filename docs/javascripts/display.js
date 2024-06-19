@@ -6,7 +6,7 @@ import { openModal } from './modal.js';
 export function displayKeywords(keywords, cachedDefinitions) {
     const wordCloudElement = document.querySelector('.words-cloud');
     const wordCloudList = document.getElementById('dynamic-words-cloud');
-    wordCloudList.innerHTML = ''; // Clear the existing keywords
+    wordCloudList.innerHTML = '';
 
     const sizes = ['size-1', 'size-2', 'size-3', 'size-4', 'size-5'];
     const colors = ['color-1', 'color-2', 'color-3', 'color-4'];

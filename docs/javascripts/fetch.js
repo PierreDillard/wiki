@@ -1,8 +1,7 @@
-
-
+// fetch.js
 import { setCache } from './cache.js';
 import { displayKeywords } from './display.js';
-import { openModal } from './modal.js';
+import { findKeywordsInContent } from './keywordsFinder.js';
 
 export function fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions) {
     fetch('/data/keywords.json')
@@ -13,10 +12,12 @@ export function fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitio
             return response.json();
         })
         .then(data => {
-            const keywords = data.pages[currentPageMdPath] || [];
-            cachedKeywords[currentPageMdPath] = keywords;
-            setCache('keywordsCache', cachedKeywords);
-            displayKeywords(keywords, cachedDefinitions);
+            const lexique = Object.keys(data.definitions); // Extraire les mots clés du lexique
+            findKeywordsInContent(currentPageMdPath, lexique, (filteredKeywords) => {
+                cachedKeywords[currentPageMdPath] = filteredKeywords;
+                setCache('keywordsCache', cachedKeywords);
+                displayKeywords(filteredKeywords, cachedDefinitions);
+            });
         })
         .catch(error => console.error('Error fetching keywords:', error));
 }

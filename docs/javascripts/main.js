@@ -1,7 +1,5 @@
 
-
 import { getCache } from './cache.js';
-import { displayKeywords } from './display.js';
 import { fetchKeywords } from './fetch.js';
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -17,10 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const currentPageMdPath = currentPagePath.replace('.html', '.md');
     console.log('Current page Markdown path:', currentPageMdPath);
 
-    if (cachedKeywords[currentPageMdPath]) {
-        const keywords = cachedKeywords[currentPageMdPath];
-        displayKeywords(keywords, cachedDefinitions);
-    } else {
-        fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
-    }
+    fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
 });
+
+

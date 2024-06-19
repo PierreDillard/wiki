@@ -1,18 +1,9 @@
----
-title: filters-oneliners
-keywords:
-  - MP4
-  - ENCODE
-  - MUX
-  - REMUX
-  - ENCRYPT
----
+
 
 
 
 # Foreword
-*[HTML]: Hyper Text Markup Language
-*[W3C]: World Wide Web Consortium
+
 
 This page contains one-liners illustrating the many possibilities of GPAC filters architecture. For a more detailed information, it is highly recommended that you read:
 

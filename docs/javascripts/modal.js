@@ -1,6 +1,6 @@
 
 
-export function openModal(keyword, definition) {
+function openModal(keyword, definition) {
     const modal = document.getElementById("modal");
     const modalTitle = document.getElementById("modal-title");
     const modalDefinition = document.getElementById("modal-definition");

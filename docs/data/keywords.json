@@ -1,6 +1,6 @@
 {
     
-    "definitions": {
+    "definitions" : {
         "MP4": "MP4 is a standardized multimedia file format for storing video, audio, subtitles and still images. It is widely used for streaming and media storage.",
         "ENCODE": "Encode means to convert multimedia data from a raw or other format into a specific format, often for compression or compatibility with other systems.",
         "MUX": "Mux (or multiplexing) is the process of combining multiple audio, video and/or subtitle streams into a single container file, such as an MP4 file.",

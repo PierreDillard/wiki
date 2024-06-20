@@ -150,16 +150,24 @@
         {% endif %}
       {% endblock %}
       <main class="md-main" data-md-component="main">
+     
         <div class="md-main__inner md-grid">
           {% block site_nav %}
             {% if nav %}
               {% if page.meta and page.meta.hide %}
                 {% set hidden = "hidden" if "navigation" in page.meta.hide %}
               {% endif %}
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }}>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="toc" {{ hidden }}>
                 <div class="md-sidebar__scrollwrap">
+                
                   <div class="md-sidebar__inner">
-                    {% include "partials/nav.html" %}
+                    <button id="toggle-button" class="toggle-btn">Toggle TOC</button>
+                    <div id="toc-content">
+                      {% include "partials/toc.html" %}
+                    </div>
+                    <div id="nav-content" style="display: none;">
+                      {% include "partials/nav.html" %}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -168,12 +176,10 @@
               {% if page.meta and page.meta.hide %}
                 {% set hidden = "hidden" if "toc" in page.meta.hide %}
               {% endif %}
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" {{ hidden }}>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }}>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    {% include "partials/toc.html" %}
                     {% include "partials/keywords-cloud.html" %}
-             
                   </div>
                 </div>
               </div>
@@ -190,6 +196,9 @@
           {% endblock %}
           {% include "partials/javascripts/content.html" %}
         </div>
+        
+        
+        
         {% if "navigation.top" in features %}
           {% include "partials/top.html" %}
         {% endif %}
@@ -207,7 +216,7 @@
     {% if config.extra.consent %}
       <div class="md-consent" data-md-component="consent" id="__consent" hidden>
         <div class="md-consent__overlay"></div>
-        <aside class="md-consent__inner">
+        <aside class="md-consent__inner" aria-label="Consent Form">
           <form class="md-consent__form md-grid md-typeset" name="consent">
             {% include "partials/consent.html" %}
           </form>

@@ -1,0 +1,13 @@
+.toggle-btn {
+    position: fixed;
+    top: 200px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #ff0000; /* Couleur de fond rouge */
+    color: white;
+    border: 2px solid #000000; /* Bordure noire */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; /* Taille de police plus grande */
+    z-index: 99999; 
+}

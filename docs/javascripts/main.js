@@ -198,3 +198,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
     fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
 });
+//Nav-Toc-Button-toogle
+document.addEventListener("DOMContentLoaded", function() {
+    const toggleButton = document.getElementById("toggle-button");
+    const tocContent = document.getElementById("toc-content");
+    const navContent = document.getElementById("nav-content");
+    let isTOCVisible = true;
+
+    if (toggleButton) {
+        console.log("Button found");
+    } else {
+        console.log("Button not found");
+    }
+
+    toggleButton.addEventListener("click", function() {
+        console.log("Button clicked");
+        if (isTOCVisible) {
+            tocContent.style.display = "none";
+            navContent.style.display = "block";
+        } else {
+            tocContent.style.display = "block";
+            navContent.style.display = "none";
+        }
+        isTOCVisible = !isTOCVisible;
+    });
+
+    // Initial state
+    tocContent.style.display = "block";
+    navContent.style.display = "none";
+});

@@ -61,19 +61,4 @@ body {
         color: var(--md-typeset-a-color);
         font-style: italic;
     }
-    .tippy-box[data-theme~='custom'] {
-        background-color:var(-md-primary-fg-color--dark);
-        color: #fff;
-        border-radius: 5px;
-        padding: 8px 10px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
-
-}
-
-.md-sidebar__inner {
-    z-index: 1;
-}
-.hightlight{
-    z-index: 1000;
 }

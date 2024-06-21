@@ -1,24 +1,40 @@
-.toggle-btn {
+/* Media query to hide elements on screens smaller than 60em (960px) */
+@media screen and (max-width: 59.99em) {
+    .toggle-btn, 
+    .toggle-btn i{
+        display: none;
+    }
+}
 
-    padding: 10px 20px;
-    background-color:transparent; /* Couleur de fond bleu */
+@media screen and (min-width: 60em) {
+    .md-nav--secondary .md-nav__title .md-nav__icon {
+        display: block;
+    }
+}
+
+.md-nav__icon {
+    display: flex;
+}
+
+.toggle-btn {
+    background-color: transparent;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 16px; /* Taille de police */
+    font-size: 16px;
     display: flex;
     align-items: center;
-    z-index: 99999; 
+    z-index: 99999;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .toggle-btn:hover {
-    background-color: #0056b3; /* Couleur de fond bleu foncé au survol */
+    background-color: #D7D7D7;
 }
 
 .toggle-btn i {
-    margin-right: 8px; /* Espacement entre l'icône et le texte */
+    color: black;
     transition: transform 0.3s ease;
 }
 
@@ -34,7 +50,7 @@
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-.toggle-btn.nav-view i {
+.toggle-btn.i {
     transform: rotate(180deg);
 }
 
@@ -43,6 +59,7 @@
     display: inline-block;
     margin-left: 5px;
 }
-.span-toggle{
+
+.span-toggle {
     margin-right: 4px;
 }

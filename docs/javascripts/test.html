@@ -32,7 +32,7 @@
         <link rel="alternate" type="application/rss+xml" title="{{ lang.t('rss.updated') }}" href="{{ 'feed_rss_updated.xml' | url }}">
       {% endif %}
       <link rel="icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.5.27">
     {% endblock %}
     {% block htmltitle %}
       {% if page.meta and page.meta.title %}
@@ -96,7 +96,6 @@
     <body dir="{{ direction }}">
   {% endif %}
     {% set features = config.theme.features or [] %}
-    {% include "partials/palette.html" %}
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -150,7 +149,7 @@
           {% endif %}
         {% endif %}
       {% endblock %}
-      <main class="md-main" data-md-component="main">  
+      <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
           {% block site_nav %}
             {% if nav %}
@@ -159,18 +158,8 @@
               {% endif %}
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }}>
                 <div class="md-sidebar__scrollwrap">
-                
                   <div class="md-sidebar__inner">
-                    <button id="toggle-button" class="toggle-btn">
-                      <i class="fa-solid fa-arrows-rotate"></i>
-                    </button></span>
-                
-                    <div id="toc-content">
-                      {% include "partials/toc.html" %}
-                    </div>
-                    <div id="nav-content" style="display: none;">
-                      {% include "partials/nav.html" %}
-                    </div>
+                    {% include "partials/nav.html" %}
                   </div>
                 </div>
               </div>
@@ -179,10 +168,10 @@
               {% if page.meta and page.meta.hide %}
                 {% set hidden = "hidden" if "toc" in page.meta.hide %}
               {% endif %}
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }}>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" {{ hidden }}>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
-                    {% include "partials/keywords-cloud.html" %}
+                    {% include "partials/toc.html" %}
                   </div>
                 </div>
               </div>
@@ -199,9 +188,6 @@
           {% endblock %}
           {% include "partials/javascripts/content.html" %}
         </div>
-        
-        
-        
         {% if "navigation.top" in features %}
           {% include "partials/top.html" %}
         {% endif %}
@@ -219,7 +205,7 @@
     {% if config.extra.consent %}
       <div class="md-consent" data-md-component="consent" id="__consent" hidden>
         <div class="md-consent__overlay"></div>
-        <aside class="md-consent__inner" aria-label="Consent Form">
+        <aside class="md-consent__inner">
           <form class="md-consent__form md-grid md-typeset" name="consent">
             {% include "partials/consent.html" %}
           </form>
@@ -264,7 +250,6 @@
     {% endblock %}
     {% block scripts %}
       <script src="{{ 'assets/javascripts/bundle.ad660dcc.min.js' | url }}"></script>
-      <script type="module" src="{{ 'javascripts/main.js' | url }}"></script>
       {% for script in config.extra_javascript %}
         {{ script | script_tag }}
       {% endfor %}

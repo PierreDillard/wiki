@@ -46,6 +46,53 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}.toggle-btn {
+
+    padding: 10px 20px;
+    background-color:transparent;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px; 
+    display: flex;
+    align-items: center;
+    z-index: 99999; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background-color: #0056b3; 
+}
+
+.toggle-btn i {
+    margin-right: 8px; 
+    transition: transform 0.3s ease;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.toggle-btn.nav-view i {
+    transform: rotate(180deg);
+}
+
+.toggle-btn.nav-view span::after {
+    content: "NAV";
+    display: inline-block;
+    margin-left: 5px;
+}
+.span-toggle{
+    margin-right: 4px;
 }
 .modal-header i {
     color: #d94412;

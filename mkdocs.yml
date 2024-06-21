@@ -38,6 +38,7 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   features:
+    - navigation.top
     - tables
     - def_list
     - content.code.annotate
@@ -46,19 +47,18 @@ theme:
     - navigation.expand
     - navigation.path
     - navigation.tabs
-    - navigation.top
+  
     - navigation.tracking
     - navigation.indexes
     - toc.follow
     - search.highlight
     - search.share
-    - search.suggest
-    - content.footnote.tooltips
+    - search.suggests
 repo_url: https://github.com/gpac/gpac/
 
 plugins:
   - search
-  - tags
+  
 hooks:
   - scripts/mkdocs_hooks.py
 markdown_extensions:
@@ -73,6 +73,7 @@ markdown_extensions:
 - pymdownx.superfences
 - pymdownx.inlinehilite
 - footnotes
+- toc:
 - toc:
       permalink: true
 extra:

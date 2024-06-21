@@ -198,6 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
 });
+
 //Nav-Toc-Button-toogle
 document.addEventListener("DOMContentLoaded", function() {
     const toggleButton = document.getElementById("toggle-button");

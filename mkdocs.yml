@@ -21,22 +21,22 @@ theme:
   logo: images/gpac-logo.svg
   favicon: images/favicon-32x32.png
   palette:
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: gpac
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: black
-      accent: deep orange
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+  - media: "(prefers-color-scheme)"
+    toggle:
+      icon: material/brightness-auto
+      name: Switch to light mode
+  - media: "(prefers-color-scheme: light)"
+    scheme: gpac
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: black
+    accent: deep orange
+    toggle:
+      icon: material/brightness-4
+      name: Switch to light mode
   features:
     - navigation.top
     - tables
@@ -54,6 +54,7 @@ theme:
     - search.highlight
     - search.share
     - search.suggests
+     - content.footnote.tooltips
 repo_url: https://github.com/gpac/gpac/
 
 plugins:

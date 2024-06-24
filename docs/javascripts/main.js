@@ -81,17 +81,20 @@ function displayKeywords(keywords, cachedDefinitions) {
 }
 
 // Modal functions
-function openModal(keyword, definition) {
+function openModal(keyword, definition ) {
     const modal = document.getElementById("modal");
     const modalTitle = document.getElementById("modal-title");
     const modalDefinition = document.getElementById("modal-definition");
+    const modalLink = document.getElementById("modal-link");
   
 
-    if (modalTitle && modalDefinition) {
+    if (modalTitle && modalDefinition && modalLink) {
         modalTitle.textContent = keyword;
         modalDefinition.textContent = definition;
+        modalLink.href = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`;
         modal.classList.remove("hidden");
         modal.style.display = "block";
+        modalLink.classList.remove("hidden");
 
      
     } else {
@@ -223,7 +226,14 @@ document.addEventListener("DOMContentLoaded", function() {
         isNavIsVisible = !isNavIsVisible;
     });
 
-    // Initial state
     tocContent.style.display = "none";
     navContent.style.display = "block";
+});
+//Add spécific style to glossary pages
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (window.location.pathname.includes("/glossary/")) {
+      
+        document.body.classList.add("glossary-page");
+    }
 });

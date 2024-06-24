@@ -81,3 +81,11 @@
   transform: scale(1.2) !important;
   text-decoration: underline;
 }
+.modal-link {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--md-accent-fg-color);
+  text-decoration: underline;
+}

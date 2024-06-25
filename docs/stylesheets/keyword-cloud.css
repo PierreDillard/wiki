@@ -1,7 +1,7 @@
 .words-cloud-container {
 
-  
-  
+  height:80vh;
+  overflow: hidden;
   text-align: center;
 
 }

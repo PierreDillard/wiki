@@ -71,3 +71,6 @@ body {
     }
 }
 
+.md-typeset pre>code {
+    border-radius: 5px;
+}

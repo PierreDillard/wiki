@@ -13,10 +13,14 @@
 }
 @media screen and (min-width: 76.25em) {
     .md-nav__icon {
-        border-radius: 100%;
-        height: .9rem;
         transition: background-color .25s;
-       width: auto;
+         width: auto;
+    }
+}
+
+@media screen and (min-width: 76.25em) {
+    .md-nav__icon:hover {
+    background-color: transparent; 
     }
 }
 .md-nav__icon {

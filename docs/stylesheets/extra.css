@@ -62,11 +62,7 @@ body {
         font-style: italic;
     }
     .md-header__option {
-        display: flex;
-        flex-shrink: 0;
-        max-width: 100%;
-        transition: max-width 0ms .25s, opacity .25s .25s;
-        white-space: nowrap;
+       
         background-color: var(--md-primary-fg-color)!important;
     }
 }

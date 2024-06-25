@@ -22,7 +22,7 @@
 .modal-content {
     background-color: #D7D7D7;
     border-radius: 8px;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 20px rgba(0.1, 0, 0, 0.1);
     padding: 24px;
     width: 100%;
     
@@ -65,10 +65,10 @@
     background-color: #0056b3; 
 }
 
-.toggle-btn i {
+ .toggle-btn i {
     margin-right: 8px; 
     transition: transform 0.3s ease;
-}
+} 
 
 .hidden {
     opacity: 0;
@@ -82,18 +82,12 @@
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-.toggle-btn.nav-view i {
-    transform: rotate(180deg);
-}
 
-.toggle-btn.nav-view span::after {
-    content: "NAV";
-    display: inline-block;
-    margin-left: 5px;
-}
+
+
 .span-toggle{
     margin-right: 4px;
-}
+} 
 .modal-header i {
     color: #d94412;
 }

@@ -8,8 +8,9 @@ encrypt(input_file, output_file, key_file)
 ```
 
 #### Reference
-
-- `encrypt(input_file, output_file, key_file)`
+```bash
+encrypt("input.mp4", "output.mp4", "keyfile.xml")
+```
 
 #### Usage
 

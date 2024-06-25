@@ -23,9 +23,7 @@
     background-color: transparent; 
     }
 }
-.md-nav__icon {
-    display: flex;
-}
+
 
 .toggle-btn {
     margin-bottom: 0.2rem;

@@ -55,6 +55,7 @@ The start and duration of the inspection can be modified:
 ```
 gpac -i source.mp4 inspect:deep:start=10:dur=1
 ```
+
 This will force inspecting from start time 10 second (or previous access point) for 1 second.
 
 # Filtering the inspection
@@ -76,6 +77,7 @@ The full list of options for the packet information log is given in the [inspect
 ```
 gpac -i source.mp4 inspect:interleave=false:fmt="PCK%num% DTS=%dts% CTS=%cts% SAP=%sap% size=%size%%lf%":log=dump.txt
 ```
+
 This is the same as above with some nicer formatting of the output:
 ```
 PCK1 DTS=0 CTS=0 SAP=1 size=200

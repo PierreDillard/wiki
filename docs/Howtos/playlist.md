@@ -10,27 +10,34 @@ In both modes, when switching sources, the filter will match streams (PIDs) base
 The filter will move to the next item once all PIDs are done playing. It will then adjust the timeline of the following source by repositioning the new source smallest initial timestamp to the greatest time (timestamp+duration) of the last source. 
 
 
+
 # File list mode
- 
+
 ```
 gpac flist:srcs=file.mp4:floop=-1 vout
 ```
-The above command will play  `file.mp4`, looping it forever. The source may have any number of streams
+
+The above command will play `file.mp4`, looping it forever. The source may have any number of streams.
 
 ```
 gpac flist:srcs=f1.mp4,f2.mp4 vout
 ```
-The above command will play  `f1.mp4` then `f2.mp4`. 
+
+The above command will play `f1.mp4` then `f2.mp4`.
 
 ```
 gpac flist:srcs=images/*.png:fdur=1/25 vout
 ```
+
 The above command will play all files with extension `png` in directory `images`, each image lasting for 40 milliseconds.
 
 ```
 gpac flist:srcs=images/*.png:fdur=1:fsort=date -o slide.mp4
 ```
+
 The above command will gather all files with extension `png` in directory `images` ordered by their file creation date, each image lasting for 1 second, and output as a PNG track in MP4 format.
+
+
 
 # Playlist mode
 
@@ -67,7 +74,7 @@ Playlist can specify options applying to the source(s) listed in the next line.
 - Options are listed on a single line starting with `#`.
 - A line starting with `##` is ignored.
 - Each line in the playlist not starting with `#` is a source entry for the playlist. 
-
+This will play twice `file.aac` then once `file.mp3`. 
 ```
 ##begin mixed.m3u
 #repeat=1
@@ -75,7 +82,7 @@ file.aac
 file.mp3
 ##end playlist
 ```
-This will play twice `file.aac` then once `file.mp3`. 
+
 
 
 ## Multi-sources entries
@@ -92,6 +99,7 @@ In this case, the filter will move to the next item in the playlist only once al
 
 A source entry may also contain filter directives, just like `gpac` command line. These can be used to apply processing only for the current sources, such as transcoding if you know the source is not in the right format:
 
+
 ```
 ##begin mixed.m3u
 file.aac
@@ -99,9 +107,13 @@ file.mp3 @ enc:c=aac:b=64k
 file2.aac
 ##end playlist
 ```
-This will only activate the AAC encoder for the `file.mp3` source. When `file2.aac` is queued for processing, the transcoding chain used for `file.mp3` will be unloaded. 
 
-The following describes a sequence of sources to be used as input to a DASH multi-period session:  
+This will only activate the AAC encoder for the `file.mp3` source. When `file2.aac` is queued for processing, the transcoding chain used for `file.mp3` will be unloaded.
+ 
+
+The following describes a sequence of sources to be used as input to a DASH multi-period session:
+
+
 ```
 ##begin mixed.m3u
 vid1.mp4:#Period=1
@@ -112,7 +124,9 @@ vid2.mp4 && audio2.mp4:#Language=en && audio2_fr.mp4:#Language=fr
 vid3.mp4:#Period=1
 ##end playlist
 ```
-This will result in a DASH MPD with three periods, the first (resp. third) period containing media from `vid1.mp4` (resp. `vid3.mp4`) and the second period containing media from `vid2.mp4`, `audio2.mp4` and `audio2_fr.mp4`.
+
+This will result in a DASH MPD with three periods, the first (resp. third) period containing media from `vid1.mp4` (resp. `vid3.mp4`) and the second period containing media from `vid2.mp4`, `audio2.mp4` and `audio2_fr.mp4`.  
+
  
 Note that in this example:
 
@@ -123,6 +137,8 @@ __Warning The set of separators is the default one of gpac (cf [-seps](gpac_gene
 
 
 The playlist mode can also be used to generate DASH/HLS segmentation cues, instructing the dasher to generate segments matching the boundaries of the source files. This can be useful when your encoder performs some optimized scene cut and generates segments with variable duration.
+
+
  
 ```
 
@@ -134,6 +150,7 @@ v3.264 && a3.aac
 
 gpac -i playlist.m3u:sigcues -o dash.mpd
 ```
+
 The DASH session will in that case only have 3 segments containing v1/a1,  v2/a2 and v3/a3 (obviously, make sure vX and aX have the same duration ...).
 
 
@@ -179,6 +196,7 @@ s3.mp4
 s4.mp4
 ##end playlist
 ```
+
 In this example, only `s1.mp4` and `s2.mp4` will be deleted.
 
 

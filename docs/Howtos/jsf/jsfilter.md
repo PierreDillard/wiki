@@ -56,12 +56,14 @@ Give a name to your filter (optional):
  ```
  filter.set_name("MyFilter");
 ```
+
 This name will be used when logging messages and inspecting the filter graph. If not set, the filter name will be the script name.
 
 Give a description to your filter  (optional): 
  ```
  filter.set_desc("A demonstration JS filter");
  ```
+
  This description should provide a quick hint as to what the purpose of the filter is.  It will be shown by the command  `gpac -h script.js`.
 
 
@@ -75,6 +77,7 @@ You should finally set some help for your filter (optional):
  ```
  filter.set_help("This filter provides a very simple javascript filter");
 ```
+
 This will help other users understand what your filter does and how to use it. It will be shown by the command  `gpac -h script.js`.
 
 You can specify arguments to your filter  (optional):
@@ -83,6 +86,7 @@ filter.set_arg({ name: "raw", desc: "if set, accept non-demultiplexed input PIDs
 ...
 filter.set_arg({name: "str", desc: "string to send", type: GF_PROP_STRING, def: "GPAC JS Filter Packet"} );
 ```
+
 Arguments simplify script configuration and usage, and will be shown by the command  `gpac -h script.js`.
 
 Defined arguments  will be parsed from command line. Each defined argument results in a JS property in the `filter` object with the given value. 
@@ -467,6 +471,7 @@ dst_pck.set_prop('MyUserProp', 'My User Data', true);
 
 If needed, you can copy packet information from a source packet. This will copy all built-in and user properties and all packet info 
 
+
 ```
 dst_pck.copy_props(src_pck);
 ```
@@ -479,6 +484,7 @@ When you're ready, it's time to send your packet:
 ```
 dst_pck.send();
 ```
+
 Once send, the packet cannot be resent: it is in a detached state and has no longer any underlying native packet. As a general rule, you should consider a packet send as no longer accessible. 
 
 
@@ -533,6 +539,7 @@ let src_f = filter.add_source("myfile.ts");
 let src_f = filter.add_source("http://host/source.mp4");
 
 ```
+
 Any URL supported by GPAC for source filter loading can be used.
 
 * load a destination (sink) filter: this allows loading a multiplexing chain targeting a given URL
@@ -541,6 +548,7 @@ let src_f = filter.add_destination("myfile.ts");
 let src_f = filter.add_destination("pipe://mymux.gsf");
 
 ```
+
 Any URL supported by GPAC  for destination/sink filter loading can be used.
 
 * load a generic filter: this allows loading any filter supported by GPAC
@@ -548,6 +556,7 @@ Any URL supported by GPAC  for destination/sink filter loading can be used.
 let vout_f = filter.add_filter("vout");
 
 ```
+
 This will load the video output filter with no specific arguments. 
 
 For each of these methods, the filter name or URL used  can specify filter options, as usual within GPAC filter chains. For example:
@@ -555,6 +564,7 @@ For each of these methods, the filter name or URL used  can specify filter optio
 let vout_f = filter.add_filter("vout:vsync=no");
 
 ```
+
 This will load the video output filter with vsync disabled. 
 
 

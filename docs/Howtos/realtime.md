@@ -19,6 +19,7 @@ This is true for GPAC prior to 2.0 or when using complete mode linking [-cl](gpa
 ```
 gpac [-cl] -i source.mp4 reframer -o dest.mp4 -graph
 ```
+
 In this example, the `source.mp4` input will produce a PID of type `FILE`, which will be directly connected to the `dest.mp4` output, and the reframer will simply not be connected:
 
 ```

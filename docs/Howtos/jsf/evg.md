@@ -101,6 +101,7 @@ let circle = new Path();
 let circle.add_ellipse(0, 0, 100, 100);
 
 ```
+
 Then create a simple brush:
 ```
 let brush = new SolidBrush();
@@ -116,6 +117,7 @@ canvas.fill(brush);
 If we put all this together:
 
 ```
+
 import * as evg from 'evg'
 
 let width=400;
@@ -215,6 +217,7 @@ You can also use a 3D matrix to draw a path, usually to apply perspective transf
 GPAC EVG handles path outlines ("striking") as a regular path. If you want to outline a path, you first need to create the corresponding outline path using pen properties, then draw it as usual.
 
 ```
+
 let outline = circle.outline({width: 5.0, align: GF_PATH_LINE_OUTSIDE, join: GF_LINE_JOIN_BEVEL, dash: GF_DASH_STYLE_DASH_DASH_DOT});
 
 
@@ -270,6 +273,7 @@ let tx = new EVG.Texture(2, 2, 'rgba', ab);
 ```
 let tx = new EVG.Texture('myimage.jpg', true);
 ```
+
 Note that the image loader can resolve the image path as relative to the source JS or to the current working directory. In this example, we use source JS relative path. Only local files are supported by this API.
 
 - create texture from a remote PNG or JPEG file
@@ -279,6 +283,7 @@ Note that the image loader can resolve the image path as relative to the source 
 xhr = xhr_fetch_file(file_url);
 let tx = new EVG.Texture(xhr.response);
 ```
+
 Check GPAC [XHR API](https://doxygen.gpac.io/group__xhr__grp.html) for more details.
 
 
@@ -290,6 +295,7 @@ let pck = ipid.get_packet();
 
 let tx = new EVG.Texture(pck);
 ```
+
 In this case, the texture properties are derived from the packet's parent PID properties.
 
 
@@ -298,6 +304,7 @@ In this case, the texture properties are derived from the packet's parent PID pr
 ```
 let tx = new EVG.Texture(canvas);
 ```
+
 In this case, the texture properties are derived from the canvas properties. This is typically used to draw an offscreen canvas and use the result as a texture, similar to MPEG-4 CompositeTexture2D.
 
 
@@ -305,6 +312,7 @@ In this case, the texture properties are derived from the canvas properties. Thi
 Once the texture data is setup, you will then need to setup the base transformation of your texture. This implies scaling the texture to the desired size in object local coordinate system, and translating it at the right position (e.g. center). If we take the example of our circle with 100 pixel, diameter, the texture must be scaled to occupy the full width and height (e.g. 100, 100) and translated to the center of the local coordinate system (e.g. 50, 50).
 
 ```
+
 let mmx = new evg.Matrix2D();
 mmx.scale(100/tx.width, 100/tx.height);
 mmx.translate(50, 50);

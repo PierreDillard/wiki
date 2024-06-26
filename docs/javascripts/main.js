@@ -303,6 +303,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 collapseSection.classList.toggle('active');
             });
         });
+        
     }
 });
 

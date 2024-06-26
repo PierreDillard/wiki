@@ -19,14 +19,14 @@ body {
 
 [data-md-color-scheme="gpac"] {
     /* header background */
-    --md-primary-fg-color: #d7d7d7;               
+    --md-primary-fg-color: #E0E0E0;             
     /* header text */
     --md-primary-bg-color: #141414;
 
     --md-primary-fg-color--light:        hsla(0, 0, 95%, 1);
     --md-primary-fg-color--dark:         hsla(0, 0, 25%, 1);
     
-    --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
+    --md-primary-bg-color--light:        #F0F0F0;
   
     --md-accent-fg-color:                #d94412;
     --md-accent-fg-color--transparent:   #d944121f;

@@ -1,4 +1,4 @@
-/* Media query to hide elements on screens smaller than 60em (960px) */
+
 @media screen and (max-width: 59.99em) {
     .toggle-btn, 
     .toggle-btn i{

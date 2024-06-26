@@ -13,11 +13,13 @@ extra_css:
   - stylesheets/modal.css
   - stylesheets/toggle.css
   - stylesheets/glossary-pages.css
+  - stylesheets/collapse_section.css
+  - stylesheets/feedback.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
  
 
 theme:
-  name: material
+  name: "material"
   custom_dir: overrides
   logo: images/gpac-logo.svg
   favicon: images/favicon-32x32.png
@@ -42,23 +44,24 @@ theme:
     - navigation.top
     - tables
     - def_list
-    - content.code.annotate
+    - content.code.select
     - content.code.copy
     - content.tooltips
     - navigation.expand
     - navigation.path
     - navigation.tabs
-    - search
     - navigation.tracking
     - navigation.indexes
     - toc.follow
     - search.highlight
     - search.share
     - search.suggests
+ 
 repo_url: https://github.com/gpac/gpac/
 
 plugins:
   - search
+  - tags
   
 hooks:
   - scripts/mkdocs_hooks.py

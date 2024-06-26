@@ -2,10 +2,15 @@
     margin-bottom: 1.5em;
     /* border: 1px solid #e0e0e0; */
     border-radius: 8px;
-    overflow: hidden;
+    /* overflow: hidden; */
     transition: max-height 0.1s ease;
 }
+.collapse-section:hover {
 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition-duration: 0.3s ease-in-out;
+   
+  }
 
 .collapse-section h2 {
     margin: 0;

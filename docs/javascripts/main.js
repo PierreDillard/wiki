@@ -238,6 +238,73 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+//collapse-section
+
+document.addEventListener("DOMContentLoaded", function() {
+    const articleInner = document.querySelector('.md-content__inner');
+    const h1Element = articleInner.querySelector('h1');
+    const feedbackForm = articleInner.querySelector('.md-feedback');
+
+    if (h1Element && feedbackForm) {
+        // Create a new div with the class 'article-content'
+        const articleContentDiv = document.createElement('div');
+        articleContentDiv.classList.add('article-content');
+
+        // Create a document fragment to hold the elements temporarily
+        const fragment = document.createDocumentFragment();
+
+        // Move all elements between h1Element and feedbackForm into the fragment
+        let sibling = h1Element.nextElementSibling;
+        while (sibling && sibling !== feedbackForm) {
+            const nextSibling = sibling.nextElementSibling;
+            fragment.appendChild(sibling);
+            sibling = nextSibling;
+        }
+
+        // Append the fragment to the new div
+        articleContentDiv.appendChild(fragment);
+
+        // Insert the new div after the h1Element
+        h1Element.insertAdjacentElement('afterend', articleContentDiv);
+    }
+
+    const articleContent = document.querySelector('.article-content');
+    if (articleContent) {
+        const h2Elements = articleContent.querySelectorAll('h2');
+        
+        h2Elements.forEach(h2 => {
+            const content = [];
+            let sibling = h2.nextElementSibling;
+            
+            while (sibling && sibling.tagName !== 'H2') {
+                content.push(sibling);
+                sibling = sibling.nextElementSibling;
+            }
+
+            const collapseSection = document.createElement('div');
+            collapseSection.classList.add('collapse-section');
+
+            const collapseContent = document.createElement('div');
+            collapseContent.classList.add('collapse-content');
+            content.forEach(element => collapseContent.appendChild(element));
+
+            h2.parentNode.insertBefore(collapseSection, h2);
+            collapseSection.appendChild(h2);
+            collapseSection.appendChild(collapseContent);
+
+            if (!h2.querySelector('.collapse-icon')) {
+                const collapseIcon = document.createElement('span');
+                collapseIcon.classList.add('collapse-icon');
+                collapseIcon.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>';
+                h2.appendChild(collapseIcon);
+            }
+
+            h2.addEventListener('click', function() {
+                collapseSection.classList.toggle('active');
+            });
+        });
+    }
+});
 
 
 

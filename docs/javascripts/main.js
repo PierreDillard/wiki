@@ -240,6 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //collapse-section
 
+
 document.addEventListener("DOMContentLoaded", function() {
     const articleInner = document.querySelector('.md-content__inner');
     const h1Element = articleInner.querySelector('h1');
@@ -306,7 +307,3 @@ document.addEventListener("DOMContentLoaded", function() {
         
     }
 });
-
-
-
-

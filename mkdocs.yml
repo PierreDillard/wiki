@@ -19,7 +19,7 @@ extra_css:
  
 
 theme:
-  name: "material"
+  name: material
   custom_dir: overrides
   logo: images/gpac-logo.svg
   favicon: images/favicon-32x32.png
@@ -62,6 +62,7 @@ repo_url: https://github.com/gpac/gpac/
 plugins:
   - search
   - tags
+  
   
 hooks:
   - scripts/mkdocs_hooks.py

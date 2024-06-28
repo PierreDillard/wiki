@@ -35,12 +35,14 @@ The import file name may be set to empty or `self`, indicating that the import o
 Example
 ```
 -add self:moovts=-1:noedit src.mp4
-```  
+``` 
+
 This will apply `moovts` and `noedit` option to all tracks in src.mp4  
 Example
 ```
 -add self#2:moovts=-1:noedit src.mp4
 ```  
+
 This will apply `moovts` and `noedit` option to track with `ID=2` in src.mp4  
 Only per-file options marked with a `S` are possible in this mode.  
     

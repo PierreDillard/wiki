@@ -65,7 +65,7 @@ body {
        
         background-color: var(--md-primary-fg-color)!important;
     }
-}
+ 
 .md-typeset .highlight button {
     display: block !important;
   }

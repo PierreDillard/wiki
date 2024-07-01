@@ -247,25 +247,27 @@ document.addEventListener("DOMContentLoaded", function() {
     const feedbackForm = articleInner.querySelector('.md-feedback');
 
     if (h1Element && feedbackForm) {
- 
+        // Créer le content-wrapper
+        const contentWrapper = document.createElement('div');
+        contentWrapper.classList.add('content-wrapper');
+
+        // Créer une div avec la classe 'article-content'
         const articleContentDiv = document.createElement('div');
         articleContentDiv.classList.add('article-content');
 
-        // Create a document fragment to hold the elements temporarily
-        const fragment = document.createDocumentFragment();
-
-        // Move all elements between h1Element and feedbackForm into the fragment
+        // Déplacer le contenu entre h1 et feedbackForm dans articleContentDiv
         let sibling = h1Element.nextElementSibling;
         while (sibling && sibling !== feedbackForm) {
             const nextSibling = sibling.nextElementSibling;
-            fragment.appendChild(sibling);
+            articleContentDiv.appendChild(sibling);
             sibling = nextSibling;
         }
 
-        articleContentDiv.appendChild(fragment);
+        // Ajouter articleContentDiv au content-wrapper
+        contentWrapper.appendChild(articleContentDiv);
 
-      
-        h1Element.insertAdjacentElement('afterend', articleContentDiv);
+        // Insérer le content-wrapper après le h1Element
+        h1Element.insertAdjacentElement('afterend', contentWrapper);
     }
 
     const articleContent = document.querySelector('.article-content');
@@ -298,12 +300,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 collapseIcon.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>';
                 h2.appendChild(collapseIcon);
             }
-
             h2.addEventListener('click', function() {
                 collapseSection.classList.toggle('active');
+                setTimeout(() => {
+                    setMaxContentHeight();
+                }, 300); 
             });
         });
-        
+       
+        setMaxContentHeight();
     }
-  
 });
+

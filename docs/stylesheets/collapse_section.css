@@ -105,3 +105,20 @@
     padding: 1em;
 }
 
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Hauteur minimale de la fenêtre */
+    overflow-y: auto; /* Permet le défilement vertical si nécessaire */
+}
+
+.article-content {
+    flex-grow: 1;
+}
+
+.md-footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+}

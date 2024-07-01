@@ -1,7 +1,8 @@
 
-body {
-    line-height: 1.5em;
-}
+  
+  .md-footer {
+    flex-shrink: 0;
+  }
 #welcome {
    text-align: center;
    margin-bottom: 1em;
@@ -65,7 +66,7 @@ body {
        
         background-color: var(--md-primary-fg-color)!important;
     }
- 
+} 
 .md-typeset .highlight button {
     display: block !important;
   }

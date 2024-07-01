@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const levelSwitch = document.getElementById('level-switch');
   const switchLabel = document.querySelector('.switch-label');
   const savedLevel = localStorage.getItem('userLevel') || 'beginner';
-  
-  // Initialiser l'état du switch
+  console.log('savedLevel', savedLevel)
+  // Initialize switch state
   levelSwitch.checked = savedLevel === 'expert';
   updateSwitchLabel();
   
@@ -42,13 +42,21 @@ function filterContent(level) {
     sections.forEach(section => {
       const h2Element = section.querySelector('h2');
       const sectionLevel = h2Element ? h2Element.dataset.level : null;
+      const span = section.querySelector('.level-tag.level-beginner');
       
       if (level === 'expert') {
-        // En mode expert, toutes les sections sont visibles
+        // Level Expert == All sessions are visible
         section.classList.remove('hidden-level');
+        if (span) {
+          span.style.display = 'none';
+        }
       } else if (level === 'beginner') {
         if (sectionLevel === 'beginner') {
-          section.classList.r        } else {
+          section.classList.remove('hidden-level');
+          if (span) {
+            span.style.display = ''; 
+          }
+        } else {
           section.classList.add('hidden-level');
         }
       }

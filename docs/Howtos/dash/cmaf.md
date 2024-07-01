@@ -28,6 +28,7 @@ MP4Box -dash 1000 -profile live -out live/manifest.mpd --cmaf=cmfc source.mp4
 MP4Box -dash 1000 -profile live -out live/manifest.mpd --cmaf=cmf2 source.mp4
 ```
 or using option inheritance:
+
 ```
 MP4Box -dash 1000 -profile live -out live/manifest.mpd:cmaf=cmfc
 ```

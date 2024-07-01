@@ -247,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const feedbackForm = articleInner.querySelector('.md-feedback');
 
     if (h1Element && feedbackForm) {
-        // Create a new div with the class 'article-content'
+ 
         const articleContentDiv = document.createElement('div');
         articleContentDiv.classList.add('article-content');
 
@@ -262,10 +262,9 @@ document.addEventListener("DOMContentLoaded", function() {
             sibling = nextSibling;
         }
 
-        // Append the fragment to the new div
         articleContentDiv.appendChild(fragment);
 
-        // Insert the new div after the h1Element
+      
         h1Element.insertAdjacentElement('afterend', articleContentDiv);
     }
 

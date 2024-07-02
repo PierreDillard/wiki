@@ -2,7 +2,7 @@
 
 
 
-# Foreword {: data-level="beginner" }
+# Foreword {: data-level="all" }
 
 
 This page contains one-liners illustrating the many possibilities of GPAC filters architecture. For a more detailed information, it is highly recommended that you read:

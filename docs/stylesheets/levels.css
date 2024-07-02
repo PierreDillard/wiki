@@ -12,6 +12,7 @@
 
 .level-beginner { background-color: #e6f3e6; color: #2e7d32; }
 .level-expert { background-color: #ffebee; color: #c62828; }
+
 .switch-container {
   display: flex;
   align-items: center;

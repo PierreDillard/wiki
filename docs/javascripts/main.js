@@ -247,30 +247,30 @@ document.addEventListener("DOMContentLoaded", function() {
     const feedbackForm = articleInner.querySelector('.md-feedback');
 
     if (h1Element && feedbackForm) {
-        // Créer le content-wrapper
-        const contentWrapper = document.createElement('div');
-        contentWrapper.classList.add('content-wrapper');
 
-        // Créer une div avec la classe 'article-content'
         const articleContentDiv = document.createElement('div');
         articleContentDiv.classList.add('article-content');
 
-        // Déplacer le contenu entre h1 et feedbackForm dans articleContentDiv
+        // Create a document fragment to hold the elements temporarily
+        const fragment = document.createDocumentFragment();
+
+        // Move all elements between h1Element and feedbackForm into the fragment
         let sibling = h1Element.nextElementSibling;
         while (sibling && sibling !== feedbackForm) {
             const nextSibling = sibling.nextElementSibling;
-            articleContentDiv.appendChild(sibling);
+            fragment.appendChild(sibling);
             sibling = nextSibling;
         }
 
-        // Ajouter articleContentDiv au content-wrapper
-        contentWrapper.appendChild(articleContentDiv);
+        articleContentDiv.appendChild(fragment);
 
-        // Insérer le content-wrapper après le h1Element
-        h1Element.insertAdjacentElement('afterend', contentWrapper);
+
+        h1Element.insertAdjacentElement('afterend', articleContentDiv);
     }
 
     const articleContent = document.querySelector('.article-content');
+	
+  
     if (articleContent) {
         const h2Elements = articleContent.querySelectorAll('h2');
         
@@ -302,13 +302,11 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             h2.addEventListener('click', function() {
                 collapseSection.classList.toggle('active');
-                setTimeout(() => {
-                    setMaxContentHeight();
-                }, 300); 
+           
             });
         });
        
-        setMaxContentHeight();
     }
+    document.dispatchEvent(new CustomEvent('articleStructureReady'));
 });
 

@@ -4,7 +4,6 @@ site_author: GPAC contributors
 extra_javascript:
    - javascripts/main.js
    - javascripts/levels.js
-   - javascripts/layout.js
    - data/keywords.json
    
    

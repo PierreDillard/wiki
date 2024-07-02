@@ -18,11 +18,12 @@ function fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions) {
             return response.json();
         })
         .then(data => {
-            const lexique = Object.keys(data.definitions); 
+            const allDefinitions = data.definitions;
+            const lexique = Object.keys(allDefinitions);
             findKeywordsInContent(currentPageMdPath, lexique, (filteredKeywords) => {
                 cachedKeywords[currentPageMdPath] = filteredKeywords;
                 setCache('keywordsCache', cachedKeywords);
-                displayKeywords(filteredKeywords, cachedDefinitions);
+                displayKeywords(filteredKeywords, cachedDefinitions, allDefinitions);
             });
         })
         .catch(error => console.error('Error fetching keywords:', error));
@@ -43,9 +44,8 @@ function fetchDefinitions(keyword, cachedDefinitions) {
         })
         .catch(error => console.error('Error fetching definition:', error));
 }
-
 // Display functions
-function displayKeywords(keywords, cachedDefinitions) {
+function displayKeywords(keywords, cachedDefinitions, allDefinitions) {
     const wordCloudElement = document.querySelector('.words-cloud');
     const wordCloudList = document.getElementById('dynamic-words-cloud');
     wordCloudList.innerHTML = '';
@@ -54,26 +54,33 @@ function displayKeywords(keywords, cachedDefinitions) {
     const colors = ['color-1', 'color-2', 'color-3', 'color-4'];
 
     keywords.forEach((keyword, index) => {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.href = "#";
-        a.textContent = keyword;
-        a.className = sizes[index % sizes.length] + ' ' + colors[index % colors.length];
 
-        a.addEventListener('click', function (event) {
-            event.preventDefault();
-            if (cachedDefinitions[keyword]) {
-                openModal(keyword, cachedDefinitions[keyword]);
-            } else {
-                fetchDefinitions(keyword, cachedDefinitions);
-            }
-        });
-        const sidebarScrollwrap = document.querySelector(".md-sidebar__scrollwrap");
-        li.appendChild(a);
-        wordCloudList.appendChild(li);
+
+        if (allDefinitions[keyword]) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = "#";
+            a.textContent = keyword;
+            a.className = sizes[index % sizes.length] + ' ' + colors[index % colors.length];
+
+            a.addEventListener('click', function (event) {
+                event.preventDefault();
+                if (cachedDefinitions[keyword]) {
+                    openModal(keyword, cachedDefinitions[keyword]);
+                } else {
+                    fetchDefinitions(keyword, cachedDefinitions);
+                }
+            });
+
+            li.appendChild(a);
+            wordCloudList.appendChild(li);
+
+        } else {
+            console.warn(`Definition not found for keyword: ${keyword}`);
+        }
     });
 
-    if (keywords.length > 0) {
+    if (wordCloudList.children.length > 0) {
         wordCloudElement.classList.remove('hidden');
     } else {
         wordCloudElement.classList.add('hidden');
@@ -81,34 +88,49 @@ function displayKeywords(keywords, cachedDefinitions) {
 }
 
 // Modal functions
-function openModal(keyword, definition ) {
+function openModal(keyword, definition) {
+    console.log('Opening modal for:', keyword);
+    console.log('Definition:', definition);
+
     const modal = document.getElementById("modal");
     const modalTitle = document.getElementById("modal-title");
     const modalDefinition = document.getElementById("modal-definition");
     const modalLink = document.getElementById("modal-link");
-  
 
     if (modalTitle && modalDefinition && modalLink) {
         modalTitle.textContent = keyword;
-        modalDefinition.textContent = definition;
+
+        // Gestion des deux structures possibles de définition
+        let descriptionText;
+        if (typeof definition === 'string') {
+            // Cas où la définition est directement une chaîne
+            descriptionText = definition;
+        } else if (definition && typeof definition === 'object' && definition.description) {
+            // Cas où la définition est un objet avec une propriété 'description'
+            descriptionText = definition.description;
+        } else {
+            // Cas où la structure est inconnue ou invalide
+            descriptionText = 'Definition not available';
+        }
+
+        modalDefinition.textContent = descriptionText;
         modalLink.href = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`;
         modal.classList.remove("hidden");
         modal.style.display = "block";
         modalLink.classList.remove("hidden");
 
-     
+        console.log('Modal content set:', descriptionText);
     } else {
         console.error('Modal elements not found');
     }
 }
-
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("close-modal").addEventListener("click", function () {
         const modal = document.getElementById("modal");
         modal.classList.add("hidden");
         modal.style.display = "none";
 
-      
+
     });
 
     document.getElementById("modal").addEventListener("click", function (event) {
@@ -125,14 +147,14 @@ document.addEventListener("DOMContentLoaded", function () {
 // Keywords Finder functions
 function fetchMarkdownContent(currentPageMdPath) {
     return fetch(currentPageMdPath)
-        .then(response => response.text()) 
+        .then(response => response.text())
         .then(htmlContent => {
-            const parser = new DOMParser(); 
-            const doc = parser.parseFromString(htmlContent, 'text/html'); 
-            const mdContent = doc.querySelector('.md-content[data-md-component="content"]'); 
-            return mdContent ? mdContent.textContent : ''; 
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlContent, 'text/html');
+            const mdContent = doc.querySelector('.md-content[data-md-component="content"]');
+            return mdContent ? mdContent.textContent : '';
         })
-        .catch(error => console.error('Error fetching markdown content:', error)); 
+        .catch(error => console.error('Error fetching markdown content:', error));
 }
 
 
@@ -153,7 +175,7 @@ function findKeywordsInContent(currentPageMdPath, lexique, callback) {
     // Fetch the markdown content from the given file path
     fetchMarkdownContent(currentPageMdPath)
         .then(content => {
-        
+
             const cleanContent = cleanMarkdownContent(content);
             const wordCounts = {};
 
@@ -165,14 +187,16 @@ function findKeywordsInContent(currentPageMdPath, lexique, callback) {
                 const cleanedWord = cleanWord(word);
                 // Check if the cleaned word is in the lexicon
                 if (lexique.includes(cleanedWord)) {
-                    
+
                     wordCounts[cleanedWord] = (wordCounts[cleanedWord] || 0) + 1;
                 }
             });
 
-           
+
             const filteredKeywords = Object.keys(wordCounts).filter(word => wordCounts[word] >= 2);
-           
+
+            console.log('Filtered keywords:', filteredKeywords);
+
             callback(filteredKeywords);
         })
         .catch(error => console.error('Error fetching markdown content:', error));
@@ -203,25 +227,25 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //Nav-Toc-Button-toogle
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.getElementById("toggle-button");
     const tocContent = document.getElementById("toc-content");
     const navContent = document.getElementById("nav-content");
     let isNavIsVisible = true;
 
-   
 
-    toggleButton.addEventListener("click", function() {
+
+    toggleButton.addEventListener("click", function () {
         console.log("Button clicked");
         if (isNavIsVisible) {
             navContent.style.display = "none";
             tocContent.style.display = "block";
-          
-            
+
+
         } else {
             navContent.style.display = "block";
             tocContent.style.display = "none";
-            
+
         }
         isNavIsVisible = !isNavIsVisible;
     });
@@ -233,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function () {
 
     if (window.location.pathname.includes("/glossary/")) {
-      
+
         document.body.classList.add("glossary-page");
     }
 });
@@ -241,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //collapse-section
 
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const articleInner = document.querySelector('.md-content__inner');
     const h1Element = articleInner.querySelector('h1');
     const feedbackForm = articleInner.querySelector('.md-feedback');
@@ -269,15 +293,15 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     const articleContent = document.querySelector('.article-content');
-	
-  
+
+
     if (articleContent) {
         const h2Elements = articleContent.querySelectorAll('h2');
-        
+
         h2Elements.forEach(h2 => {
             const content = [];
             let sibling = h2.nextElementSibling;
-            
+
             while (sibling && sibling.tagName !== 'H2') {
                 content.push(sibling);
                 sibling = sibling.nextElementSibling;
@@ -300,12 +324,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 collapseIcon.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>';
                 h2.appendChild(collapseIcon);
             }
-            h2.addEventListener('click', function() {
+            h2.addEventListener('click', function () {
                 collapseSection.classList.toggle('active');
-           
+
             });
         });
-       
+
     }
     document.dispatchEvent(new CustomEvent('articleStructureReady'));
 });

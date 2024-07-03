@@ -1,5 +1,6 @@
 
-let levelSwitch, switchLabel;
+let levelSwitch, switchLabel, currentPageMdPath;
+
 
 
 function initializeLevelManagement() {
@@ -16,7 +17,7 @@ function initializeLevelManagement() {
     addLevelTags();
   
     filterContent(savedLevel);
-
+    currentPageMdPath = getCurrentPageMdPath();
     levelSwitch.addEventListener('change', handleLevelChange);
 }
 
@@ -25,8 +26,27 @@ function handleLevelChange() {
     localStorage.setItem('userLevel', selectedLevel);
     updateSwitchLabel();
     filterContent(selectedLevel);
+    
+    // Use the global variables here
+    fetchKeywords(currentPageMdPath, getCache('keywordsCache'), getCache('definitionsCache'));
 }
-
+function getCurrentPageMdPath() {
+    let currentPagePath = window.location.pathname;
+    if (currentPagePath.endsWith('/')) {
+        currentPagePath = currentPagePath.slice(0, -1);
+    }
+    return currentPagePath.replace('.html', '.md');
+}
+function handleLevelChange() {
+    const selectedLevel = levelSwitch.checked ? 'expert' : 'beginner';
+    localStorage.setItem('userLevel', selectedLevel);
+    updateSwitchLabel();
+    filterContent(selectedLevel);
+    
+    let cachedKeywords = getCache('keywordsCache');
+    let cachedDefinitions = getCache('definitionsCache');
+    fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
+}
 
 function updateSwitchLabel() {
     switchLabel.textContent = levelSwitch.checked ? 'Expert' : 'Beginner';
@@ -88,5 +108,12 @@ function handleBeginnerSection(section, sectionLevel, isAllSection, span) {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    initializeLevelManagement();
+    
+    // Le reste de votre code d'initialisation...
+    let cachedKeywords = getCache('keywordsCache');
+    let cachedDefinitions = getCache('definitionsCache');
 
-document.addEventListener('DOMContentLoaded', initializeLevelManagement);
+    fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
+});

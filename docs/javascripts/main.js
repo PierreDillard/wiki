@@ -1,4 +1,6 @@
+
 // Cache functions
+
 function getCache(key) {
     let cache = localStorage.getItem(key);
     return cache ? JSON.parse(cache) : {};
@@ -23,7 +25,9 @@ function fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions) {
             findKeywordsInContent(currentPageMdPath, lexique, (filteredKeywords) => {
                 cachedKeywords[currentPageMdPath] = filteredKeywords;
                 setCache('keywordsCache', cachedKeywords);
-                displayKeywords(filteredKeywords, cachedDefinitions, allDefinitions);
+                const selectedLevel = localStorage.getItem('userLevel') || 'beginner';
+                displayKeywords(filteredKeywords, cachedDefinitions, allDefinitions,selectedLevel);
+                
             });
         })
         .catch(error => console.error('Error fetching keywords:', error));
@@ -35,11 +39,9 @@ function fetchDefinitions(keyword, cachedDefinitions) {
         .then(data => {
             const definition = data.definitions[keyword];
             if (definition) {
-                console.log('Definition found:', definition)
+              
                 cachedDefinitions[keyword] = definition;
-                console.log("Ce que l'on met ensuite dan definition", cachedDefinitions[keyword]);
                 setCache('definitionsCache', cachedDefinitions);
-                console.log("Ce que l'on met dans le cache", cachedDefinitions);
                 openModal(keyword, definition);
             } else {
                 console.error('Definition not found for keyword:', keyword);
@@ -56,10 +58,15 @@ function displayKeywords(keywords, cachedDefinitions, allDefinitions) {
     const sizes = ['size-1', 'size-2', 'size-3', 'size-4', 'size-5'];
     const colors = ['color-1', 'color-2', 'color-3', 'color-4'];
 
+
+    const selectedLevel = localStorage.getItem('userLevel') || 'beginner';
+
     keywords.forEach((keyword, index) => {
+        const definition = allDefinitions[keyword];
+        if (definition && (definition.level === selectedLevel || definition.level === 'all')) {
 
 
-        if (allDefinitions[keyword]) {
+      
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.href = "#";
@@ -77,6 +84,7 @@ function displayKeywords(keywords, cachedDefinitions, allDefinitions) {
 
             li.appendChild(a);
             wordCloudList.appendChild(li);
+           
 
         } else {
             console.warn(`Definition not found for keyword: ${keyword}`);
@@ -202,7 +210,6 @@ function findKeywordsInContent(currentPageMdPath, lexique, callback) {
 
             const filteredKeywords = Object.keys(wordCounts).filter(word => wordCounts[word] >= 2);
 
-            console.log('Filtered keywords:', filteredKeywords);
 
             callback(filteredKeywords);
         })
@@ -228,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const currentPageMdPath = currentPagePath.replace('.html', '.md');
-    console.log('Current page Markdown path:', currentPageMdPath);
+   
 
     fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
 });
@@ -363,3 +370,12 @@ function initializeAllSections() {
 
 // Call initializeAllSections after the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", initializeAllSections);
+document.addEventListener('DOMContentLoaded', function() {
+    initializeLevelManagement();
+    
+    // Le reste de votre code d'initialisation...
+    let cachedKeywords = getCache('keywordsCache');
+    let cachedDefinitions = getCache('definitionsCache');
+
+    fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
+});

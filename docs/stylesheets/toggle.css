@@ -1,12 +1,12 @@
 
-@media screen and (max-width: 59.99em) {
+@media screen and (max-width: 76.25em) {
     .toggle-btn, 
     .toggle-btn i{
         display: none;
     }
 }
 
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 76.25em) {
     .md-nav--secondary .md-nav__title .md-nav__icon {
         display: block;
     }

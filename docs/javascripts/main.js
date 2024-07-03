@@ -35,8 +35,11 @@ function fetchDefinitions(keyword, cachedDefinitions) {
         .then(data => {
             const definition = data.definitions[keyword];
             if (definition) {
+                console.log('Definition found:', definition)
                 cachedDefinitions[keyword] = definition;
+                console.log("Ce que l'on met ensuite dan definition", cachedDefinitions[keyword]);
                 setCache('definitionsCache', cachedDefinitions);
+                console.log("Ce que l'on met dans le cache", cachedDefinitions);
                 openModal(keyword, definition);
             } else {
                 console.error('Definition not found for keyword:', keyword);
@@ -89,37 +92,28 @@ function displayKeywords(keywords, cachedDefinitions, allDefinitions) {
 
 // Modal functions
 function openModal(keyword, definition) {
-    console.log('Opening modal for:', keyword);
-    console.log('Definition:', definition);
-
     const modal = document.getElementById("modal");
     const modalTitle = document.getElementById("modal-title");
     const modalDefinition = document.getElementById("modal-definition");
     const modalLink = document.getElementById("modal-link");
 
     if (modalTitle && modalDefinition && modalLink) {
-        modalTitle.textContent = keyword;
-
-        // Gestion des deux structures possibles de définition
-        let descriptionText;
-        if (typeof definition === 'string') {
-            // Cas où la définition est directement une chaîne
-            descriptionText = definition;
-        } else if (definition && typeof definition === 'object' && definition.description) {
-            // Cas où la définition est un objet avec une propriété 'description'
-            descriptionText = definition.description;
+        const glossaryPageUrl = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`;
+        
+        if (window.innerWidth <= 1040) {
+            // Redirection directe vers la page du glossaire pour les écrans jusqu'à 1040px
+            window.location.href = glossaryPageUrl;
         } else {
-            // Cas où la structure est inconnue ou invalide
-            descriptionText = 'Definition not available';
+            // Affichage de la modale pour les écrans plus larges
+            modalTitle.textContent = keyword;
+            modalDefinition.textContent = definition;
+            modalLink.href = glossaryPageUrl;
+            modalLink.textContent = "See full definition";
+            modalLink.classList.remove("hidden");
+            
+            modal.classList.remove("hidden");
+            modal.style.display = "block";
         }
-
-        modalDefinition.textContent = descriptionText;
-        modalLink.href = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`;
-        modal.classList.remove("hidden");
-        modal.style.display = "block";
-        modalLink.classList.remove("hidden");
-
-        console.log('Modal content set:', descriptionText);
     } else {
         console.error('Modal elements not found');
     }

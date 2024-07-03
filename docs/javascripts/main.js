@@ -277,8 +277,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const h1Element = articleInner.querySelector('h1');
     const feedbackForm = articleInner.querySelector('.md-feedback');
 
-    if (h1Element && feedbackForm) {
+    function handleAllSection(section, h2) {
+        if (section.classList.contains('active')) {
+            section.setAttribute('data-was-active', 'true');
+        } else {
+            section.removeAttribute('data-was-active');
+        }
+        
+    }
 
+    // to display the feedback form at the end of the article
+    if (h1Element && feedbackForm) {
         const articleContentDiv = document.createElement('div');
         articleContentDiv.classList.add('article-content');
 
@@ -294,13 +303,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         articleContentDiv.appendChild(fragment);
-
-
         h1Element.insertAdjacentElement('afterend', articleContentDiv);
     }
 
     const articleContent = document.querySelector('.article-content');
-
 
     if (articleContent) {
         const h2Elements = articleContent.querySelectorAll('h2');
@@ -314,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 sibling = sibling.nextElementSibling;
             }
 
-            const collapseSection = document.createElement('div');
+            let collapseSection = document.createElement('div');
             collapseSection.classList.add('collapse-section');
 
             const collapseContent = document.createElement('div');
@@ -331,13 +337,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 collapseIcon.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>';
                 h2.appendChild(collapseIcon);
             }
+
             h2.addEventListener('click', function () {
                 collapseSection.classList.toggle('active');
-
+                if (h2.dataset.level === 'all') {
+                    handleAllSection(collapseSection, h2);
+                }
             });
         });
-
     }
-    document.dispatchEvent(new CustomEvent('articleStructureReady'));
 });
 
+// Function to initialize "all" sections
+function initializeAllSections() {
+    const allSections = document.querySelectorAll('.collapse-section');
+    allSections.forEach(section => {
+        const h2Element = section.querySelector('h2');
+        if (h2Element && h2Element.dataset.level === 'all') {
+            section.classList.add('active');
+            section.setAttribute('data-was-active', 'true');
+            
+        }
+    });
+}
+
+// Call initializeAllSections after the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", initializeAllSections);

@@ -7,12 +7,14 @@ function initializeLevelManagement() {
     switchLabel = document.querySelector('.switch-label');
     const savedLevel = localStorage.getItem('userLevel') || 'beginner';
     
-    console.log('savedLevel', savedLevel);
+    
     
     levelSwitch.checked = savedLevel === 'expert';
     updateSwitchLabel();
+  
     
     addLevelTags();
+  
     filterContent(savedLevel);
 
     levelSwitch.addEventListener('change', handleLevelChange);
@@ -59,17 +61,17 @@ function filterContent(level) {
             } else if (level === 'beginner') {
                 handleBeginnerSection(section, sectionLevel, isAllSection, span);
             }
-
-            if (isAllSection) {
-                section.classList.add('active');
-            }
+     
+            
+           
         });
     }
 }
 
+
 function handleExpertOrAllSection(section, span, level, isAllSection) {
     section.classList.remove('hidden-level');
-    if (span && level === 'expert' || isAllSection) {
+    if (span && (level === 'expert' || isAllSection)) {
         span.style.display = 'none';
     }
 }

@@ -389,5 +389,6 @@ nav:
     - NHML format: xmlformats/NHML-Format.md
     - NHNT format: xmlformats/NHNT-Format.md
   - Glossary:
-    - glossary/encrypt.md
     - glossary/encode.md
+    - glossary/encrypt.md
+    

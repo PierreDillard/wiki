@@ -47,7 +47,7 @@ function handleLevelChange() {
     let cachedDefinitions = getCache('definitionsCache');
     fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
 }
-
+//Display the level of the user
 function updateSwitchLabel() {
     switchLabel.textContent = levelSwitch.checked ? 'Expert' : 'Beginner';
 }
@@ -88,7 +88,7 @@ function filterContent(level) {
     }
 }
 
-
+//Remove tag "expert" and "all" 
 function handleExpertOrAllSection(section, span, level, isAllSection) {
     section.classList.remove('hidden-level');
     if (span && (level === 'expert' || isAllSection)) {
@@ -96,7 +96,7 @@ function handleExpertOrAllSection(section, span, level, isAllSection) {
     }
 }
 
-
+//Add tag "beginner" if level==='beginner'
 function handleBeginnerSection(section, sectionLevel, isAllSection, span) {
     if (sectionLevel === 'beginner' || isAllSection) {
         section.classList.remove('hidden-level');
@@ -111,7 +111,7 @@ function handleBeginnerSection(section, sectionLevel, isAllSection, span) {
 document.addEventListener('DOMContentLoaded', function() {
     initializeLevelManagement();
     
-    // Le reste de votre code d'initialisation...
+
     let cachedKeywords = getCache('keywordsCache');
     let cachedDefinitions = getCache('definitionsCache');
 

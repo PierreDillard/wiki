@@ -49,8 +49,8 @@ function fetchDefinitions(keyword, cachedDefinitions) {
         })
         .catch(error => console.error('Error fetching definition:', error));
 }
-// Display functions
-function displayKeywords(keywords, cachedDefinitions, allDefinitions) {
+// Displays keywords according to page and level selected
+function displayKeywords(keywords, cachedDefinitions, allDefinitions, selectedLevel) {
     const wordCloudElement = document.querySelector('.words-cloud');
     const wordCloudList = document.getElementById('dynamic-words-cloud');
     wordCloudList.innerHTML = '';
@@ -59,7 +59,7 @@ function displayKeywords(keywords, cachedDefinitions, allDefinitions) {
     const colors = ['color-1', 'color-2', 'color-3', 'color-4'];
 
 
-    const selectedLevel = localStorage.getItem('userLevel') || 'beginner';
+ 
 
     keywords.forEach((keyword, index) => {
         const definition = allDefinitions[keyword];

@@ -57,10 +57,14 @@ function addLevelTags() {
     allContent.forEach(element => {
         const level = element.dataset.level;
         if (level) {
-            const tag = document.createElement('span');
-            tag.className = `level-tag level-${level}`;
-            tag.textContent = level.charAt(0).toUpperCase() + level.slice(1);
-            element.insertBefore(tag, element.firstChild);
+            // Vérifier si un tag de niveau existe déjà
+            const existingTag = element.querySelector('.level-tag');
+            if (!existingTag) {
+                const tag = document.createElement('span');
+                tag.className = `level-tag level-${level}`;
+                tag.textContent = level.charAt(0).toUpperCase() + level.slice(1);
+                element.insertBefore(tag, element.firstChild);
+            }
         }
     });
 }

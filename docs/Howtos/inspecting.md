@@ -3,7 +3,7 @@
 We discuss here how to use the [inspect](inspect) filter to get information on sources in GPAC.  
 
 
-# Media Streams inspection
+# Media Streams inspection {: data-level="beginner" }
  
 ```
 gpac -i source.mp4 inspect

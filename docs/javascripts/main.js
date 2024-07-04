@@ -113,19 +113,19 @@ function openModal(keyword, definition) {
 
         let descriptionText;
         if (typeof definition === 'string') {
-            // Cas où la définition est directement une chaîne
+            
             descriptionText = definition;
         } else if (definition && typeof definition === 'object' && definition.description) {
-            // Cas où la définition est un objet avec une propriété 'description'
+         
             descriptionText = definition.description;
         } else {
-            // Cas où la structure est inconnue ou invalide
+         
             descriptionText = 'Definition not available';
         }
         const glossaryPageUrl = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`;
       
         if (window.innerWidth <= 1040) {
-            // Redirection to the glossary page on mobile devices
+            // Redirect to the glossary page if the screen width is less than or equal to 1040px
             window.location.href = glossaryPageUrl;
         } else {
         modalTitle.textContent = keyword;
@@ -161,15 +161,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Keywords Finder functions
 function fetchMarkdownContent(currentPageMdPath) {
+   
     return fetch(currentPageMdPath)
-        .then(response => response.text())
+        .then(response => {
+           
+            return response.text();
+        })
         .then(htmlContent => {
+            
             const parser = new DOMParser();
             const doc = parser.parseFromString(htmlContent, 'text/html');
+          
+            
             const mdContent = doc.querySelector('.md-content[data-md-component="content"]');
-            return mdContent ? mdContent.textContent : '';
+            if (mdContent) {
+           
+                return mdContent.textContent;
+            } else {
+                console.warn(`Content element not found in the parsed HTML`);
+                return '';
+            }
         })
-        .catch(error => console.error('Error fetching markdown content:', error));
+        .catch(error => {
+            console.error('Error fetching markdown content:', error);
+            throw error; 
+        });
 }
 
 
@@ -218,6 +234,37 @@ function findKeywordsInContent(currentPageMdPath, lexique, callback) {
 
 
 
+function findMostFrequentWords(currentPageMdPath, callback) {
+    fetchMarkdownContent(currentPageMdPath)
+        .then(content => {
+            const cleanContent = cleanMarkdownContent(content);
+            const words = cleanContent.split(/\s+/);
+            
+            const wordCounts = {};
+            const stopWords = new Set([
+                'THE', 'A', 'AN', 'AND', 'OR', 'BUT', 'IN', 'ON', 'AT', 'TO', 'FOR', 'OF', 'WITH','THAT','NUMBER', 'PREVIOUS','SAME',
+                'BY', 'FROM', 'UP', 'ABOUT', 'INTO', 'OVER', 'AFTER', 'IS', 'WAS', 'WERE', 'BE','ONCE','ADD','LIKE',
+                'BEEN', 'BEING', 'HAVE', 'HAS', 'HAD', 'DO', 'DOES', 'DID', 'WILL', 'WOULD', 'SHALL','USED',
+                'SHOULD', 'CAN', 'COULD', 'MAY', 'MIGHT', 'MUST', 'OUGHT', 'THIS', 'EACH', 'ABOVE', 'GIVEN',
+                'IT', 'WE', 'ARE', 'SOME', 'ANY', 'ALL', 'US','OPEN','FOUND','AS','USE','YOU','GPAC','INFORMATION','IF','EXISTING'
+            ]);
+
+            words.forEach(word => {
+                const cleanedWord = cleanWord(word);
+                if (cleanedWord.length > 1 && !stopWords.has(cleanedWord) && isNaN(cleanedWord)) {
+                    wordCounts[cleanedWord] = (wordCounts[cleanedWord] || 0) + 1;
+                }
+            });
+
+            const sortedWords = Object.entries(wordCounts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 20)  // Get top 20 most frequent words
+                .map(entry => entry[0]);
+
+            callback(sortedWords);
+        })
+        .catch(error => console.error('Error processing content:', error));
+}
 
 
 
@@ -238,6 +285,10 @@ document.addEventListener('DOMContentLoaded', function () {
    
 
     fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
+    findMostFrequentWords(currentPageMdPath, (frequentWords) => {
+        console.log('Most frequent words:', frequentWords);
+        
+    });
 });
 
 //Nav-Toc-Button-toogle

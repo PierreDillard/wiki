@@ -247,7 +247,7 @@ function findKeywordsInContent(currentPageMdPath, lexique, callback) {
 }
 
 
-
+// Find the 20 most frequent words
 function findMostFrequentWords(currentPageMdPath, callback) {
     fetchMarkdownContent(currentPageMdPath)
         .then(content => {
@@ -256,11 +256,11 @@ function findMostFrequentWords(currentPageMdPath, callback) {
             
             const wordCounts = {};
             const stopWords = new Set([
-                'THE', 'A', 'AN', 'AND', 'OR', 'BUT', 'IN', 'ON', 'AT', 'TO', 'FOR', 'OF', 'WITH','THAT','NUMBER', 'PREVIOUS','SAME',
-                'BY', 'FROM', 'UP', 'ABOUT', 'INTO', 'OVER', 'AFTER', 'IS', 'WAS', 'WERE', 'BE','ONCE','ADD','LIKE',
-                'BEEN', 'BEING', 'HAVE', 'HAS', 'HAD', 'DO', 'DOES', 'DID', 'WILL', 'WOULD', 'SHALL','USED',
-                'SHOULD', 'CAN', 'COULD', 'MAY', 'MIGHT', 'MUST', 'OUGHT', 'THIS', 'EACH', 'ABOVE', 'GIVEN',
-                'IT', 'WE', 'ARE', 'SOME', 'ANY', 'ALL', 'US','OPEN','FOUND','AS','USE','YOU','GPAC','INFORMATION','IF','EXISTING'
+                'THE', 'A', 'AN', 'AND', 'OR', 'BUT', 'IN', 'ON', 'AT', 'TO', 'FOR', 'OF', 'WITH','WHEN','NEW','THAT','NUMBER', 'PREVIOUS','SAME','ALSO','NOT',
+                'BY', 'FROM', 'UP', 'ABOUT', 'INTO', 'OVER', 'AFTER', 'IS', 'WAS', 'WERE', 'BE','ONCE','ADD','LIKE','SEQ','SRC',
+                'BEEN', 'BEING', 'HAVE', 'HAS', 'HAD', 'DO', 'DOES', 'DID', 'WILL', 'WOULD', 'SHALL','USED','WICH','DISCUSION',
+                'SHOULD', 'CAN', 'COULD', 'MAY', 'MIGHT', 'MUST', 'OUGHT', 'THIS', 'EACH', 'ABOVE', 'GIVEN','ASSUME', 'COMMAND',
+                'IT', 'WE', 'ARE', 'SOME', 'ANY', 'ALL', 'US','OPEN','FOUND','AS','USE','YOU','GPAC','INFORMATION','IF','EXISTING','&&','END','WICH',
             ]);
 
             words.forEach(word => {
@@ -272,7 +272,7 @@ function findMostFrequentWords(currentPageMdPath, callback) {
 
             const sortedWords = Object.entries(wordCounts)
                 .sort((a, b) => b[1] - a[1])
-                .slice(0, 20)  // Get top 20 most frequent words
+                .slice(0, 20)  
                 .map(entry => entry[0]);
 
             callback(sortedWords);

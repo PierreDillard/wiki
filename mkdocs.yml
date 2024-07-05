@@ -4,7 +4,12 @@ site_author: GPAC contributors
 extra_javascript:
    - javascripts/main.js
    - javascripts/levels.js
-   - javascripts/siteAnalysis.js
+   - javascripts/fetchFunctions.js
+   - javascripts/domManipulation.js
+   - javascripts/keywordsFinder.js
+   - javascripts/keywordsDisplay.js
+   - javascripts/cache.js
+   - javascripts/modalFunctions.js
    - data/keywords.json
    
    

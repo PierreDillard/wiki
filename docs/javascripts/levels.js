@@ -27,7 +27,7 @@ function handleLevelChange() {
     updateSwitchLabel();
     filterContent(selectedLevel);
     
-    // Use the global variables here
+    
     fetchKeywords(currentPageMdPath, getCache('keywordsCache'), getCache('definitionsCache'));
 }
 function getCurrentPageMdPath() {

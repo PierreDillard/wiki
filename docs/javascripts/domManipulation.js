@@ -1,4 +1,5 @@
 //Handle toogle button to switch between NAV and TOC
+
 document.addEventListener("DOMContentLoaded", function () {
     const toggleButton = document.getElementById("toggle-button");
     const tocContent = document.getElementById("toc-content");
@@ -6,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let isNavIsVisible = true;
 
     toggleButton.addEventListener("click", function () {
-        console.log("Button clicked");
+       
         if (isNavIsVisible) {
             navContent.style.display = "none";
             tocContent.style.display = "block";
@@ -26,7 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.add("glossary-page");
     }
 });
+
 // Collapse sections
+
 document.addEventListener("DOMContentLoaded", function () {
     const articleInner = document.querySelector('.md-content__inner');
     const h1Element = articleInner.querySelector('h1');
@@ -99,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 //Handle "all" sections
+
 function initializeAllSections() {
     const allSections = document.querySelectorAll('.collapse-section');
     allSections.forEach(section => {

@@ -11,9 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const currentPageMdPath = currentPagePath.replace('.html', '.md');
 
     fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
-    findMostFrequentWords(currentPageMdPath, (frequentWords) => {
-        console.log('Most frequent words:', frequentWords);
-    });
+   
 });
 
 document.addEventListener('DOMContentLoaded', function() {

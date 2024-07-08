@@ -93,11 +93,6 @@
         padding: 0 1em;
     }
     
-    .collapse-section.active .collapse-content {
-        max-height: 100%; 
-        padding: 1em;
-    }
-    padding: 0 1em;
 }
 
 .collapse-section.active .collapse-content {
@@ -108,8 +103,8 @@
 .content-wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Hauteur minimale de la fenêtre */
-    overflow-y: auto; /* Permet le défilement vertical si nécessaire */
+    min-height: 100vh; 
+    overflow-y: auto; 
 }
 
 .article-content {

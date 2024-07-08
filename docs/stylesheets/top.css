@@ -7,7 +7,7 @@
 }
 .md-top:focus, .md-top:hover 
   {
-/* background-color: var(--md-accent-bg-color--light)!important; */
+
 background-color: #d7d7d7!important;
   color: black!important;
   border: 1px solid var(--md-default-fg-color--light)!important;

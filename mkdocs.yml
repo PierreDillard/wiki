@@ -54,7 +54,6 @@ repo_url: https://github.com/gpac/gpac/
 
 plugins:
   - search
-  - awesome-pages
   - tags
 hooks:
   - scripts/mkdocs_hooks.py

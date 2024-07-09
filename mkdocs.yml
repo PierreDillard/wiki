@@ -2,6 +2,8 @@ site_name: GPAC wiki
 site_url: https://wiki.gpac.io/
 site_author: GPAC contributors
 extra_javascript:
+extra_javascript:
+   - assets/javascripts/bundle.min.js
    - javascripts/main.js
    - javascripts/levels.js
    - javascripts/fetchFunctions.js
@@ -15,7 +17,7 @@ extra_javascript:
    
    
 extra_css:
-  - stylesheets/extra.css
+  
   - stylesheets/keyword-cloud.css
   - stylesheets/top.css
   - stylesheets/toggle.css
@@ -24,6 +26,7 @@ extra_css:
   - stylesheets/collapse_section.css
   - stylesheets/feedback.css
   - stylesheets/levels.css
+  - stylesheets/extra.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
  
 
@@ -82,7 +85,6 @@ markdown_extensions:
 - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
-
 - admonition
 - pymdownx.details
 - pymdownx.superfences
@@ -94,7 +96,7 @@ markdown_extensions:
 extra:
     
 
-  analytics:
+analytics:
     provider: google
     property: !ENV GOOGLE_ANALYTICS_KEY
     feedback:

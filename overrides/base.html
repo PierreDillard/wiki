@@ -161,10 +161,9 @@
                 <div class="md-sidebar__scrollwrap">
                 
                   <div class="md-sidebar__inner">
-                    
                     <button id="toggle-button" class="toggle-btn">
                       <i class="fa-solid fa-arrows-rotate"></i>
-                    </button>
+                    </button></span>
                 
                     <div id="toc-content">
                       {% include "partials/toc.html" %}
@@ -265,11 +264,13 @@
     {% endblock %}
     {% block scripts %}
     <script src="{{ 'assets/javascripts/bundle.fe8b6f2b.min.js' | url }}"></script>
+   
       <script type="module" src="{{ 'javascripts/main.js' | url }}"></script>
       {% for script in config.extra_javascript %}
         {{ script | script_tag }}
       {% endfor %}
     {% endblock %}
+   
 </body>
   </body>
 </html>

@@ -1,7 +1,8 @@
 site_name: GPAC wiki
 site_url: https://wiki.gpac.io/
 site_author: GPAC contributors
-extra_javascript:
+extra:
+  keywords_file: 'data/keywords.json'
 extra_javascript:
    - assets/javascripts/bundle.min.js
    - javascripts/main.js
@@ -12,12 +13,10 @@ extra_javascript:
    - javascripts/keywordsDisplay.js
    - javascripts/cache.js
    - javascripts/modalFunctions.js
-   - data/keywords.json
    
-   
-   
+    
 extra_css:
-  
+  - stylesheets/extra.css
   - stylesheets/keyword-cloud.css
   - stylesheets/top.css
   - stylesheets/toggle.css
@@ -26,10 +25,9 @@ extra_css:
   - stylesheets/collapse_section.css
   - stylesheets/feedback.css
   - stylesheets/levels.css
-  - stylesheets/extra.css
+ 
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
  
-
 theme:
   name: material
   custom_dir: overrides
@@ -75,43 +73,40 @@ repo_url: https://github.com/gpac/gpac/
 plugins:
   - search
   - tags
-  
-  
 hooks:
   - scripts/mkdocs_hooks.py
 markdown_extensions:
-- attr_list
-- md_in_html
-- pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 - admonition
+- attr_list
+- toc:
+      permalink: true
+- nl2br
+- sane_lists      
+- md_in_html
 - pymdownx.details
 - pymdownx.superfences
 - pymdownx.inlinehilite
 - footnotes
-- toc:
-      permalink: true
-  
-extra:
-    
-
-analytics:
-    provider: google
-    property: !ENV GOOGLE_ANALYTICS_KEY
-    feedback:
-      title: Was this page helpful?
-      ratings:
-        - icon: material/emoticon-happy-outline
-          name: This page was helpful
-          data: 1
-          note: >-
-            Thanks for your feedback!
-        - icon: material/emoticon-sad-outline
-          name: This page could be improved
-          data: 0
-          note: >-
-            Thanks for your feedback!
+- pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+extra:       
+  analytics:
+      provider: google
+      property: !ENV GOOGLE_ANALYTICS_KEY
+      feedback:
+        title: Was this page helpful?
+        ratings:
+          - icon: material/emoticon-happy-outline
+            name: This page was helpful
+            data: 1
+            note: >-
+              Thanks for your feedback!
+          - icon: material/emoticon-sad-outline
+            name: This page could be improved
+            data: 0
+            note: >-
+              Thanks for your feedback!
 nav:
 
   - Howtos:

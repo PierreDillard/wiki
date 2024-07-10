@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Collapse sections
 
 document.addEventListener("DOMContentLoaded", function () {
+    
     const articleInner = document.querySelector('.md-content__inner');
     const h1Element = articleInner.querySelector('h1');
     const feedbackForm = articleInner.querySelector('.md-feedback');
@@ -44,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (h1Element && feedbackForm) {
+        
         const articleContentDiv = document.createElement('div');
         articleContentDiv.classList.add('article-content');
 

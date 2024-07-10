@@ -1,4 +1,4 @@
-#!/home/pierre/Projets/wiki/venv/bin/python3
+#!/home/pierre/GPAC/wiki/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

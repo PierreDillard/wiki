@@ -1,6 +1,5 @@
 function openModal(keyword, definition) {
-    console.log('Opening modal for:', keyword);
-    console.log('Definition:', definition);
+   
 
     const modal = document.getElementById("modal");
     const modalTitle = document.getElementById("modal-title");

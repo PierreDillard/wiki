@@ -4,3 +4,5 @@ site/
 __pycache__/
 site.*
 .DS_Store
+echo "venv/" >> .gitignore
+

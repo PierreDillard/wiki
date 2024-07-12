@@ -1,13 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
-
-const INPUT_FILE = path.join(__dirname, 'gpac-wiki.json');
+const INPUT_DIRECTORY = path.join(__dirname, '../docs');
 const OUTPUT_FILE = path.join(__dirname, 'keyword_counts.json');
 const TECH_TERMS_FILE = path.join(__dirname, 'technical_terms.json');
 const STOP_WORDS_FILE = path.join(__dirname, 'stop_words.json');
 const TOP_WORDS = 500;
 
+
+// Check if this is the first run of the script
 let isFirstRun = !fs.existsSync(TECH_TERMS_FILE) && !fs.existsSync(STOP_WORDS_FILE);
 
 let stopWords = new Set([
@@ -20,6 +21,7 @@ let stopWords = new Set([
 
 let technicalTerms = new Set();
 
+// Load previously saved technical terms
 function loadTechnicalTerms() {
     try {
         const terms = JSON.parse(fs.readFileSync(TECH_TERMS_FILE, 'utf-8'));
@@ -54,37 +56,65 @@ function saveStopWords() {
     fs.writeFileSync(STOP_WORDS_FILE, JSON.stringify([...stopWords], null, 2));
 }
 
-function cleanWord(word) {
-    return word.replace(/[^\w\s]/gi, '').toUpperCase();
-}
+// Recursively explore directory and read Markdown files
 
-function isValidWord(word) {
-    return word.length > 1 && isNaN(word) && !stopWords.has(word) && !technicalTerms.has(word);
-}
+function exploreDirectory(directoryPath, contents = []) {
+    const items = fs.readdirSync(directoryPath);
 
-function extractWords(text) {
-    const words = text.toLowerCase().match(/\b\w+\b/g) || [];
-    return words.map(cleanWord).filter(isValidWord);
-}
+    for (const item of items) {
+        const itemPath = path.join(directoryPath, item);
+        const stat = fs.statSync(itemPath);
 
-function analyzeContent(data) {
-    const wordCounts = {};
-
-    function processItem(item) {
-        if (typeof item === 'string') {
-            extractWords(item).forEach(word => {
-                wordCounts[word] = (wordCounts[word] || 0) + 1;
-            });
-        } else if (Array.isArray(item)) {
-            item.forEach(processItem);
-        } else if (typeof item === 'object' && item !== null) {
-            Object.values(item).forEach(processItem);
+        if (stat.isDirectory()) {
+            exploreDirectory(itemPath, contents);
+        } else if (path.extname(item).toLowerCase() === '.md') {
+            const content = fs.readFileSync(itemPath, 'utf-8');
+            contents.push(content);
         }
     }
 
-    processItem(data);
+    return contents;
+}
+
+function analyzeMarkdownFiles(rootDirectory) {
+    console.log(`Analyzing Markdown files in ${rootDirectory}`);
+    return exploreDirectory(rootDirectory);
+}
+
+// Clean and uppercase a word
+function cleanWord(word) {
+    return word.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+}
+
+// Check if a word is valid (not a stop word or technical term)
+function isValidWord(word) {
+    return word.length > 1 && 
+           !/^\d+$/.test(word) && 
+           !stopWords.has(word) && 
+           !technicalTerms.has(word);
+}
+
+// Extract valid words from text
+
+function extractWords(text) {
+    // Match words that contain at least one letter
+    const words = text.match(/\b(?=[a-zA-Z])[\w']+\b/g) || [];
+    return words
+        .map(cleanWord)
+        .filter(word => word.length > 1 && isValidWord(word));
+}
+
+// Analyze content and count word occurrences
+
+function analyzeContent(content) {
+    const wordCounts = {};
+    extractWords(content).forEach(word => {
+        wordCounts[word] = (wordCounts[word] || 0) + 1;
+    });
     return wordCounts;
 }
+// Prompt user to classify words as technical terms or not
+
 async function promptUserForNewTerms(topWords) {
     const rl = readline.createInterface({
         input: process.stdin,
@@ -132,11 +162,25 @@ async function main() {
         console.log(`Total number of existing technical terms: ${technicalTerms.size}`);
         console.log(`Total number of existing stop words: ${stopWords.size}`);
         console.log(`Total number of stop words: ${stopWords.size}`);
-        const data = JSON.parse(fs.readFileSync(INPUT_FILE, 'utf-8'));
-        const wordCounts = analyzeContent(data);
+        const markdownContents = analyzeMarkdownFiles(INPUT_DIRECTORY);
+        console.log(`Analyzed ${markdownContents.length} Markdown files`);
+
+        let wordCounts = {};
+        for (const content of markdownContents) {
+            const contentCounts = analyzeContent(content);
+            for (const [word, count] of Object.entries(contentCounts)) {
+                wordCounts[word] = (wordCounts[word] || 0) + count;
+            }
+        }
+
         const topWords = getTopWords(wordCounts, TOP_WORDS);
 
         await promptUserForNewTerms(topWords);
+
+        console.log("Simplifying and deduplicating technical terms...");
+        const initialTermCount = technicalTerms.size;
+        console.log(`Reduced from ${initialTermCount} to ${technicalTerms.size} unique terms.`);
+
         saveTechnicalTerms();
         saveStopWords();
 

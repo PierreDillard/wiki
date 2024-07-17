@@ -2,10 +2,13 @@ const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 const INPUT_DIRECTORY = path.join(__dirname, '../docs');
+const FILTERS_DIRECTORY = path.join(INPUT_DIRECTORY, 'Filters');
 const OUTPUT_FILE = path.join(__dirname, 'keyword_counts.json');
 const TECH_TERMS_FILE = path.join(__dirname, 'technical_terms.json');
 const STOP_WORDS_FILE = path.join(__dirname, 'stop_words.json');
 const TOP_WORDS = 500;
+const MIN_WORD_LENGTH = 3;
+const MIN_WORD_FREQUENCY = 5;
 
 
 // Check if this is the first run of the script
@@ -184,7 +187,7 @@ function getTopWords(wordCounts, topN) {
 
 
 
-async function main() {
+/* async function main() {
     try {
         technicalTerms = loadTechnicalTerms();
         stopWords = loadStopWords();
@@ -235,6 +238,75 @@ async function main() {
     } catch (error) {
         console.error('Error:', error);
     }
-}
+} */
 
-main();
+    function isLikelyTechnicalTerm(word, count, totalWords) {
+        const frequency = count / totalWords;
+        return word.length >= MIN_WORD_LENGTH && 
+               count >= MIN_WORD_FREQUENCY && 
+               frequency < 0.01 && // Not too common
+               !stopWords.has(word) &&
+               !technicalTerms.has(word);
+    }
+    
+    async function main() {
+        try {
+            technicalTerms = loadTechnicalTerms();
+            stopWords = loadStopWords();
+            if (isFirstRun) {
+                console.log("First run detected. All words will be considered for classification.");
+            } else {
+                console.log("Subsequent run detected. Only new or newly frequent words will be considered.");
+            }
+    
+            console.log(`Total number of existing technical terms: ${technicalTerms.size}`);
+            console.log(`Total number of existing stop words: ${stopWords.size}`);
+            const markdownContents = analyzeMarkdownFiles(FILTERS_DIRECTORY);
+            console.log(`Analyzed ${markdownContents.length} Markdown files`);
+    
+            let wordCounts = {};
+            let fileOccurrences = {};
+            let totalWords = 0;
+    
+            for (const { content, path } of markdownContents) {
+                const contentCounts = analyzeContent(content);
+                for (const [word, count] of Object.entries(contentCounts)) {
+                    wordCounts[word] = (wordCounts[word] || 0) + count;
+                    fileOccurrences[word] = (fileOccurrences[word] || new Set()).add(path);
+                    totalWords += count;
+                }
+            }
+    
+            // Filter out words that appear in only one file
+            wordCounts = Object.fromEntries(
+                Object.entries(wordCounts).filter(([word]) => fileOccurrences[word].size > 1)
+            );
+    
+            const topWords = getTopWords(wordCounts, TOP_WORDS);
+    
+            // Automatically classify words
+            for (const [word, count] of Object.entries(topWords)) {
+                if (isLikelyTechnicalTerm(word, count, totalWords)) {
+                    technicalTerms.add(word);
+                } else {
+                    stopWords.add(word);
+                }
+            }
+    
+            console.log("Classifying technical terms and stop words...");
+            console.log(`Identified ${technicalTerms.size} technical terms`);
+            console.log(`Identified ${stopWords.size} stop words`);
+    
+            saveTechnicalTerms();
+            saveStopWords();
+    
+            fs.writeFileSync(OUTPUT_FILE, JSON.stringify(topWords, null, 2));
+            console.log(`Top ${TOP_WORDS} keywords have been saved to ${OUTPUT_FILE}`);
+            console.log(`Updated technical terms have been saved to ${TECH_TERMS_FILE}`);
+            console.log(`Updated stop words have been saved to ${STOP_WORDS_FILE}`);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    
+    main();

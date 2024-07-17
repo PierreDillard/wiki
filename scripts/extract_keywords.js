@@ -56,6 +56,41 @@ function saveStopWords() {
     fs.writeFileSync(STOP_WORDS_FILE, JSON.stringify([...stopWords], null, 2));
 }
 
+function preprocessContent(content, filePath) {
+    // Remove code blocks
+    content = content.replace(/```[\s\S]*?```/g, '');
+      // Remove words between backticks 
+      content = content.replace(/`[^`]+`/g, '');
+
+    // Special treatment for files in the "Filters" folder
+    if (filePath.includes(path.join('docs', 'Filters'))) {
+        // Remove text between '[' and ']' followed by '(URL)'
+        content = content.replace(/\[.*?\]\(URL\)/g, '');
+        
+        // Remove text between '_' and '_'
+        content = content.replace(/_.*?_/g, '');
+        
+        // Remove terms formatted as "- word :"
+        content = content.replace(/^-\s+\w+\s*:/gm, '');
+        
+        // Find the index of "# Options"
+        const optionsIndex = content.indexOf('# Options');
+        
+        if (optionsIndex !== -1) {
+            // Split the content into before and after "# Options"
+            const beforeOptions = content.slice(0, optionsIndex);
+            let afterOptions = content.slice(optionsIndex);
+            
+            // Remove all <a> tags and their content only in the part after "# Options"
+            afterOptions = afterOptions.replace(/<a[\s\S]*?<\/a>/g, '');
+            
+            // Combine the content back
+            content = beforeOptions + afterOptions;
+        }
+    }
+
+    return content;
+}
 // Recursively explore directory and read Markdown files
 
 function exploreDirectory(directoryPath, contents = []) {
@@ -69,7 +104,7 @@ function exploreDirectory(directoryPath, contents = []) {
             exploreDirectory(itemPath, contents);
         } else if (path.extname(item).toLowerCase() === '.md') {
             const content = fs.readFileSync(itemPath, 'utf-8');
-            contents.push(content);
+            contents.push({ path: itemPath, content: preprocessContent(content, itemPath) });
         }
     }
 
@@ -166,12 +201,21 @@ async function main() {
         console.log(`Analyzed ${markdownContents.length} Markdown files`);
 
         let wordCounts = {};
-        for (const content of markdownContents) {
+        let fileOccurrences = {};
+
+        for (const { content, path } of markdownContents) {
             const contentCounts = analyzeContent(content);
             for (const [word, count] of Object.entries(contentCounts)) {
                 wordCounts[word] = (wordCounts[word] || 0) + count;
+                // If the word is not in fileOccurence we create a new Set otherwise we add the file path .
+                fileOccurrences[word] = (fileOccurrences[word] || new Set()).add(path);
             }
         }
+
+        // Filter out words that appear in only one file
+        wordCounts = Object.fromEntries(
+            Object.entries(wordCounts).filter(([word]) => fileOccurrences[word].size > 1)
+        );
 
         const topWords = getTopWords(wordCounts, TOP_WORDS);
 

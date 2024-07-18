@@ -1,0 +1,5 @@
+{
+    "input": "Some text\n```\ncode block\n```\nMore text",
+    "expected": "Some text\n\nMore text",
+    "filePath": "test.md"
+  }

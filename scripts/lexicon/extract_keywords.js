@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
-const INPUT_DIRECTORY = path.join(__dirname, '../docs');
+const INPUT_DIRECTORY = path.join(__dirname, '../../docs');
 const FILTERS_DIRECTORY = path.join(INPUT_DIRECTORY, 'Filters');
 const OUTPUT_FILE = path.join(__dirname, 'keyword_counts.json');
 const TECH_TERMS_FILE = path.join(__dirname, 'technical_terms.json');
@@ -9,6 +9,7 @@ const STOP_WORDS_FILE = path.join(__dirname, 'stop_words.json');
 const TOP_WORDS = 500;
 const MIN_WORD_LENGTH = 3;
 const MIN_WORD_FREQUENCY = 5;
+
 
 
 // Check if this is the first run of the script
@@ -62,6 +63,7 @@ function saveStopWords() {
 function preprocessContent(content, filePath) {
     // Remove code blocks
     content = content.replace(/```[\s\S]*?```/g, '');
+    
       // Remove words between backticks 
       content = content.replace(/`[^`]+`/g, '');
 
@@ -80,14 +82,14 @@ function preprocessContent(content, filePath) {
         const optionsIndex = content.indexOf('# Options');
         
         if (optionsIndex !== -1) {
-            // Split the content into before and after "# Options"
+           
             const beforeOptions = content.slice(0, optionsIndex);
             let afterOptions = content.slice(optionsIndex);
             
             // Remove all <a> tags and their content only in the part after "# Options"
             afterOptions = afterOptions.replace(/<a[\s\S]*?<\/a>/g, '');
             
-            // Combine the content back
+          
             content = beforeOptions + afterOptions;
         }
     }

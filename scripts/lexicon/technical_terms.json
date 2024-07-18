@@ -1,12 +1,4 @@
 [
-  "PACKETS",
-  "SCENE",
-  "DURATION",
-  "STREAMS",
-  "SESSION",
-  "SAMPLE",
-  "RAW",
-  "URL",
   "PLAYLIST",
   "BIT",
   "BUFFER",

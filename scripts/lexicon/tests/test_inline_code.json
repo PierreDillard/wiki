@@ -1,0 +1,5 @@
+{
+    "input": "Some `inline code` text",
+    "expected": "Some  text",
+    "filePath": "test.md"
+  }

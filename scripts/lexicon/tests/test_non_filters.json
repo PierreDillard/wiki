@@ -1,0 +1,5 @@
+{
+    "input": "[Test](URL) _italic_ - option : Some text",
+    "expected": "[Test](URL) _italic_ - option : Some text",
+    "filePath": "docs/Other/test.md"
+  }

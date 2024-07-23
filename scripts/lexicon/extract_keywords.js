@@ -1,8 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
-const natural = require('natural');
-const WordNet = natural.WordNet;
 const INPUT_DIRECTORY = path.join(__dirname, '../../docs');
 const FILTERS_DIRECTORY = path.join(INPUT_DIRECTORY, 'Filters');
 const OUTPUT_FILE = path.join(__dirname, 'keyword_counts.json');
@@ -14,8 +12,7 @@ const MIN_WORD_FREQUENCY = 5;
 
 
 
-const wordnet = new WordNet();
-const tagger = new natural.BrillPOSTagger();
+
 
 
 
@@ -28,7 +25,17 @@ let stopWords = new Set([
     ,'BEEN', 'BEING', 'HAVE', 'HAS', 'HAD', 'DO', 'DOES', 'DID', 'WILL', 'WOULD', 'SHALL', 'USED', 'WHICH', 'DISCUSSION','SPECIFIED','THROUGH','POSSIBLE','BASED','LOADED','NONE','OTHERWISE','IGNORE','FS','IMPORTED','DONE','CONFIGURATION','WITHOUT','WANT','TWO','IMPORT','EDIT','HELP','PLAY','WRITE','DECLARED','PRODUCE','DOWNLOAD','MAX','REAL',"CURRENTLY",
     'SHOULD', 'CAN', 'COULD', 'MAY', 'MIGHT', 'MUST', 'OUGHT', 'THIS', 'EACH', 'ABOVE', 'GIVEN', 'ASSUME', 'COMMAND','FOLLOWING','NEED','IGNORE','PRINT','SEE','OUT','YOUR','LET','TRUE','TS','VALUES','DISABLED', 'SEND','CALLED','AUTOMATICALLY','UPDATABLE','ONE',
     'IT', 'WE', 'ARE', 'SOME', 'ANY', 'ALL', 'US', 'OPEN','REPLACED','MESSAGE','COM','CURRENT', 'WIKI','TEST','INSERT', 'FOUND','FUNCTION','HOW','WHERE','ENABLE','SUCH', 'AS', 'USE', 'YOU', 'GPAC', 'INFORMATION', 'IF','NON', 'EXISTING', '&&', 'END', 'WHICH','THAN','THESE','NO','MULTIPLE','REGISTER','GET','PORT','CREATE','SUPORT','IGNORED','INDICATES','SUPPORT','NEGATIVE','KEEP','TELECOM','PARISTECH','FIRST','JAVASCRIPT',
-  'CREATED', 'USUALLY', 'HOWEVER', 'WARNING', 'LANGUAGE','LEFT','DISPLAY', 'SWITCHING', 'MODIFIED','EVERY', 'IMPORTING','FONT', 'CONTENT','DATA','OBJECT','PER','CHANGE','EXTENSION','SETUP','DYNAMIC','LOW','ASSIGN', 'INJECT','UNLESS','STILL', 'PYTHON',
+  'CREATED', 'USUALLY', 'HOWEVER', 'WARNING', 'LANGUAGE','LEFT','DISPLAY', 'SWITCHING', 'MODIFIED','EVERY', 'IMPORTING','FONT', 'CONTENT','DATA','OBJECT','PER','CHANGE','EXTENSION','SETUP','DYNAMIC','LOW','ASSIGN', 'INJECT','UNLESS','STILL', 'PYTHON','HORIZONTAL','DIRECTLY','FORWARD','LIKELY',
+  'WHENEVER','MAXIMUN','ENTRY','MAIN','MAXIMUM','LEVEL','SCRIPT','PERFORM','USUAL','ANOTHER','COMPONENT','CENTER','OUR','OWN','BOTTOM','DEFINED','CHECKED','VISUAL','SIZE','PART','DETAILS','APPLY',
+  'RUNNING','BLOCKING',
+  'STATE',
+  'SECTION',
+  'SIMPLY',
+  'EXPLICITLY',
+  'COMPATIBILITY',
+  'CORRESPONDING',
+  'EQUAL',
+  'TRY',
   'MASTER',
   'FILTERSGENERAL',
   'OLD',
@@ -246,9 +253,9 @@ async function isValidWord(word) {
         technicalTerms.has(word)) {
         return false;
     }
-    return !(await isCommonPartOfSpeech(word));
+  /*   return !(await isCommonPartOfSpeech(word));
+} */
 }
-
 // Extract valid words from text
 
 function extractWords(text) {
@@ -364,8 +371,8 @@ function getTopWords(wordCounts, topN) {
     
     async function main() {
         try {
-            technicalTerms = loadTechnicalTerms();
-            stopWords = loadStopWords();
+            technicalTerms = await loadTechnicalTerms();
+            stopWords = await  loadStopWords();
             if (isFirstRun) {
                 console.log("First run detected. All words will be considered for classification.");
             } else {
@@ -418,8 +425,8 @@ function getTopWords(wordCounts, topN) {
             console.log(`Identified ${technicalTerms.size} technical terms`);
             console.log(`Identified ${stopWords.size} stop words`);
     
-            saveTechnicalTerms();
-            saveStopWords();
+            await saveTechnicalTerms();
+            await saveStopWords();
     
             fs.writeFileSync(OUTPUT_FILE, JSON.stringify(topWords, null, 2));
             console.log(`Top ${TOP_WORDS} keywords have been saved to ${OUTPUT_FILE}`);

@@ -1,5 +1,0 @@
-{
-    "input": "- option : Some text",
-    "expected": "  Some text",
-    "filePath": "docs/Filters/test.md"
-  }

@@ -1,5 +1,0 @@
-{
-    "input": "Before\n# Options\n<a href=\"#\">Link</a>\nAfter",
-    "expected": "Before\n# Options\n\nAfter",
-    "filePath": "docs/Filters/test.md"
-  }

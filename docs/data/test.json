@@ -1,0 +1,1054 @@
+{
+   
+    "VIDEO": {
+        "description": "Video refers to the visual media content that GPAC can process, including encoding, decoding, and streaming of video streams.",
+        "level": "beginner"
+    },
+    "VALUE": {
+        "description": "A value in GPAC refers to a specific piece of data or a parameter that can be used to configure filters or processing tasks.",
+        "level": "beginner"
+    },
+    "SOURCE": {
+        "description": "In GPAC, a source is an input element that provides media data to be processed. It is typically the starting point of a media processing pipeline.",
+        "level": "beginner"
+    },
+
+    "OUTPUT": {
+        "description": "Output in GPAC refers to the processed data that is generated after media processing, ready for storage or display.",
+        "level": "beginner"
+    },
+    "INPUT": {
+        "description": "An input refers to any data fed into the GPAC processing system, including video, audio, and other multimedia streams.",
+        "level": "beginner"
+    },
+ 
+    "STREAM": {
+        "description": "A stream is a sequence of media data (audio, video, etc.) that is processed by GPAC. Streams are identified by PIDs and can be multiplexed or demultiplexed.",
+        "level": "beginner"
+    },
+    "TRACK": {
+        "description": "A track in GPAC is a sequence of media data, such as audio or video, within a media file. Tracks are managed and processed individually.",
+        "level": "beginner"
+    },
+    "PID": {
+        "description": "PID stands for Packet Identifier. It is used in GPAC to uniquely identify different streams within a media file, such as audio, video, and subtitles.",
+        "level": "expert"
+    },
+ 
+    "SEGMENT": {
+        "description": "A segment in GPAC is a portion of a media file that is delivered in chunks, particularly in adaptive streaming protocols like DASH and HLS.",
+        "level": "beginner"
+    },
+    "PACKET": {
+        "description": "Packets are units of data transmitted over a network or stored in a media file. In GPAC, packets are processed to extract media streams.",
+        "level": "beginner"
+    },
+    "DASH": {
+        "description": "DASH stands for Dynamic Adaptive Streaming over HTTP, a technique that enables high-quality streaming of media content over the internet.",
+        "level": "beginner"
+    },
+
+    "FRAME": {
+        "description": "A frame is a single image in a sequence of images that make up a video. GPAC processes frames during video encoding and decoding.",
+        "level": "beginner"
+    },
+    "SAMPLE": {
+        "description": "A sample in GPAC refers to a discrete unit of audio or video data. Samples are processed to reconstruct media streams.",
+        "level": "beginner"
+    },
+  
+    "SESSION": {
+        "description": "A session in GPAC is a context for managing the lifecycle of media processing tasks, including loading, configuring, and executing filters.",
+        "level": "expert"
+    },
+
+    "UINT": {
+        "description": "UINT stands for unsigned integer, a data type used in GPAC for various numerical parameters and properties.",
+        "level": "beginner"
+    },
+
+    "MPEG": {
+        "description": "MPEG stands for Moving Picture Experts Group, a working group that sets standards for audio and video compression and transmission.",
+        "level": "beginner"
+    },
+    "OPTION": {
+        "description": "Options in GPAC are parameters that configure the behavior of filters and processing tasks. They can be set to customize media processing.",
+        "level": "beginner"
+    },
+  
+    "PROPERTY": {
+        "description": "Properties in GPAC refer to attributes of media streams or filters, such as resolution, bitrate, and codec type, that affect processing.",
+        "level": "expert"
+    },
+
+    "SCENE": {
+        "description": "Scene in GPAC refers to a multimedia presentation, including video, audio, and interactive elements, typically described using BIFS or X3D.",
+        "level": "beginner"
+    },
+    "GRAPH": {
+        "description": "A graph in GPAC represents the entire media processing workflow, consisting of nodes (filters) and edges (connections) that define data flow.",
+        "level": "all"
+    },
+
+ 
+    "RESOLUTION": {
+        "description": "Resolution in GPAC refers to the dimensions of a video frame, typically given as width x height in pixels.",
+        "level": "beginner"
+    },
+    "MPD": {
+        "description": "MPD stands for Media Presentation Description, a file that provides metadata about the media content in a DASH session.",
+        "level": "beginner"
+    },
+  
+    "BOX": {
+        "description": "A box in GPAC refers to a container or structure within a media file format, such as an MP4 box, used to store metadata and media data.",
+        "level": "beginner"
+    },
+    "PATCH": {
+        "description": "A patch in GPAC refers to an update or modification to the software to fix issues or add new features.",
+        "level": "all"
+    },
+    "PLAYLIST": {
+        "description": "A playlist in GPAC refers to a list of media files or segments to be played in a specific order, often used in streaming protocols.",
+        "level": "beginner"
+    },
+    "MP4": {
+        "description": "MP4 is a standardized multimedia file format for storing video, audio, subtitles, and still images. It is widely used for streaming and media storage.",
+        "level": "expert"
+    },
+    "RAW": {
+        "description": "Raw in GPAC refers to uncompressed media data that has not been processed or encoded.",
+        "level": "beginner"
+    },
+    "GROUP": {
+        "description": "A group in GPAC refers to a collection of related items, such as tracks or filters, that are processed or managed together.",
+        "level": "beginner"
+    },
+    "PROFILE": {
+        "description": "A profile in GPAC refers to a set of predefined settings or configurations for media processing tasks, such as encoding profiles.",
+        "level": "beginner"
+    },
+    "SECOND": {
+        "description": "Second is a unit of time used in GPAC for measuring durations and timestamps in media processing.",
+        "level": "beginner"
+    },
+    "XML": {
+        "description": "XML stands for eXtensible Markup Language, used in GPAC for storing and exchanging metadata and configuration settings.",
+        "level": "beginner"
+    },
+    "LIST": {
+        "description": "A list in GPAC refers to a collection of items, such as media files or filters, that are processed sequentially or in parallel.",
+        "level": "beginner"
+    },
+    "SERVER": {
+        "description": "A server in GPAC refers to a software or hardware system that delivers media content over a network to clients.",
+        "level": "beginner"
+    },
+    "WRITEGEN": {
+        "description": "WriteGen in GPAC context refers to a generic writing function or process used to output media data to a file or stream.",
+        "level": "beginner"
+    },
+    "LIVE": {
+        "description": "Live in GPAC refers to real-time media streaming, where content is delivered to viewers as it is being generated or recorded.",
+        "level": "beginner"
+    },
+    "STR": {
+        "description": "STR in GPAC stands for string, a data type used for text parameters and properties.",
+        "level": "beginner"
+    },
+    "TILE": {
+        "description": "A tile in GPAC refers to a rectangular section of a video frame, used in tiling and parallel processing of video content.",
+        "level": "beginner"
+    },
+    "HEVC": {
+        "description": "HEVC stands for High Efficiency Video Coding, a video compression standard designed as a successor to AVC (H.264).",
+        "level": "beginner"
+    },
+    "CHAIN": {
+        "description": "A chain in GPAC is a sequence of connected filters that process media data in a specific order. Chains define the processing pipeline.",
+        "level": "beginner"
+    },
+    "LINE": {
+        "description": "Line in GPAC context refers to a line of code, command, or a sequence of text in a configuration file.",
+        "level": "beginner"
+    },
+    "HLS": {
+        "description": "HLS stands for HTTP Live Streaming, a media streaming protocol developed by Apple Inc. for delivering live and on-demand content.",
+        "level": "beginner"
+    },
+    "BIT": {
+        "description": "A bit is the smallest unit of data in computing, representing a binary value of 0 or 1.",
+        "level": "beginner"
+    },
+    "IMAGE": {
+        "description": "An image in GPAC refers to still visual media content that can be processed, encoded, and included in multimedia presentations.",
+        "level": "beginner"
+    },
+    "INFO": {
+        "description": "Info in GPAC context refers to metadata or information about media content, such as duration, resolution, and codec details.",
+        "level": "beginner"
+    },
+    "PLAYBACK": {
+        "description": "Playback in GPAC refers to the process of playing media content, including video, audio, and interactive elements.",
+        "level": "beginner"
+    },
+    "AVC": {
+        "description": "AVC stands for Advanced Video Coding, also known as H.264, a widely used video compression standard.",
+        "level": "beginner"
+    },
+    "INTEGER": {
+        "description": "An integer in GPAC is a data type used for numerical parameters and properties that do not have fractional parts.",
+        "level": "beginner"
+    },
+    "PIPE": {
+        "description": "A pipe in GPAC refers to a method of inter-process communication that allows data to flow from one process to another.",
+        "level": "beginner"
+    },
+    "DISABLE": {
+        "description": "Disable in GPAC context refers to the action of turning off a specific feature or function.",
+        "level": "beginner"
+    },
+    "DUMP": {
+        "description": "Dump in GPAC refers to the process of outputting raw media data to a file for debugging or analysis.",
+        "level": "beginner"
+    },
+    "ISOBMFF": {
+        "description": "ISOBMFF stands for ISO Base Media File Format, a file format that forms the basis for many other file formats, such as MP4 and MOV.",
+        "level": "beginner"
+    },
+    "BITSTREAM": {
+        "description": "A bitstream in GPAC refers to a sequence of bits representing encoded media data, such as video or audio streams.",
+        "level": "beginner"
+    },
+  
+    "DESCRIPTION": {
+        "description": "A description in GPAC refers to text that explains the details or functionality of a media file, filter, or processing task.",
+        "level": "beginner"
+    },
+    "DESTINATION": {
+        "description": "Destination in GPAC refers to the output target for processed media data, such as a file, stream, or display.",
+        "level": "beginner"
+    },
+    "SEQUENCE": {
+        "description": "A sequence in GPAC refers to an ordered series of media frames, samples, or packets processed as a unit.",
+        "level": "beginner"
+    },
+    "DECODER": {
+        "description": "A decoder in GPAC is a software or hardware tool that converts encoded media data back into its original format.",
+        "level": "beginner"
+    },
+    "ITEM": {
+        "description": "An item in GPAC refers to an individual element or component within a media file, such as a track or segment.",
+        "level": "beginner"
+    },
+    "TEXTURE": {
+        "description": "Texture in GPAC refers to a bitmap image applied to a surface in 3D graphics, used in scene descriptions and visual effects.",
+        "level": "beginner"
+    },
+    "CODE": {
+        "description": "Code in GPAC context refers to programming instructions that define the functionality of filters and processing tasks.",
+        "level": "beginner"
+    },
+    "GENERATE": {
+        "description": "Generate in GPAC refers to the process of creating media content or metadata, such as generating a playlist or manifest file.",
+        "level": "beginner"
+    },
+    "PATH": {
+        "description": "Path in GPAC refers to the location of a file or directory in the filesystem, used to specify input and output destinations.",
+        "level": "beginner"
+    },
+    "PERIOD": {
+        "description": "A period in GPAC refers to a time segment within a media presentation, often used in DASH for segmenting content.",
+        "level": "beginner"
+    },
+    "MANIFEST": {
+        "description": "A manifest in GPAC refers to a file that provides information about the structure and components of a multimedia presentation.",
+        "level": "beginner"
+    },
+    "RANGE": {
+        "description": "Range in GPAC refers to a span of values, such as time or byte ranges, used to specify segments or portions of media data.",
+        "level": "beginner"
+    },
+    "RESULT": {
+        "description": "Result in GPAC refers to the output or outcome of a processing task or command, such as a generated file or a log message.",
+        "level": "beginner"
+    },
+    "BUFFER": {
+        "description": "A buffer in GPAC refers to a temporary storage area for media data during processing or playback to ensure smooth operation.",
+        "level": "beginner"
+    },
+    "RATE": {
+        "description": "Rate in GPAC refers to the speed at which media data is processed or played back, such as frame rate or bit rate.",
+        "level": "beginner"
+    },
+    "REFRAMER": {
+        "description": "A reframer in GPAC adjusts the timing and structure of media frames to meet specific requirements, such as alignment for streaming.",
+        "level": "expert"
+    },
+    "ORDER": {
+        "description": "Order in GPAC refers to the sequence or arrangement of media data or processing tasks, such as frame order or filter order.",
+        "level": "beginner"
+    },
+    "COLOR": {
+        "description": "Color in GPAC refers to the visual attribute of media content, including color spaces, color formats, and color adjustments.",
+        "level": "beginner"
+    },
+    "HTML": {
+        "description": "HTML stands for Hypertext Markup Language, used in GPAC for web-based media presentations and interactive content.",
+        "level": "beginner"
+    },
+    "AAC": {
+        "description": "AAC stands for Advanced Audio Coding, a standardized, lossy compression and encoding scheme for digital audio.",
+        "level": "beginner"
+    },
+    "SIMPLE": {
+        "description": "Simple in GPAC context refers to straightforward or basic configurations and tasks that do not require complex settings.",
+        "level": "beginner"
+    },
+    "POINT": {
+        "description": "Point in GPAC refers to a specific location in time or space within media data or a multimedia scene.",
+        "level": "beginner"
+    },
+    "ACCESS": {
+        "description": "Access in GPAC refers to the ability to retrieve or modify media data, often involving permissions or authentication.",
+        "level": "beginner"
+    },
+    "REPRESENTATION": {
+        "description": "Representation in GPAC refers to a specific version or quality level of media content, used in adaptive streaming protocols like DASH.",
+        "level": "beginner"
+    },
+    "NOTE": {
+        "description": "Note in GPAC context refers to a comment or annotation added to the documentation or metadata to provide additional information.",
+        "level": "beginner"
+    },
+    "REMOVE": {
+        "description": "Remove in GPAC refers to the action of deleting or excluding specific media data, elements, or configurations.",
+        "level": "beginner"
+    },
+    "RTP": {
+        "description": "RTP stands for Real-time Transport Protocol, used for delivering audio and video over IP networks in real-time applications.",
+        "level": "beginner"
+    },
+    "ENCODER": {
+        "description": "An encoder in GPAC is a software or hardware tool that converts raw media data into a compressed format using codecs.",
+        "level": "beginner"
+    },
+    "COMPOSITOR": {
+        "description": "A compositor in GPAC is a tool that combines multiple visual elements into a single scene or output, used for video and graphics processing.",
+        "level": "beginner"
+    },
+    "PROCESS": {
+        "description": "Process in GPAC refers to the series of actions or steps taken to transform or handle media data, such as encoding, decoding, or streaming.",
+        "level": "beginner"
+    },
+    "RATIO": {
+        "description": "Ratio in GPAC refers to the proportional relationship between two quantities, such as aspect ratio in video frames.",
+        "level": "beginner"
+    },
+    "REGULAR": {
+        "description": "Regular in GPAC context refers to standard or typical configurations and operations that follow established patterns.",
+        "level": "beginner"
+    },
+    "FFMPEG": {
+        "description": "FFmpeg is a free and open-source project consisting of a vast software suite of libraries and programs for handling video, audio, and other multimedia files and streams.",
+        "level": "beginner"
+    },
+    "ASPECT": {
+        "description": "Aspect in GPAC refers to the ratio of width to height in video frames, known as aspect ratio.",
+        "level": "beginner"
+    },
+    "USER": {
+        "description": "User in GPAC refers to the individual or system interacting with the software, including setting configurations and running processing tasks.",
+        "level": "beginner"
+    },
+    "DASHER": {
+        "description": "Dasher in GPAC is a tool or filter used to create DASH segments from media files for adaptive streaming.",
+        "level": "beginner"
+    },
+    "PIXEL": {
+        "description": "A pixel is the smallest unit of a digital image or display, representing a single point of color.",
+        "level": "beginner"
+    },
+    "INDEX": {
+        "description": "Index in GPAC refers to a reference point or list used to locate specific data within media files or streams.",
+        "level": "beginner"
+    },
+    "LOCAL": {
+        "description": "Local in GPAC refers to files or resources that are stored on the same system where the software is running, as opposed to remote resources.",
+        "level": "beginner"
+    },
+    "VERSION": {
+        "description": "Version in GPAC refers to a specific iteration or release of the software, indicating its development stage and feature set.",
+        "level": "beginner"
+    },
+    "BIFS": {
+        "description": "BIFS stands for Binary Format for Scenes, a binary format used to represent and encode multimedia scenes, part of the MPEG-4 standard.",
+        "level": "beginner"
+    },
+    "OFFSET": {
+        "description": "Offset in GPAC refers to a value that specifies a position within a data stream or file.",
+        "level": "beginner"
+    },
+    "CALLBACK": {
+        "description": "A callback in GPAC refers to a function that is called at a specific event or condition during processing, used for custom handling of data or tasks.",
+        "level": "beginner"
+    },
+    "PLAYER": {
+        "description": "A player in GPAC is a tool or application used to play back media content, including video, audio, and interactive elements.",
+        "level": "beginner"
+    },
+    "H264": {
+        "description": "H.264 is a widely used video compression standard, also known as AVC (Advanced Video Coding).",
+        "level": "beginner"
+    },
+    "CONFIG": {
+        "description": "Config in GPAC refers to configuration settings that define how the software operates and processes media data.",
+        "level": "beginner"
+    },
+    "SYSTEM": {
+        "description": "System in GPAC refers to the combination of hardware and software components used for media processing tasks.",
+        "level": "beginner"
+    },
+    "ROUTE": {
+        "description": "Route in GPAC refers to the path or method by which media data is transmitted or processed, such as routing through filters.",
+        "level": "beginner"
+    },
+    "PNG": {
+        "description": "PNG stands for Portable Network Graphics, a lossless image compression format supported by GPAC for image handling.",
+        "level": "beginner"
+    },
+    "SVG": {
+        "description": "SVG stands for Scalable Vector Graphics, an XML-based format for vector images that GPAC supports for graphical content.",
+        "level": "beginner"
+    },
+    "CODEC": {
+        "description": "A codec is a software or hardware tool that encodes or decodes media data. GPAC supports various codecs for compressing and decompressing media streams.",
+        "level": "beginner"
+    },
+    "SPECIFIC": {
+        "description": "Specific in GPAC context refers to particular details or configurations that apply to certain tasks or features.",
+        "level": "beginner"
+    },
+    "DOXYGEN": {
+        "description": "Doxygen in GPAC context refers to the tool used for generating documentation from annotated source code.",
+        "level": "beginner"
+    },
+    "FRAGMENT": {
+        "description": "A fragment in GPAC refers to a portion of media data, such as a segment of a video stream or a piece of a media file.",
+        "level": "beginner"
+    },
+    "DBL": {
+        "description": "DBL in GPAC refers to a data type for double-precision floating-point numbers, used for various numerical parameters and properties.",
+        "level": "beginner"
+    },
+    "TEMPLATE": {
+        "description": "A template in GPAC refers to a predefined structure or format used for generating media files, manifests, or configurations.",
+        "level": "beginner"
+    },
+    "BUILD": {
+        "description": "Build in GPAC context refers to the process of compiling and assembling the software from source code.",
+        "level": "beginner"
+    },
+    "HEADER": {
+        "description": "A header in GPAC refers to metadata at the beginning of a media file or stream that provides information about its structure and content.",
+        "level": "beginner"
+    },
+    "SIDX": {
+        "description": "SIDX stands for Segment Index, a table in media files that provides information about the locations and durations of segments.",
+        "level": "beginner"
+    },
+    "EXTRACT": {
+        "description": "Extract in GPAC refers to the process of retrieving specific data from a media file or stream, such as extracting audio tracks.",
+        "level": "beginner"
+    },
+    "BLOCK": {
+        "description": "A block in GPAC refers to a contiguous segment of data within a media file or stream, used for processing or storage.",
+        "level": "beginner"
+    },
+    "FRAC": {
+        "description": "FRAC in GPAC refers to a data type for fractional numbers, used for various numerical parameters and properties.",
+        "level": "beginner"
+    },
+    "GENERATION": {
+        "description": "Generation in GPAC refers to the process of creating or producing media content or metadata.",
+        "level": "beginner"
+    },
+    "DESIRED": {
+        "description": "Desired in GPAC context refers to the target state or configuration for media processing tasks or settings.",
+        "level": "beginner"
+    },
+    "DRM": {
+        "description": "DRM stands for Digital Rights Management, a set of technologies used to protect and manage the use of digital media content.",
+        "level": "beginner"
+    },
+    "GLOBAL": {
+        "description": "Global in GPAC refers to settings or parameters that apply universally across the software or processing tasks.",
+        "level": "beginner"
+    },
+    "BASE": {
+        "description": "Base in GPAC context refers to foundational or core components and settings that underlie media processing tasks.",
+        "level": "beginner"
+    },
+    "TIMESCALE": {
+        "description": "Timescale in GPAC refers to the unit of time used for timestamps and durations in media files and streams.",
+        "level": "beginner"
+    },
+    "MULTICAST": {
+        "description": "Multicast in GPAC refers to the transmission of media data to multiple destinations simultaneously over a network.",
+        "level": "beginner"
+    },
+    "MEMORY": {
+        "description": "Memory in GPAC refers to the storage used by the software to hold media data and processing information during operation.",
+        "level": "beginner"
+    },
+    "QUALITY": {
+        "description": "Quality in GPAC refers to the perceived visual and auditory fidelity of media content, often influenced by resolution, bitrate, and compression.",
+        "level": "beginner"
+    },
+    "CUE": {
+        "description": "A cue in GPAC refers to a marker or point in media data used for synchronization, navigation, or triggering events.",
+        "level": "beginner"
+    },
+    "GITHUB": {
+        "description": "GitHub in GPAC context refers to the platform used for hosting the source code, version control, and collaboration on the software.",
+        "level": "beginner"
+    },
+    "API": {
+        "description": "API stands for Application Programming Interface, a set of tools and protocols used for building and interacting with software applications.",
+        "level": "beginner"
+    },
+    "PAYLOAD": {
+        "description": "Payload in GPAC refers to the actual data carried within a packet or stream, excluding headers and metadata.",
+        "level": "beginner"
+    },
+    "COPY": {
+        "description": "Copy in GPAC refers to duplicating media data from one location to another, such as copying a file or stream.",
+        "level": "beginner"
+    },
+    "SINT": {
+        "description": "SINT in GPAC refers to a data type for signed integers, used for various numerical parameters and properties.",
+        "level": "beginner"
+    },
+    "ENCRYPT": {
+        "description": "Encryption in GPAC refers to the process of securing media content by converting it into a code to prevent unauthorized access. GPAC supports various encryption standards like CENC and ISMA.",
+        "level": "expert"
+    },
+  
+    "MOVIE": {
+        "description": "A movie in GPAC refers to a multimedia presentation that includes video, audio, and other media elements.",
+        "level": "beginner"
+    },
+    "TSI": {
+        "description": "TSI in GPAC context refers to a Time-Stamping Interface, used for synchronizing and managing timestamps in media streams.",
+        "level": "beginner"
+    },
+    "SINK": {
+        "description": "A sink in GPAC is an output element that receives processed media data. It is usually the endpoint of a media processing pipeline.",
+        "level": "beginner"
+    },
+    "LATENCY": {
+        "description": "Latency in GPAC refers to the delay between the input and output of media data during processing or transmission.",
+        "level": "beginner"
+    },
+    "DEPTH": {
+        "description": "Depth in GPAC refers to the color depth or bit depth of media content, affecting the range of colors that can be displayed.",
+        "level": "beginner"
+    },
+    "ISO": {
+        "description": "ISO stands for International Organization for Standardization, which develops and publishes international standards, including media file formats.",
+        "level": "beginner"
+    },
+    "UNSIGNED": {
+        "description": "Unsigned in GPAC refers to numerical data types that can only represent non-negative values.",
+        "level": "beginner"
+    },
+    "ATTRIBUTE": {
+        "description": "An attribute in GPAC refers to a property or characteristic of a media file, filter, or processing task.",
+        "level": "beginner"
+    },
+    "BOXES": {
+        "description": "Boxes in GPAC refer to container structures within a media file format, used to store metadata and media data.",
+        "level": "beginner"
+    },
+    "SIGNAL": {
+        "description": "Signal in GPAC refers to a transmission of data, such as an audio or video signal, within a media processing pipeline.",
+        "level": "beginner"
+    },
+    "PCM": {
+        "description": "PCM stands for Pulse Code Modulation, a method used to digitally represent analog signals, commonly used for audio.",
+        "level": "beginner"
+    },
+    "OPENGL": {
+        "description": "OpenGL stands for Open Graphics Library, a cross-language, cross-platform API for rendering 2D and 3D vector graphics.",
+        "level": "beginner"
+    },
+    "UPDATE": {
+        "description": "Update in GPAC refers to the action of applying changes or modifications to the software or media files.",
+        "level": "beginner"
+    },
+    "INIT": {
+        "description": "Init in GPAC refers to the initialization process where settings and parameters are configured at the start of media processing.",
+        "level": "beginner"
+    },
+    "XMT": {
+        "description": "XMT stands for Extensible MPEG-4 Textual format, used for describing MPEG-4 scenes in a textual format.",
+        "level": "beginner"
+    },
+    "OFFSCREEN": {
+        "description": "Offscreen in GPAC refers to rendering graphics or processing media content outside of the visible display area.",
+        "level": "beginner"
+    },
+    "SCHEME": {
+        "description": "A scheme in GPAC refers to a specific method or protocol used for processing or transmitting media data.",
+        "level": "beginner"
+    },
+    "SAP": {
+        "description": "SAP stands for Stream Access Point, a marker in media streams that allows for efficient seeking and synchronization.",
+        "level": "beginner"
+    },
+    "RFRAWVID": {
+        "description": "RFRAWVID in GPAC context refers to raw video data in radio frequency format, used in specific media processing tasks.",
+        "level": "beginner"
+    },
+    "SUB": {
+        "description": "Sub in GPAC refers to subtitle data that can be processed and displayed along with video content.",
+        "level": "beginner"
+    },
+    "CENC": {
+        "description": "CENC stands for Common Encryption, a standard for encrypting media content to ensure secure and interoperable streaming.",
+        "level": "expert"
+    },
+    "APPLY": {
+        "description": "Apply in GPAC context refers to the action of executing a specific configuration or processing task.",
+        "level": "beginner"
+    },
+    "ALPHA": {
+        "description": "Alpha in GPAC refers to the transparency level of a visual element, used in video and graphics processing.",
+        "level": "beginner"
+    },
+    "MULTI": {
+        "description": "Multi in GPAC refers to multiple instances or elements, such as multiple tracks, filters, or streams processed together.",
+        "level": "beginner"
+    },
+    "STORE": {
+        "description": "Store in GPAC refers to saving media data or settings to a file or persistent storage.",
+        "level": "beginner"
+    },
+    "SUBTITLE": {
+        "description": "Subtitle in GPAC refers to textual information displayed along with video content, providing dialogue or descriptions.",
+        "level": "beginner"
+    },
+    "STORED": {
+        "description": "Stored in GPAC refers to media data or settings that have been saved to a file or persistent storage.",
+        "level": "beginner"
+    },
+    "TTML": {
+        "description": "TTML stands for Timed Text Markup Language, a standard for representing timed text media for interchange among authoring systems.",
+        "level": "beginner"
+    },
+    "SERVICE": {
+        "description": "A service in GPAC refers to a function or feature provided by the software, such as streaming or encoding services.",
+        "level": "beginner"
+    },
+    "PARAMETER": {
+        "description": "A parameter in GPAC refers to a setting or value that configures the behavior of a filter or processing task.",
+        "level": "beginner"
+    },
+    "TYPICALLY": {
+        "description": "Typically in GPAC context refers to common or usual configurations and operations that are frequently used.",
+        "level": "beginner"
+    },
+    "OVERVIEW": {
+        "description": "Overview in GPAC refers to a summary or general description of a feature, tool, or processing task.",
+        "level": "beginner"
+    },
+    "NODE": {
+        "description": "A node in GPAC refers to a point in a processing graph where media data is manipulated, such as a filter or transformation.",
+        "level": "expert"
+    },
+    "SHAPE": {
+        "description": "Shape in GPAC refers to the geometric form of a visual element, used in scene descriptions and graphics processing.",
+        "level": "beginner"
+    },
+    "THREAD": {
+        "description": "A thread in GPAC refers to a separate path of execution within the software, allowing for parallel processing of tasks.",
+        "level": "beginner"
+    },
+    "BYTE": {
+        "description": "A byte is a unit of data consisting of 8 bits, used in GPAC for measuring data sizes and storage.",
+        "level": "beginner"
+    },
+    "RAP": {
+        "description": "RAP stands for Random Access Point, a point in a media stream where decoding can begin without needing to reference earlier frames.",
+        "level": "beginner"
+    },
+    "SOCKET": {
+        "description": "A socket in GPAC refers to an endpoint for communication between devices or processes, used for network streaming and data transfer.",
+        "level": "beginner"
+    },
+    "LOOP": {
+        "description": "Loop in GPAC refers to the action of repeating a sequence of media data or processing tasks.",
+        "level": "beginner"
+    },
+    "GENERIC": {
+        "description": "Generic in GPAC context refers to standard or common configurations and tasks that apply to various media processing scenarios.",
+        "level": "beginner"
+    },
+    "BINARY": {
+        "description": "Binary in GPAC refers to data represented in binary form, used for encoding and storing media content.",
+        "level": "beginner"
+    },
+    "MUX": {
+        "description": "Mux stands for multiplexing, the process of combining multiple signals into one signal over a shared medium.",
+        "level": "beginner"
+    },
+    "CONNECT": {
+        "description": "Connect in GPAC refers to establishing a link between filters or processing elements to form a media processing pipeline.",
+        "level": "beginner"
+    },
+    "RTSP": {
+        "description": "RTSP stands for Real-Time Streaming Protocol, used for controlling streaming media servers.",
+        "level": "beginner"
+    },
+    "CLOCK": {
+        "description": "Clock in GPAC refers to the timing mechanism used to synchronize media data during processing and playback.",
+        "level": "beginner"
+    },
+    "CSTR": {
+        "description": "CSTR in GPAC context refers to a C-style string, a sequence of characters used in programming.",
+        "level": "beginner"
+    },
+    "TRANSITION": {
+        "description": "Transition in GPAC refers to the visual or audio effect that occurs when moving from one scene or segment to another.",
+        "level": "beginner"
+    },
+    "X3D": {
+        "description": "X3D is an XML-based format for representing 3D graphics and scenes, supported by GPAC for interactive multimedia presentations.",
+        "level": "beginner"
+    },
+    "CACHE": {
+        "description": "Cache in GPAC refers to the temporary storage of media data to improve performance and reduce latency.",
+        "level": "beginner"
+    },
+    "MODULE": {
+        "description": "A module in GPAC refers to a separate component or plugin that adds specific functionality to the software.",
+        "level": "beginner"
+    },
+    "STORAGE": {
+        "description": "Storage in GPAC refers to the saving and managing of media data on physical or cloud-based storage systems.",
+        "level": "beginner"
+    },
+    "TIMELINE": {
+        "description": "Timeline in GPAC refers to the chronological order of media events or frames, used for synchronization and editing.",
+        "level": "beginner"
+    },
+    "FIELD": {
+        "description": "A field in GPAC refers to a specific area of data within a media file or metadata structure.",
+        "level": "beginner"
+    },
+    "META": {
+        "description": "Meta in GPAC refers to metadata, which is information about media content, such as title, author, and duration.",
+        "level": "beginner"
+    },
+    "ENCODE": {
+        "description": "Encoding in GPAC is the process of converting raw media data into a compressed format using codecs. This is essential for reducing file sizes and preparing media for streaming or storage.",
+        "level": "beginner"
+    },
+    "TREE": {
+        "description": "A tree in GPAC refers to a hierarchical structure used to organize media data or processing tasks.",
+        "level": "beginner"
+    },
+    "SEGMENTATION": {
+        "description": "Segmentation in GPAC refers to dividing media content into smaller segments for processing or streaming.",
+        "level": "beginner"
+    },
+    "INITIAL": {
+        "description": "Initial in GPAC refers to the beginning state or configuration of a media processing task or pipeline.",
+        "level": "beginner"
+    },
+    "SRT": {
+        "description": "SRT stands for SubRip Subtitle, a format for subtitle files that can be used in GPAC for adding subtitles to video content.",
+        "level": "beginner"
+    },
+    "YUV": {
+        "description": "YUV is a color space used in video compression and broadcasting, representing the luminance and chrominance components of color.",
+        "level": "beginner"
+    },
+    "DESCRIPTOR": {
+        "description": "A descriptor in GPAC refers to metadata that describes the characteristics or properties of media content.",
+        "level": "beginner"
+    },
+    "MIME": {
+        "description": "MIME stands for Multipurpose Internet Mail Extensions, a standard for describing the type of data in media files and streams.",
+        "level": "beginner"
+    },
+    "NHML": {
+        "description": "NHML stands for Non-Hierarchical Meta Language, a format used in GPAC for describing complex multimedia presentations.",
+        "level": "beginner"
+    },
+    "OPTIONAL": {
+        "description": "Optional in GPAC context refers to settings or parameters that are not required but can be used to customize media processing tasks.",
+        "level": "beginner"
+    },
+    "ASSIGNED": {
+        "description": "Assigned in GPAC refers to the allocation of specific values or parameters to filters or media data.",
+        "level": "beginner"
+    },
+    "DASHING": {
+        "description": "Dashing in GPAC refers to the process of creating DASH segments and manifests for adaptive streaming.",
+        "level": "beginner"
+    },
+    "BITRATE": {
+        "description": "Bitrate in GPAC refers to the number of bits processed per unit of time, typically measured in kbps (kilobits per second).",
+        "level": "beginner"
+    },
+    "IDENTIFIER": {
+        "description": "An identifier in GPAC refers to a unique name or number assigned to a media stream, track, or processing element.",
+        "level": "beginner"
+    },
+    "DELAY": {
+        "description": "Delay in GPAC refers to the time lag between the input and output of media data during processing or transmission.",
+        "level": "beginner"
+    },
+    "TIMEOUT": {
+        "description": "Timeout in GPAC refers to a period of time after which a processing task or connection will be terminated if no response is received.",
+        "level": "beginner"
+    },
+    "ROOT": {
+        "description": "Root in GPAC refers to the top-level directory or base element in a hierarchical structure, such as a file system or processing graph.",
+        "level": "beginner"
+    },
+    "REPLACE": {
+        "description": "Replace in GPAC refers to the action of substituting one media element or setting with another.",
+        "level": "beginner"
+    },
+    "DEBUG": {
+        "description": "Debug in GPAC refers to the process of identifying and fixing issues in the software or media processing tasks.",
+        "level": "beginner"
+    },
+    "PSSH": {
+        "description": "PSSH stands for Protection System Specific Header, a data structure used in MPEG-DASH and Common Encryption (CENC) to carry information about the content protection system.",
+        "level": "beginner"
+    },
+    "GENERAL": {
+        "description": "General in GPAC context refers to standard or common features and tasks that apply to various media processing scenarios.",
+        "level": "beginner"
+    },
+    "LIBGPAC": {
+        "description": "Libgpac in GPAC refers to the core library that provides the main functionality for media processing tasks.",
+        "level": "beginner"
+    },
+    "COMMON": {
+        "description": "Common in GPAC context refers to features or settings that are shared across multiple media processing tasks or configurations.",
+        "level": "beginner"
+    },
+    "SEPARATED": {
+        "description": "Separated in GPAC refers to the state of media data or elements being distinct and not combined.",
+        "level": "beginner"
+    },
+    "UDP": {
+        "description": "UDP stands for User Datagram Protocol, a communication protocol used across the internet for time-sensitive transmissions such as video playback.",
+        "level": "beginner"
+    },
+    "REGULATION": {
+        "description": "Regulation in GPAC context refers to the control and management of media data and processing tasks to meet specific standards or requirements.",
+        "level": "beginner"
+    },
+    "MULTIPLEXER": {
+        "description": "A multiplexer in GPAC is a tool that combines multiple media streams into a single output, such as combining audio and video into an MP4 file.",
+        "level": "beginner"
+    },
+    "OPT": {
+        "description": "Opt in GPAC context refers to optional settings or parameters that can be configured to customize media processing tasks.",
+        "level": "beginner"
+    },
+    "MODIFY": {
+        "description": "Modify in GPAC refers to the action of changing or adjusting media data, settings, or configurations.",
+        "level": "beginner"
+    },
+    "COMPLETE": {
+        "description": "Complete in GPAC context refers to the state of a media processing task or pipeline being finished or fully configured.",
+        "level": "beginner"
+    },
+    "ACTIVE": {
+        "description": "Active in GPAC refers to filters or processing tasks that are currently running or engaged in media processing.",
+        "level": "beginner"
+    },
+    "CHILD": {
+        "description": "Child in GPAC refers to a dependent element or process that is part of a larger hierarchical structure, such as a filter within a graph.",
+        "level": "beginner"
+    },
+    "VERTICAL": {
+        "description": "Vertical in GPAC refers to the orientation or arrangement of media data or visual elements, particularly in video frames.",
+        "level": "beginner"
+    },
+    "DRAW": {
+        "description": "Draw in GPAC refers to the action of rendering graphics or visual elements on a display.",
+        "level": "beginner"
+    },
+    "SENT": {
+        "description": "Sent in GPAC refers to media data that has been transmitted or delivered to its destination.",
+        "level": "beginner"
+    },
+    "HEIF": {
+        "description": "HEIF stands for High Efficiency Image File Format, a file format for individual images and image sequences.",
+        "level": "beginner"
+    },
+    "BOUNDARY": {
+        "description": "Boundary in GPAC refers to the edge or limit of a media segment, frame, or processing task.",
+        "level": "beginner"
+    },
+    "DISK": {
+        "description": "Disk in GPAC refers to the physical storage device used to save media data and software configurations.",
+        "level": "beginner"
+    },
+    "ARGUMENT": {
+        "description": "An argument in GPAC refers to a parameter or option passed to a command or function to specify its behavior.",
+        "level": "beginner"
+    },
+    "STOP": {
+        "description": "Stop in GPAC refers to the action of terminating a media processing task or playback.",
+        "level": "beginner"
+    },
+    "CONNECTION": {
+        "description": "Connections in GPAC refer to the relationships between filters in a processing graph. They define how data flows from one filter to another.",
+        "level": "beginner"
+    },
+    "STRL": {
+        "description": "STRL in GPAC refers to a string list, a data type used for handling multiple string values.",
+        "level": "beginner"
+    },
+    "RGB": {
+        "description": "RGB stands for Red, Green, Blue, a color model used in digital imaging and video processing.",
+        "level": "beginner"
+    },
+    "POSITIVE": {
+        "description": "Positive in GPAC refers to numerical values that are greater than zero, used in various settings and parameters.",
+        "level": "beginner"
+    },
+    "INTERLEAVING": {
+        "description": "Interleaving in GPAC refers to the process of mixing multiple media streams in a specific order to ensure synchronized playback.",
+        "level": "beginner"
+    },
+    "EXT": {
+        "description": "Ext in GPAC context refers to an extension, a file or module that adds additional functionality to the software.",
+        "level": "beginner"
+    },
+    "NODEJS": {
+        "description": "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine, used in GPAC for server-side scripting and media processing.",
+        "level": "beginner"
+    },
+    "PLACE": {
+        "description": "Place in GPAC refers to a location within media data or a processing pipeline where specific actions are taken.",
+        "level": "beginner"
+    },
+    "UNIT": {
+        "description": "Unit in GPAC refers to a standard measure used in media data, such as frames per second or bits per second.",
+        "level": "beginner"
+    },
+    "NETWORK": {
+        "description": "Network in GPAC refers to the system of interconnected devices and protocols used for transmitting media data.",
+        "level": "beginner"
+    },
+    "OVERRIDE": {
+        "description": "Override in GPAC refers to the action of replacing a default setting or parameter with a custom value.",
+        "level": "beginner"
+    },
+    "DROP": {
+        "description": "Drop in GPAC refers to the action of discarding media data, such as frames or packets, during processing or transmission.",
+        "level": "beginner"
+    },
+    "CHARACTER": {
+        "description": "Character in GPAC refers to an individual letter, number, or symbol used in text or metadata.",
+        "level": "beginner"
+    },
+    "VRML": {
+        "description": "VRML stands for Virtual Reality Modeling Language, used in GPAC for describing 3D interactive graphics and scenes.",
+        "level": "beginner"
+    },
+    "POSITION": {
+        "description": "Position in GPAC refers to the location of media data within a file or stream, used for navigation and editing.",
+        "level": "beginner"
+    },
+    "SPLICE": {
+        "description": "Splice in GPAC refers to the action of joining two segments of media data together seamlessly.",
+        "level": "beginner"
+    },
+    "BUILT": {
+        "description": "Built in GPAC context refers to the state of the software or a media processing pipeline being fully constructed and ready for use.",
+        "level": "beginner"
+    },
+    "INTERFACE": {
+        "description": "An interface in GPAC refers to the point of interaction between different components or the user and the software.",
+        "level": "beginner"
+    },
+    "CTS": {
+        "description": "CTS in GPAC refers to Composition Time Stamp, used for synchronizing media data during playback.",
+        "level": "beginner"
+    },
+    "SPEED": {
+        "description": "Speed in GPAC refers to the rate at which media data is processed or played back, such as playback speed.",
+        "level": "beginner"
+    },
+    "ACCORDING": {
+        "description": "According in GPAC context refers to actions or configurations that follow specific rules or conditions.",
+        "level": "beginner"
+    },
+    "MASK": {
+        "description": "Mask in GPAC refers to a binary pattern used to select or ignore specific bits in media data or settings.",
+        "level": "beginner"
+    },
+    "REMOTERY": {
+        "description": "Remotery in GPAC context refers to a tool used for profiling and analyzing the performance of media processing tasks.",
+        "level": "beginner"
+    },
+
+    "CONTROL": {
+        "description": "Control in GPAC refers to the mechanisms and commands used to manage media processing tasks and settings.",
+        "level": "beginner"
+    },
+    "CORE": {
+        "description": "Core in GPAC context refers to the essential components and functionalities of the software that provide its main capabilities.",
+        "level": "beginner"
+    },
+    "CREATION": {
+        "description": "Creation in GPAC refers to the process of generating media content or metadata, such as creating an MP4 file.",
+        "level": "beginner"
+    },
+    "PROGRAM": {
+        "description": "A program in GPAC refers to a sequence of instructions or tasks designed to perform specific media processing functions.",
+        "level": "beginner"
+    },
+    "TIMESTAMP": {
+        "description": "A timestamp in GPAC refers to a marker indicating a specific point in time within media data, used for synchronization and navigation.",
+        "level": "beginner"
+    },
+    "CHANNEL": {
+        "description": "A channel in GPAC refers to a path for transmitting media data, such as an audio channel or a data channel.",
+        "level": "beginner"
+    },
+    "DECLARATION": {
+        "description": "A declaration in GPAC refers to a statement that defines settings or configurations for media processing tasks.",
+        "level": "beginner"
+    },
+    "DIRECTIVE": {
+        "description": "A directive in GPAC refers to a command or instruction that guides the behavior of media processing tasks.",
+        "level": "beginner"
+    },
+    "WEBVTT": {
+        "description": "WebVTT stands for Web Video Text Tracks, a format for displaying timed text tracks (such as subtitles) with HTML5 video.",
+        "level": "beginner"
+    },
+    "GOP": {
+        "description": "GOP stands for Group of Pictures, a sequence of video frames used in compression standards such as MPEG.",
+        "level": "beginner"
+    },
+    "MP4MX": {
+        "description": "MP4MX in GPAC context refers to MP4 multiplexing, the process of combining multiple media streams into an MP4 file.",
+        "level": "beginner"
+    },
+    "GPU": {
+        "description": "GPU stands for Graphics Processing Unit, used in GPAC for hardware-accelerated processing of graphics and video.",
+        "level": "beginner"
+    }
+}

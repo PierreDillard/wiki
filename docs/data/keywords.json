@@ -47,7 +47,7 @@
         },
         "PROPERTY": {
             "description": "Properties in GPAC refer to attributes of media streams or filters, such as resolution, bitrate, and codec type, that affect processing.",
-            "level": "expert"
+            "level": "all"
         },
         "CODEC": {
             "description": "A codec is a software or hardware tool that encodes or decodes media data. GPAC supports various codecs for compressing and decompressing media streams.",
@@ -71,7 +71,7 @@
         },
         "GRAPH": {
             "description": "A graph in GPAC represents the entire media processing workflow, consisting of nodes (filters) and edges (connections) that define data flow.",
-            "level": "expert"
+            "level": "all"
         },
         "DECODING": {
             "description": "Decoding is the process of converting compressed media data back into its original format. GPAC uses various codecs to decode audio and video streams.",
@@ -88,11 +88,54 @@
         },
         "ENCODE": {
             "description": "Encoding in GPAC is the process of converting raw media data into a compressed format using codecs. This is essential for reducing file sizes and preparing media for streaming or storage.",
-            "level": "beginner"
+            "level": "all"
         },
         "MP4": {
             "description": "MP4 is a standardized multimedia file format for storing video, audio, subtitles and still images. It is widely used for streaming and media storage.",
-            "level": "expert"
+            "level": "beginner"
+        },
+        "DASH": {
+            "description": "DASH stands for Dynamic Adaptive Streaming over HTTP, a technique that enables high-quality streaming of media content over the internet.",
+            "level": "all"
         }
+        ,
+        "SCENE": {
+            "description": "Scene in GPAC refers to a multimedia presentation, including video, audio, and interactive elements, typically described using BIFS or X3D.",
+            "level": "all"
+        },
+        "MPD": {
+            "description": "MPD stands for Media Presentation Description, a file that provides metadata about the media content in a DASH session.",
+            "level": "beginner"
+        },
+
+    "BOX": {
+        "description": "A box in GPAC refers to a container or structure within a media file format, such as an MP4 box, used to store metadata and media data.",
+        "level": "beginner"
+    }
+    ,
+    "RAW": {
+        "description": "Raw in GPAC refers to uncompressed media data that has not been processed or encoded.",
+        "level": "beginner"
+    },
+    "GROUP": {
+        "description": "A group in GPAC refers to a collection of related items, such as tracks or filters, that are processed or managed together.",
+        "level": "beginner"
+    },
+    "PROFILE": {
+        "description": "A profile in GPAC refers to a set of predefined settings or configurations for media processing tasks, such as encoding profiles.",
+        "level": "beginner"
+    }
+    ,
+    "XML": {
+        "description": "XML stands for eXtensible Markup Language, used in GPAC for storing and exchanging metadata and configuration settings.",
+        "level": "all"
+    }
+    ,
+    "TILE": {
+        "description": "A tile in GPAC refers to a rectangular section of a video frame, used in tiling and parallel processing of video content.",
+        "level": "all"
+    }
+   
+    
     }
 }

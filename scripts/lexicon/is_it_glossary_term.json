@@ -1,3 +1,266 @@
 {
-  "VALUE": true
+  "PROFILE": {
+    "count": 166,
+    "isReviewed": true
+  },
+  "WRITEGEN": {
+    "count": 160,
+    "isReviewed": true
+  },
+  "PLAYBACK": {
+    "count": 122,
+    "isReviewed": true
+  },
+  "REPRESENTATION": {
+    "count": 87,
+    "isReviewed": true
+  },
+  "OFFSET": {
+    "count": 77,
+    "isReviewed": true
+  },
+  "HEADER": {
+    "count": 64,
+    "isReviewed": true
+  },
+  "SIDX": {
+    "count": 62,
+    "isReviewed": true
+  },
+  "TIMESCALE": {
+    "count": 57,
+    "isReviewed": true
+  },
+  "OPENGL": {
+    "count": 51,
+    "isReviewed": true
+  },
+  "SCHEME": {
+    "count": 50,
+    "isReviewed": true
+  },
+  "CENC": {
+    "count": 49,
+    "isReviewed": true
+  },
+  "ALPHA": {
+    "count": 49,
+    "isReviewed": true
+  },
+  "BYTE": {
+    "count": 46,
+    "isReviewed": true
+  },
+  "SOCKET": {
+    "count": 45,
+    "isReviewed": true
+  },
+  "TIMELINE": {
+    "count": 43,
+    "isReviewed": true
+  },
+  "META": {
+    "count": 43,
+    "isReviewed": true
+  },
+  "MIME": {
+    "count": 43,
+    "isReviewed": true
+  },
+  "NHML": {
+    "count": 42,
+    "isReviewed": true
+  },
+  "PSSH": {
+    "count": 41,
+    "isReviewed": true
+  },
+  "DELAY": {
+    "count": 40,
+    "isReviewed": true
+  },
+  "ROOT": {
+    "count": 39,
+    "isReviewed": true
+  },
+  "STRL": {
+    "count": 36,
+    "isReviewed": true
+  },
+  "TTXT": {
+    "count": 29,
+    "isReviewed": true
+  },
+  "TEMI": {
+    "count": 27,
+    "isReviewed": true
+  },
+  "INBAND": {
+    "count": 26,
+    "isReviewed": true
+  },
+  "MOOF": {
+    "count": 26,
+    "isReviewed": true
+  },
+  "WEBGL": {
+    "count": 26,
+    "isReviewed": true
+  },
+  "AXIS": {
+    "count": 25,
+    "isReviewed": true
+  },
+  "INSTANCE": {
+    "count": 25,
+    "isReviewed": true
+  },
+  "MATRIX": {
+    "count": 25,
+    "isReviewed": true
+  },
+  "FFENC": {
+    "count": 25,
+    "isReviewed": true
+  },
+  "PLANAR": {
+    "count": 25,
+    "isReviewed": true
+  },
+  "ATSC": {
+    "count": 25,
+    "isReviewed": true
+  },
+  "ENDIAN": {
+    "count": 22,
+    "isReviewed": true
+  },
+  "BANDWIDTH": {
+    "count": 20,
+    "isReviewed": true
+  },
+  "UDTA": {
+    "count": 18,
+    "isReviewed": true
+  },
+  "TRANSCODE": {
+    "count": 18,
+    "isReviewed": true
+  },
+  "METADATA": {
+    "count": 17,
+    "isReviewed": true
+  },
+  "KVAZAAR": {
+    "count": 17,
+    "isReviewed": true
+  },
+  "REWRITE": {
+    "count": 14,
+    "isReviewed": true
+  },
+  "YUV420": {
+    "count": 13,
+    "isReviewed": true
+  },
+  "H263": {
+    "count": 13,
+    "isReviewed": true
+  },
+  "TIMECODE": {
+    "count": 13,
+    "isReviewed": true
+  },
+  "OPENGOP": {
+    "count": 12,
+    "isReviewed": true
+  },
+  "TUNE": {
+    "count": 11,
+    "isReviewed": true
+  },
+  "LHVC": {
+    "count": 11,
+    "isReviewed": true
+  },
+  "MPEG4": {
+    "count": 11,
+    "isReviewed": true
+  },
+  "RTCP": {
+    "count": 10,
+    "isReviewed": true
+  },
+  "RASTERIZER": {
+    "count": 9,
+    "isReviewed": true
+  },
+  "TRACKER": {
+    "count": 9,
+    "isReviewed": true
+  },
+  "M3U8": {
+    "count": 9,
+    "isReviewed": true
+  },
+  "MP4RA": {
+    "count": 9,
+    "isReviewed": true
+  },
+  "XRGB": {
+    "count": 8,
+    "isReviewed": true
+  },
+  "RGBX": {
+    "count": 8,
+    "isReviewed": true
+  },
+  "TIMESHIFT": {
+    "count": 8,
+    "isReviewed": true
+  },
+  "RESCALE": {
+    "count": 8,
+    "isReviewed": true
+  },
+  "EVRC": {
+    "count": 8,
+    "isReviewed": true
+  },
+  "FLUTE": {
+    "count": 8,
+    "isReviewed": true
+  },
+  "REMUX": {
+    "count": 1,
+    "isReviewed": true
+  },
+  "MULTIVIEW": {
+    "count": 7,
+    "isReviewed": true
+  },
+  "RESCALER": {
+    "count": 1,
+    "isReviewed": true
+  },
+  "FLAC": {
+    "count": 1,
+    "isReviewed": true
+  },
+  "FRAMERATE": {
+    "count": 1,
+    "isReviewed": true
+  },
+  "MIRROR": {
+    "count": 1,
+    "isReviewed": true
+  },
+  "DEMULTIPLEX": {
+    "count": 1,
+    "isReviewed": true
+  },
+  "VORBIS": {
+    "count": 1,
+    "isReviewed": true
+  }
 }

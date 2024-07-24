@@ -7,9 +7,10 @@ const TECH_TERMS_FILE = path.join(__dirname, 'technical_terms.json');
 const STOP_WORDS_FILE = path.join(__dirname, 'stop_words.json');
 const KEYWORDS_FILE = path.join(__dirname, '../../docs/data/keywords.json');
 const IS_IT_GLOSSARY_TERM_FILE = path.join(__dirname,'is_it_glossary_term.json');
-const TOP_WORDS = 600;
-const MIN_WORD_LENGTH = 3;
-const MIN_WORD_FREQUENCY = 5;
+const COMMON_WORDS_FILE = path.join(__dirname, 'common_english_words.json');
+const TOP_WORDS = 500;
+const MIN_WORD_FREQUENCY= 5;
+const commonEnglishWords = loadCommonEnglishWords();
 
 
 
@@ -110,18 +111,29 @@ function loadDefinitions() {
     }
 }
 
-
-function manageGlossaryTerms(word) {
+function loadCommonEnglishWords() {
+    try {
+        const words= JSON.parse(fs.readFileSync(COMMON_WORDS_FILE, 'utf-8'));
+        return new Set(words.map(word => word.toUpperCase()));
+    }catch(error) {
+        console.error('Error loading common English words :', error);
+        return new Set();
+    }
+}
+function manageGlossaryTerms(word,definitions, count) {
     let glossaryTerms;
     try {
         glossaryTerms = JSON.parse(fs.readFileSync(IS_IT_GLOSSARY_TERM_FILE, 'utf-8'));
     } catch (error) {
         glossaryTerms = {};
     }
-    if (!glossaryTerms[word]) {
+    if (definitions.hasOwnProperty(word)) {
+        return; 
+    }
+    if (!glossaryTerms[word] && count >= MIN_WORD_FREQUENCY ) {
         glossaryTerms[word] = { count: 1, isReviewed: false };
-    } else {
-        glossaryTerms[word].count++;
+    } else if (glossaryTerms[word]) {
+        glossaryTerms[word].count = count;
     }
     fs.writeFileSync(IS_IT_GLOSSARY_TERM_FILE, JSON.stringify(glossaryTerms, null, 2));
 }
@@ -228,7 +240,46 @@ function cleanWord(word) {
     return word.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
 }
 
+function cleanGlossaryTerms(definitions) {
+    let glossaryTerms;
+    try {
+        glossaryTerms = JSON.parse(fs.readFileSync(IS_IT_GLOSSARY_TERM_FILE, 'utf-8'));
+    } catch (error) {
+        console.error('Error reading glossary terms file:', error);
+        return;
+    }
+    const commonEnglishWords = loadCommonEnglishWords();
+    const stopWords = loadStopWords();
 
+    console.log(`Initial number of terms in glossary: ${Object.keys(glossaryTerms).length}`);
+
+    const termsToRemove = [];
+
+ 
+    for (const word in glossaryTerms) {
+       
+        if (word.endsWith('S')) {
+            const singularForm = word.slice(0, -1);
+          
+            if (definitions.hasOwnProperty(singularForm) || 
+                commonEnglishWords.has(singularForm) || 
+                stopWords.has(singularForm)) {
+                termsToRemove.push(word);
+              
+            }
+        }
+    }
+
+    // Supprimer les termes identifiés
+    termsToRemove.forEach(word => {
+        delete glossaryTerms[word];
+        console.log(`Removed: ${word}`);
+    });
+
+    fs.writeFileSync(IS_IT_GLOSSARY_TERM_FILE, JSON.stringify(glossaryTerms, null, 2));
+    console.log(`Removed ${termsToRemove.length} plural forms from is_it_glossary_term.json`);
+    console.log(`Final number of terms in glossary: ${Object.keys(glossaryTerms).length}`);
+}
 
  function isValidWord(word, definitions,singularForm) {
     
@@ -240,11 +291,12 @@ function cleanWord(word) {
     }
     const wordToCheck = singularForm || word;
 
-    if (definitions.hasOwnProperty(wordToCheck) || 
-    stopWords.has(wordToCheck))
-  {
-    return false;
-}
+    if (definitions.hasOwnProperty(wordToCheck)) {
+        return false;
+    }
+    if (stopWords.has(wordToCheck) || commonEnglishWords.has(wordToCheck)) {
+        return false;
+    }
 
 return true;
 }
@@ -269,7 +321,7 @@ function analyzeContent(content,definitions) {
 }
 // Prompt user to classify words as technical terms or not
 
-async function promptUserForNewTerms(topWords) {
+/* async function promptUserForNewTerms(topWords) {
     const rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout
@@ -290,9 +342,10 @@ async function promptUserForNewTerms(topWords) {
     }
 
     
-}
-function getTopWords(wordCounts, topN) {
+} */
+function getTopWords(wordCounts, topN,minFrequency) {
     return Object.entries(wordCounts)
+        .filter(([_, count]) => count >= minFrequency)
         .sort((a, b) => b[1] - a[1])
         .slice(0, topN)
         .reduce((acc, [word, count]) => {
@@ -303,14 +356,6 @@ function getTopWords(wordCounts, topN) {
 
 
 
-    function isLikelyTechnicalTerm(word, count, totalWords) {
-        const frequency = count / totalWords;
-        return word.length >= MIN_WORD_LENGTH && 
-               count >= MIN_WORD_FREQUENCY && 
-               frequency < 0.01 && // Not too common
-               !stopWords.has(word) &&
-               !technicalTerms.has(word);
-    }
    
     function singularizePlurals(wordCounts, fileOccurrences) {
         const singularized = {};
@@ -360,35 +405,70 @@ function getTopWords(wordCounts, topN) {
     
         return { wordCounts: finalWordCounts, fileOccurrences: finalFileOccurrences };
     }
-    function displayGlossaryTermsSummary() {
+    async function reviewGlossaryTerms(definitions) {
+        const rl = readline.createInterface({
+            input: process.stdin,
+            output: process.stdout
+        });
+    
         let glossaryTerms;
+        let commonEnglishWords;
         try {
             glossaryTerms = JSON.parse(fs.readFileSync(IS_IT_GLOSSARY_TERM_FILE, 'utf-8'));
+            commonEnglishWords = new Set(JSON.parse(fs.readFileSync(COMMON_WORDS_FILE, 'utf-8')));
         } catch (error) {
-            console.error('Error reading glossary terms file:', error);
+            console.error('Error reading files:', error);
             return;
         }
     
-        console.log('\nPotential new technical terms:');
         for (const [word, data] of Object.entries(glossaryTerms)) {
             if (!data.isReviewed) {
-                console.log(`${word} (count: ${data.count})`);
+                let answer = await new Promise(resolve => {
+                    rl.question(`Pour le mot "${word}" :\n1. Ajouter aux stop words\n2. Ajouter aux common English words\n3. Garder dans le glossaire\nVotre choix (1/2/3): `, resolve);
+                });
+    
+                switch(answer) {
+                    case '1':
+                        stopWords.add(word);
+                        delete glossaryTerms[word];
+                        console.log(`"${word}" ajouté aux stop words.`);
+                        break;
+                    case '2':
+                        commonEnglishWords.add(word);
+                        delete glossaryTerms[word];
+                        console.log(`"${word}" ajouté aux common English words.`);
+                        break;
+                    case '3':
+                        glossaryTerms[word].isReviewed = true;
+                        console.log(`"${word}" gardé dans le glossaire.`);
+                        break;
+                    default:
+                        console.log(`Réponse non reconnue. "${word}" gardé dans le glossaire.`);
+                        glossaryTerms[word].isReviewed = true;
+                }
             }
         }
-        console.log(`\nTotal potential new terms: ${Object.keys(glossaryTerms).filter(word => !glossaryTerms[word].isReviewed).length}`);
+    
+        rl.close();
+    
+        // Mettre à jour les fichiers
+        fs.writeFileSync(IS_IT_GLOSSARY_TERM_FILE, JSON.stringify(glossaryTerms, null, 2));
+        fs.writeFileSync(COMMON_WORDS_FILE, JSON.stringify([...commonEnglishWords], null, 2));
+        saveStopWords();
+    
+        console.log('Mise à jour terminée pour le glossaire, les stop words et les common English words.');
     }
     async function main() {
+
         try {
             const definitions = loadDefinitions();
-            technicalTerms = loadTechnicalTerms();
+         
             stopWords = loadStopWords();
             if (isFirstRun) {
                 console.log("First run detected. All words will be considered for classification.");
             } else {
                 console.log("Subsequent run detected. Only new or newly frequent words will be considered.");
             }
-    
-            console.log(`Total number of existing technical terms: ${technicalTerms.size}`);
             console.log(`Total number of existing stop words: ${stopWords.size}`);
             const markdownContents = analyzeMarkdownFiles(INPUT_DIRECTORY);
             console.log(`Analyzed ${markdownContents.length} Markdown files`);
@@ -413,14 +493,13 @@ function getTopWords(wordCounts, topN) {
     
             // Filter out words that appear in only one file
             wordCounts = Object.fromEntries(
-                Object.entries(wordCounts).filter(([word]) => fileOccurrences[word].size > 1)
-            );
+                Object.entries(wordCounts).filter(([word,count]) => fileOccurrences[word].size > 1 && count >= MIN_WORD_FREQUENCY  ));
             fileOccurrences = Object.fromEntries(
                 Object.entries(fileOccurrences).filter(([word]) => fileOccurrences[word].size > 1)
             );
     
       
-            const topWords = getTopWords(wordCounts, TOP_WORDS);
+            const topWords = getTopWords(wordCounts, TOP_WORDS, MIN_WORD_FREQUENCY);
     
             // Automatically classify words
             for (const [word, count] of Object.entries(topWords)) {
@@ -430,20 +509,19 @@ function getTopWords(wordCounts, topN) {
                 );
     
                 if (isValidWord(word, definitions, singularForm)) {
-                    manageGlossaryTerms(singularForm || word);
+                    manageGlossaryTerms(singularForm || word,definitions, count );
                 }
             }
             console.log("Classifying technical terms and stop words...");
-            console.log(`Identified ${technicalTerms.size} technical terms`);
             console.log(`Identified ${stopWords.size} stop words`);
     
             await saveStopWords();
     
             fs.writeFileSync(OUTPUT_FILE, JSON.stringify(topWords, null, 2));
+            cleanGlossaryTerms(definitions);
             console.log(`Top ${TOP_WORDS} keywords have been saved to ${OUTPUT_FILE}`);
-            console.log(`Updated technical terms have been saved to ${TECH_TERMS_FILE}`);
             console.log(`Updated stop words have been saved to ${STOP_WORDS_FILE}`);
-            displayGlossaryTermsSummary();
+            await reviewGlossaryTerms(definitions);
         } catch (error) {
             console.error('Error:', error);
         }

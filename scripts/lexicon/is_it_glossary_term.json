@@ -240,27 +240,67 @@
     "isReviewed": true
   },
   "RESCALER": {
-    "count": 1,
+    "count": 7,
     "isReviewed": true
   },
   "FLAC": {
-    "count": 1,
+    "count": 7,
     "isReviewed": true
   },
   "FRAMERATE": {
-    "count": 1,
+    "count": 6,
     "isReviewed": true
   },
   "MIRROR": {
-    "count": 1,
+    "count": 6,
     "isReviewed": true
   },
   "DEMULTIPLEX": {
-    "count": 1,
+    "count": 6,
     "isReviewed": true
   },
   "VORBIS": {
-    "count": 1,
+    "count": 6,
+    "isReviewed": true
+  },
+  "SAMPLERATE": {
+    "count": 5,
+    "isReviewed": true
+  },
+  "ENCRYPTOR": {
+    "count": 5,
+    "isReviewed": true
+  },
+  "MULTICHANNEL": {
+    "count": 5,
+    "isReviewed": true
+  },
+  "MUTEXES": {
+    "count": 5,
+    "isReviewed": true
+  },
+  "BAND": {
+    "count": 5,
+    "isReviewed": true
+  },
+  "SINTL": {
+    "count": 5,
+    "isReviewed": true
+  },
+  "PROBED": {
+    "count": 5,
+    "isReviewed": true
+  },
+  "ICECAST": {
+    "count": 5,
+    "isReviewed": true
+  },
+  "DELIMITER": {
+    "count": 5,
+    "isReviewed": true
+  },
+  "PIPING": {
+    "count": 5,
     "isReviewed": true
   }
 }

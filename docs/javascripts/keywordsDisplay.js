@@ -41,6 +41,8 @@ function displayKeywords(keywords, cachedDefinitions, allDefinitions, selectedLe
         }
     });
 
+    //TODO: Remove the keyword on keywords-cloud when we are on the keyword page
+
     if (displayedKeywordsCount > 0) {
         wordCloudElement.classList.remove('hidden');
     } else {

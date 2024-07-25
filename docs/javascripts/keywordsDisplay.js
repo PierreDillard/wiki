@@ -1,4 +1,6 @@
 function displayKeywords(keywords, cachedDefinitions, allDefinitions, selectedLevel) {
+
+ 
     const wordCloudElement = document.querySelector('.words-cloud');
     const wordCloudList = document.getElementById('dynamic-words-cloud');
     wordCloudList.innerHTML = ''; 

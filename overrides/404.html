@@ -3,26 +3,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>404 - Page Not Found</h1>
-<p>Sorry, the page you are looking for does not exist.</p>
 
-<div id="glossary-contribution" style="display: none;">
+<div class="error-container">
+    <h1 class="">404 - Page Not Found</h1>
+    <p>Sorry, the page you are looking for does not exist.</p>
+</div>
+
+<div id="glossary-contribution" class="glossary-contribution" style="display: none;">
     <h2>Glossary Term Not Found</h2>
     <p>It looks like you're trying to access a glossary term that hasn't been defined yet. Would you like to contribute?</p>
     <p>Term: <strong id="glossary-term"></strong></p>
     <p>You can help improve the GPAC documentation by adding a definition for this term. Here's how:</p>
     <ol>
-        <li>Visit our <a href="https://github.com/gpac/wiki">GitHub wiki</a></li>
+        <li>Visit our <a href="https://github.com/gpac/gpac/wiki">GitHub wiki</a></li>
         <li>Create a new page for this term</li>
         <li>Add a definition and any relevant information</li>
         <li>Submit your changes for review</li>
     </ol>
+    <div class="template-info">
+        <p><strong>Note:</strong> We have a template for glossary pages. Please refer to the <a href="/glossary/encrypt/" target="_blank">encrypt</a> page as an example when creating your content. This ensures consistency across our glossary.</p>
+    </div>
     <p>Thank you for helping to make GPAC documentation more comprehensive!</p>
 </div>
 
-<p id="back-link" style="margin-top: 20px;">
-    <a href="javascript:history.back()">← Go back to previous page</a>
-</p>
+<a href="javascript:history.back()" class="back-link">← Go back to previous page</a>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -35,17 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (toggleButton) {
         toggleButton.style.display = 'none';
     }
+   
 
     if (match) {
         const term = decodeURIComponent(match[1]);
         document.getElementById('glossary-term').textContent = term;
-        document.querySelector('h1').style.display = 'none';
-        document.querySelector('p').style.display = 'none';
+        document.querySelector('.error-container').style.display = 'none';
         document.getElementById('glossary-contribution').style.display = 'block';
     }
-
-    // Always show the back link
-    document.getElementById('back-link').style.display = 'block';
 });
 </script>
 {% endblock %}

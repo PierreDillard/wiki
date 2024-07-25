@@ -13,6 +13,7 @@ extra_javascript:
    - javascripts/keywordsDisplay.js
    - javascripts/cache.js
    - javascripts/modalFunctions.js
+
    
     
 extra_css:
@@ -31,6 +32,8 @@ extra_css:
 theme:
   name: material
   custom_dir: overrides
+  static_templates:
+    - 404.html
   logo: images/gpac-logo.svg
   favicon: images/favicon-32x32.png
   palette:

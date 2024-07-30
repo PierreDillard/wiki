@@ -118,76 +118,46 @@ function initializeAllSections() {
 
 document.addEventListener("DOMContentLoaded", initializeAllSections);
 
-// Open collapse sections with highlighted search terms
 
+
+// Open collapse sections with highlighted search terms
 document.addEventListener('DOMContentLoaded', function() {
     function openCollapseWithHighlight() {
         const highlights = document.querySelectorAll('mark[data-md-highlight]');
-        
+
         highlights.forEach(highlight => {
+            // Find the closest parent collapse section
             const collapseSection = highlight.closest('.collapse-section');
             if (collapseSection) {
-                // Ensure the collapse section is properly initialized
-                if (!collapseSection.classList.contains('active')) {
-                    // Trigger the click event on the h2 element to open the section
-                    const h2 = collapseSection.querySelector('h2');
-                    if (h2) {
-                        h2.click();
-                    }
-                }
-
-                // Use requestAnimationFrame for smoother scrolling
-                requestAnimationFrame(() => {
-                    highlight.scrollIntoView({behavior: 'smooth', block: 'center'});
-                });
+                collapseSection.classList.add('active');
             }
         });
     }
 
-    // Delay the initial call to ensure everything is loaded
-    setTimeout(openCollapseWithHighlight, 500);
+    openCollapseWithHighlight();
 
     window.addEventListener('hashchange', openCollapseWithHighlight);
     document.addEventListener('DOMContentSwap', openCollapseWithHighlight);
 
     // MutationObserver to detect when search highlights are added to the page
     const observer = new MutationObserver((mutations) => {
-        for (let mutation of mutations) {
+        mutations.forEach((mutation) => {
             if (mutation.type === 'childList') {
                 const addedNodes = mutation.addedNodes;
-                for (let node of addedNodes) {
+                for (let i = 0; i < addedNodes.length; i++) {
+                    const node = addedNodes[i];
+
                     if (node.nodeType === Node.ELEMENT_NODE) {
+                        // Check if the node itself or any of its descendants have the highlight mark
                         if (node.matches('mark[data-md-highlight]') || node.querySelector('mark[data-md-highlight]')) {
-                            // Delay the call to ensure all highlights are added
-                            setTimeout(openCollapseWithHighlight, 100);
-                            return;
+                            openCollapseWithHighlight();
+                            break;
                         }
                     }
                 }
             }
-        }
+        });
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
-
-    // Handle search input changes
-    const searchInput = document.querySelector('input[data-md-component="search-query"]');
-    if (searchInput) {
-        searchInput.addEventListener('input', () => {
-            // Delay the call to ensure search results are populated
-            setTimeout(openCollapseWithHighlight, 300);
-        });
-
-        searchInput.addEventListener('search', () => {
-            if (searchInput.value === '') {
-                // Search has been cleared, close all collapse sections
-                document.querySelectorAll('.collapse-section.active').forEach(section => {
-                    const h2 = section.querySelector('h2');
-                    if (h2) {
-                        h2.click();
-                    }
-                });
-            }
-        });
-    }
 });

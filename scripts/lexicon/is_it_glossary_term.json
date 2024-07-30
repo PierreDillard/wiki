@@ -3,28 +3,12 @@
     "count": 166,
     "isReviewed": true
   },
-  "WRITEGEN": {
-    "count": 160,
-    "isReviewed": true
-  },
-  "PLAYBACK": {
-    "count": 122,
-    "isReviewed": true
-  },
   "REPRESENTATION": {
     "count": 87,
     "isReviewed": true
   },
-  "OFFSET": {
-    "count": 77,
-    "isReviewed": true
-  },
   "HEADER": {
     "count": 64,
-    "isReviewed": true
-  },
-  "SIDX": {
-    "count": 62,
     "isReviewed": true
   },
   "TIMESCALE": {
@@ -45,14 +29,6 @@
   },
   "ALPHA": {
     "count": 49,
-    "isReviewed": true
-  },
-  "BYTE": {
-    "count": 46,
-    "isReviewed": true
-  },
-  "SOCKET": {
-    "count": 45,
     "isReviewed": true
   },
   "TIMELINE": {
@@ -79,14 +55,6 @@
     "count": 40,
     "isReviewed": true
   },
-  "ROOT": {
-    "count": 39,
-    "isReviewed": true
-  },
-  "STRL": {
-    "count": 36,
-    "isReviewed": true
-  },
   "TTXT": {
     "count": 29,
     "isReviewed": true
@@ -105,22 +73,6 @@
   },
   "WEBGL": {
     "count": 26,
-    "isReviewed": true
-  },
-  "AXIS": {
-    "count": 25,
-    "isReviewed": true
-  },
-  "INSTANCE": {
-    "count": 25,
-    "isReviewed": true
-  },
-  "MATRIX": {
-    "count": 25,
-    "isReviewed": true
-  },
-  "FFENC": {
-    "count": 25,
     "isReviewed": true
   },
   "PLANAR": {
@@ -155,14 +107,6 @@
     "count": 17,
     "isReviewed": true
   },
-  "REWRITE": {
-    "count": 14,
-    "isReviewed": true
-  },
-  "YUV420": {
-    "count": 13,
-    "isReviewed": true
-  },
   "H263": {
     "count": 13,
     "isReviewed": true
@@ -195,10 +139,6 @@
     "count": 9,
     "isReviewed": true
   },
-  "TRACKER": {
-    "count": 9,
-    "isReviewed": true
-  },
   "M3U8": {
     "count": 9,
     "isReviewed": true
@@ -208,10 +148,6 @@
     "isReviewed": true
   },
   "XRGB": {
-    "count": 8,
-    "isReviewed": true
-  },
-  "RGBX": {
     "count": 8,
     "isReviewed": true
   },
@@ -243,14 +179,6 @@
     "count": 7,
     "isReviewed": true
   },
-  "FLAC": {
-    "count": 7,
-    "isReviewed": true
-  },
-  "FRAMERATE": {
-    "count": 6,
-    "isReviewed": true
-  },
   "MIRROR": {
     "count": 6,
     "isReviewed": true
@@ -280,14 +208,6 @@
     "isReviewed": true
   },
   "BAND": {
-    "count": 5,
-    "isReviewed": true
-  },
-  "SINTL": {
-    "count": 5,
-    "isReviewed": true
-  },
-  "PROBED": {
     "count": 5,
     "isReviewed": true
   },

@@ -1,5 +1,5 @@
 
-
+const { spawn } = require('child_process');
 const path = require('path');
 const config = require('./config');
 const { 
@@ -78,11 +78,22 @@ async function main() {
 
         await reviewGlossaryTerms(definitions, stopWords, commonEnglishWords);
 
+        console.log('Main processing complete. Starting glossary terms processing...');
+        
+        // Exécuter le script processGlossaryTerms.js avec spawn
+        const processGlossaryTermsPath = path.join(__dirname, 'processGlossaryTerms.js');
+        const child = spawn('node', [processGlossaryTermsPath], {
+            stdio: ['inherit', 'inherit', 'inherit']
+        });
+
+        child.on('close', (code) => {
+            console.log(`processGlossaryTerms.js finished with code ${code}`);
+            console.log('All processing complete.');
+        });
+
     } catch (error) {
         console.error('Error:', error);
-    } finally {
-        process.exit(0);
     }
 }
 
-main().then(() => console.log('Processing complete.'));
+main();

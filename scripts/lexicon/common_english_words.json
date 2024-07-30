@@ -1842,5 +1842,16 @@
   "FACTORY",
   "SBRX",
   "ARGS",
-  "APPEARANCE"
+  "APPEARANCE",
+  "PLAYBACK",
+  "OFFSET",
+  "BYTE",
+  "SOCKET",
+  "ROOT",
+  "STRL",
+  "AXIS",
+  "INSTANCE",
+  "MATRIX",
+  "TRACKER",
+  "PROBED"
 ]

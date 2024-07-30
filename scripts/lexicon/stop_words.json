@@ -748,5 +748,14 @@
   "GROUPJSFGRP",
   "NOTIFICATION",
   "TINY",
-  "CPRT"
+  "CPRT",
+  "WRITEGEN",
+  "SIDX",
+  "FFENC",
+  "REWRITE",
+  "YUV420",
+  "RGBX",
+  "FLAC",
+  "FRAMERATE",
+  "SINTL"
 ]

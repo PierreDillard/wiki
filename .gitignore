@@ -6,3 +6,4 @@ site.*
 .DS_Store
 echo "venv/" >> .gitignore
 
+venv/

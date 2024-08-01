@@ -18,12 +18,13 @@ function isValidWord(word, definitions, singularForm, stopWords, commonEnglishWo
              commonEnglishWords.has(wordToCheck));
 }
 
-function extractWords(text, definitions, stopWords, commonEnglishWords) {
+function extractWords(text, definitions, stopWords, commonEnglishWords, aliasMap) {
     // Match words that contain at least one letter
     
     const words = text.match(/\b(?=[a-zA-Z])[\w']+\b/g) || [];
     return words
         .map(cleanWord)
+        .map(word => aliasMap.get(word) || word)
         .filter(word => word.length > 1 && isValidWord(word, definitions, null, stopWords, commonEnglishWords));
 }
 

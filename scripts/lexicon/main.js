@@ -23,7 +23,7 @@ const {
 
 async function main() {
     try {
-        const definitions = loadDefinitions();
+        const { definitions , aliasMap } = loadDefinitions();
         let stopWords = loadStopWords();
         const commonEnglishWords = loadCommonEnglishWords();
 
@@ -38,7 +38,7 @@ async function main() {
 
         for (const { content, path } of markdownContents) {
             const preprocessedContent = preprocessContent(content, path);
-            const contentCounts = analyzeContent(preprocessedContent, definitions, stopWords, commonEnglishWords);
+            const contentCounts = analyzeContent(preprocessedContent, definitions, stopWords, commonEnglishWords,aliasMap);
             for (const [word, count] of Object.entries(contentCounts)) {
                 wordCounts[word] = (wordCounts[word] || 0) + count;
                 fileOccurrences[word] = (fileOccurrences[word] || new Set()).add(path);

@@ -1,3 +1,4 @@
+
 function fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions) {
     fetch('/data/keywords.json')
         .then(response => {
@@ -9,10 +10,21 @@ function fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions) {
         .then(data => {
             const allDefinitions = data.definitions;
             const lexique = Object.keys(allDefinitions);
-            findKeywordsInContent(currentPageMdPath, lexique, (filteredKeywords) => {
+            
+            // Créer aliasMap
+            const aliasMap = new Map();
+            for (const [term, definition] of Object.entries(allDefinitions)) {
+                if (definition.aliases) {
+                    definition.aliases.forEach(alias => {
+                        aliasMap.set(alias.toUpperCase(), term.toUpperCase());
+                    });
+                }
+            }
+
+            findKeywordsInContent(currentPageMdPath, lexique, aliasMap, (filteredKeywords) => {
                 cachedKeywords[currentPageMdPath] = filteredKeywords;
                 setCache('keywordsCache', cachedKeywords);
-                const selectedLevel = localStorage.getItem('userLevel') || 'beginner';
+                const selectedLevel = localStorage.getItem('userLevel') || 'expert';
                 displayKeywords(filteredKeywords, cachedDefinitions, allDefinitions, selectedLevel);
             });
         })

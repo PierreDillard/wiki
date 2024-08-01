@@ -16,9 +16,26 @@ function saveJsonFile(filePath, data) {
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 
+
 function loadDefinitions() {
-    const keywordsData = loadJsonFile(config.KEYWORDS_FILE);
-    return keywordsData?.definitions || {};
+    try {
+        const keywordsData = JSON.parse(fs.readFileSync(config.KEYWORDS_FILE, 'utf-8'));
+        const definitions = keywordsData.definitions;
+        const aliasMap = new Map();
+
+        for (const [term, data] of Object.entries(definitions)) {
+            if (data.aliases) {
+                data.aliases.forEach(alias => {
+                    aliasMap.set(alias.toUpperCase(), term.toUpperCase());
+                });
+            }
+        }
+
+        return { definitions, aliasMap };
+    } catch (error) {
+        console.error('Error loading definitions and aliases:', error);
+        return { definitions: {}, aliasMap: new Map() };
+    }
 }
 
 function loadCommonEnglishWords() {
@@ -60,11 +77,14 @@ function exploreDirectory(directoryPath, ignoredDirectories, ignoredFiles) {
     return contents;
 }
 
+
+
 module.exports = {
     loadJsonFile,
     saveJsonFile,
     loadDefinitions,
     loadCommonEnglishWords,
     loadStopWords,
-    exploreDirectory
+    exploreDirectory,
+
 };

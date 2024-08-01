@@ -757,5 +757,22 @@
   "RGBX",
   "FLAC",
   "FRAMERATE",
-  "SINTL"
+  "SINTL",
+  "SINT",
+  "SINK",
+  "OFFSCREEN",
+  "SCHEME",
+  "ALPHA",
+  "PSSH",
+  "METADATA",
+  "TIMECODE",
+  "MULTIVIEW",
+  "RESCALER",
+  "MIRROR",
+  "VORBIS",
+  "ENCRYPTOR",
+  "MULTICHANNEL",
+  "MUTEXES",
+  "ICECAST",
+  "DELIMITER"
 ]

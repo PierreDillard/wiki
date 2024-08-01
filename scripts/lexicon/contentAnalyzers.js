@@ -43,9 +43,9 @@ function preprocessContent(content, filePath) {
 
 
 
-function analyzeContent(content, definitions, stopWords, commonEnglishWords) {
+function analyzeContent(content, definitions, stopWords, commonEnglishWords, aliasMap) {
     const wordCounts = {};
-    extractWords(content, definitions, stopWords, commonEnglishWords).forEach(word => {
+    extractWords(content, definitions, stopWords, commonEnglishWords, aliasMap).forEach(word => {
         const normalizedWorld= word.toUpperCase();
         wordCounts[normalizedWorld] = (wordCounts[normalizedWorld] || 0) + 1;
     });

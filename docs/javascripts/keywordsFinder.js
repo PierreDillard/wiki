@@ -39,7 +39,8 @@ function findKeywordsInContent(currentPageMdPath, lexique, aliasMap, callback) {
                     term,
                     count: counts.main,
                     mostFrequentAlias: mostFrequentAlias[0],
-                    aliasCount: mostFrequentAlias[1]
+                    aliasCount: mostFrequentAlias[1],
+                    isAlias: mostFrequentAlias[1] > counts.main
                 };
             }).filter(entry => entry.count >= 2 || entry.aliasCount >= 2);
 

@@ -32,6 +32,8 @@ function fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions) {
 }
 
 function fetchDefinitions(keyword, cachedDefinitions) {
+    
+ 
     fetch('/data/keywords.json')
         .then(response => response.json())
         .then(data => {

@@ -1,15 +1,13 @@
-
-
 {% extends "base.html" %}
 
 {% block content %}
 
-<div class="error-container">
+<div id="error-container" class="error-container hidden">
     <h1 class="">404 - Page Not Found</h1>
     <p class="info">Sorry, the page you are looking for does not exist.</p>
 </div>
 
-<div id="glossary-contribution" class="glossary-contribution" style="display: none;">
+<div id="glossary-contribution" class="glossary-contribution hidden">
     <h2>Glossary Term Not Found</h2>
     <p>It looks like you're trying to access a glossary term that hasn't been defined yet. Would you like to contribute?</p>
     <p>Term: <strong id="glossary-term"></strong></p>
@@ -21,12 +19,18 @@
         <li>Submit your changes for review</li>
     </ol>
     <div class="template-info">
-        <p ><strong>Note:</strong> We have a template for glossary pages. Please refer to the <a href="/glossary/encrypt/" target="_blank">encrypt</a> page as an example when creating your content. This ensures consistency across our glossary.</p>
+        <p><strong>Note:</strong> We have a template for glossary pages. Please refer to the <a href="/glossary/encrypt/" target="_blank">encrypt</a> page as an example when creating your content. This ensures consistency across our glossary.</p>
     </div>
     <p>Thank you for helping to make GPAC documentation more comprehensive!</p>
 </div>
 
 <a href="javascript:history.back()" class="back-link">← Go back to previous page</a>
+
+<style>
+  .hidden {
+    display: none;
+  }
+</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -39,13 +43,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (toggleButton) {
         toggleButton.style.display = 'none';
     }
-   
 
     if (match) {
         const term = decodeURIComponent(match[1]);
         document.getElementById('glossary-term').textContent = term;
-        document.querySelector('.error-container').style.display = 'none';
-        document.getElementById('glossary-contribution').style.display = 'block';
+        document.getElementById('error-container').classList.remove('hidden');
+        document.getElementById('glossary-contribution').classList.add('hidden');
+    } else {
+        document.getElementById('error-container').classList.add('hidden');
+        document.getElementById('glossary-contribution').classList.remove('hidden');
     }
 });
 </script>

@@ -81,3 +81,78 @@
 .hidden {
     display: none !important;
 }
+
+.alias-indicator {
+    font-style: italic;
+    font-size: 0.8em;
+    color: #666;
+}
+
+.alias-text {
+    font-style: italic;
+    font-size: 0.8em;
+    
+}
+.main-term {
+    font-weight: bold;
+    color:#b23600; 
+}
+.category-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #fff;
+    text-align: center;
+    width: 80%;
+    max-width: 250px;
+  }
+  
+  .category-gpac-core-concepts { 
+    background: linear-gradient(to right, #d94412, #ff6b6b);
+  }
+  .category-streaming { 
+    background: linear-gradient(to right, #ff7043, #ffab91);
+  }
+  .category-video-editing { 
+    background: linear-gradient(to right, #8d6e63, #bcaaa4);
+  }
+  .category-audio-processing { 
+    background: linear-gradient(to right, #5c6bc0, #9fa8da);
+  }
+  .category-content-creation { 
+    background: linear-gradient(to right, #66bb6a, #a5d6a7);
+  }
+  .category-interoperability { 
+    background: linear-gradient(to right, #26a69a, #80cbc4);
+  }
+  .category-security { 
+    background: linear-gradient(to right, #ec407a, #f48fb1);
+  }
+  .category-3d-graphics { 
+    background: linear-gradient(to right, #7e57c2, #b39ddb);
+  }
+  
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  
+  .modal-header i {
+    margin-right: 10px;
+    font-size: 1.5em;
+  }
+  
+  .category-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .modal-header i{
+    font-size: 16px;
+  }

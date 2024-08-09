@@ -34,15 +34,20 @@ function openModal(keyword, definition, displayedTerm) {
     } else {
       let titleText = displayedTerm || keyword;
       let categoryIcon = '';
+      let categoryTag = '';
 
+      const categoryTagElement = document.getElementById("category-tag");
       if (definition.category) {
-        console.log(definition.category);
-        const categoryClass = `category-${definition.category
+        const categoryClass = `category-tag category-${definition.category
           .toLowerCase()
-          .replace(/\s+/g, "-")}`;
+          .replace(/\s+/g, "-")
+          .replace(/^-+|-+$/g, '')}`;
+        categoryTagElement.innerHTML = `<span class="${categoryClass}">${definition.category}</span>`;
+        categoryTagElement.classList.remove("hidden");
+        categoryTagElement.classList.add("visible");
 
         switch(definition.category) {
-          case 'GPAC Core Concepts':
+          case 'GPAC Core':
             categoryIcon = '<i class="fas fa-cogs"></i>';
             break;
           case 'Streaming':
@@ -69,6 +74,12 @@ function openModal(keyword, definition, displayedTerm) {
           default:
             categoryIcon = '<i class="fas fa-tag"></i>';
         }
+
+        categoryTag = `<div class="category-container"><span class="${categoryClass}">${definition.category}</span></div>`;
+      } else {
+        categoryTagElement.innerHTML = "";
+        categoryTagElement.classList.remove("visible");
+        categoryTagElement.classList.add("hidden");
       }
 
       modalTitle.innerHTML = `${categoryIcon} ${titleText}`;
@@ -84,13 +95,6 @@ function openModal(keyword, definition, displayedTerm) {
         modalContent += `<p><strong>Other aliases:</strong> <span class="alias-text">${aliasesText}</span></p>`;
       }
 
-      if (definition.category) {
-        const categoryClass = `category-${definition.category
-          .toLowerCase()
-          .replace(/\s+/g, "-")}`;
-        modalContent += `<div class="category-container"><span class="category-tag ${categoryClass}">${definition.category}</span></div>`;
-      }
-
       modalDefinition.innerHTML = modalContent;
 
       modalLink.href = glossaryPageUrl;
@@ -102,7 +106,6 @@ function openModal(keyword, definition, displayedTerm) {
     console.error("Modal elements not found");
   }
 }
-
 document.addEventListener("DOMContentLoaded", function () {
   const closeModalButton = document.getElementById("close-modal");
   if (closeModalButton) {

@@ -31,22 +31,36 @@ function fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions) {
         .catch(error => console.error('Error fetching keywords:', error));
 }
 
-function fetchDefinitions(keyword, cachedDefinitions) {
-    
+function fetchDefinitions(keyword, cachedDefinitions, displayTerm) {
+    if (cachedDefinitions[keyword]) {
+        openModal(keyword, cachedDefinitions[keyword], displayTerm);
+        return;
+    }
  
     fetch('/data/keywords.json')
-        .then(response => response.json())
-        .then(data => {
-            const definition = data.definitions[keyword];
-            if (definition) {
-                cachedDefinitions[keyword] = definition;
-                setCache('definitionsCache', cachedDefinitions);
-                openModal(keyword, definition);
-            } else {
-                console.error('Definition not found for keyword:', keyword);
-            }
-        })
-        .catch(error => console.error('Error fetching definition:', error));
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const definition = data.definitions[keyword];
+        if (definition) {
+            cachedDefinitions[keyword] = definition;
+            setCache('definitionsCache', cachedDefinitions);
+            openModal(keyword, definition, displayTerm);
+        } else {
+            console.error('Definition not found for keyword:', keyword);
+            // Ouvrir quand même le modal avec un message d'erreur
+            openModal(keyword, { description: 'Definition not found' }, displayTerm);
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching definition:', error);
+        // Ouvrir le modal avec un message d'erreur
+        openModal(keyword, { description: 'Error fetching definition' }, displayTerm);
+    });
 }
 
 //Get the Markdown content

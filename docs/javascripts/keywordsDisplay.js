@@ -17,12 +17,17 @@ function displayKeywords(keywords, cachedDefinitions, allDefinitions, selectedLe
                 ? keywordInfo.mostFrequentAlias
                 : keywordInfo.term;
 
+             
+
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.href = "#";
             a.textContent = displayTerm;
             a.className = sizes[index % sizes.length] + ' ' + colors[index % colors.length];
-
+            
+            if (displayTerm !== keywordInfo.term) {
+                a.classList.add('alias-term');
+            }
             a.addEventListener('click', function (event) {
                 event.preventDefault();
                 if (cachedDefinitions[keywordInfo.term]) {

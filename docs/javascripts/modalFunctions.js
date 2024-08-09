@@ -5,7 +5,6 @@ function openModal(keyword, definition, displayedTerm) {
   const modalLink = document.getElementById("modal-link");
 
   if (modalTitle && modalDefinition && modalLink) {
-    
     let descriptionText, aliasesText;
     if (typeof definition === "object") {
       descriptionText = definition.description || "Definition not available";
@@ -13,18 +12,16 @@ function openModal(keyword, definition, displayedTerm) {
       aliasesText =
         definition.aliases && definition.aliases.length > 0
           ? definition.aliases
-              .filter((alias) => alias !== displayedTerm)
+              .filter((alias) => alias !== displayedTerm && alias !== keyword)
               .join(", ")
           : "";
 
       console.log("aliasesText", aliasesText);
     } else if (typeof definition === "string") {
       descriptionText = definition;
-
       aliasesText = "";
     } else {
       descriptionText = "Definition not available";
-
       aliasesText = "";
     }
 
@@ -34,61 +31,65 @@ function openModal(keyword, definition, displayedTerm) {
 
     if (window.innerWidth <= 1040) {
       window.location.href = glossaryPageUrl;
-       } else {
-        modalTitle.textContent = displayedTerm || keyword;
-        if (displayedTerm && displayedTerm !== keyword) {
-            modalTitle.textContent += ` (alias of ${keyword})`;
-        }
+    } else {
+      let titleText = displayedTerm || keyword;
+      let categoryIcon = '';
 
-      let modalContent = `
-                <p><strong>Definition:</strong> ${descriptionText}</p>
-            `;
-
-      if (aliasesText) {
-        modalContent += `<p><strong>Other aliases:</strong> <span class="alias-text">${aliasesText}</span></p>`;
-
-      }
-     ;
-     
-     if (definition.category) {
+      if (definition.category) {
         console.log(definition.category);
         const categoryClass = `category-${definition.category
           .toLowerCase()
           .replace(/\s+/g, "-")}`;
-       let categoryIcon ='';
 
-       switch(definition.category) {
-        case 'GPAC Core Concepts':
-          categoryIcon = '<i class="fas fa-cogs"></i>';
-          break;
-        case 'Streaming':
-          categoryIcon = '<i class="fas fa-stream"></i>';
-          break;
-        case 'Video Editing':
-          categoryIcon = '<i class="fas fa-film"></i>';
-          break;
-        case 'Audio Processing':
-          categoryIcon = '<i class="fas fa-volume-up"></i>';
-          break;
-        case 'Content Creation':
-          categoryIcon = '<i class="fas fa-paint-brush"></i>';
-          break;
-        case 'Interoperability':
-          categoryIcon = '<i class="fas fa-exchange-alt"></i>';
-          break;
-        case 'Security':
-          categoryIcon = '<i class="fas fa-shield-alt"></i>';
-          break;
-        case '3D Graphics':
-          categoryIcon = '<i class="fas fa-cube"></i>';
-          break;
-        default:
-          categoryIcon = '<i class="fas fa-tag"></i>';
+        switch(definition.category) {
+          case 'GPAC Core Concepts':
+            categoryIcon = '<i class="fas fa-cogs"></i>';
+            break;
+          case 'Streaming':
+            categoryIcon = '<i class="fas fa-stream"></i>';
+            break;
+          case 'Video Editing':
+            categoryIcon = '<i class="fas fa-film"></i>';
+            break;
+          case 'Audio Processing':
+            categoryIcon = '<i class="fas fa-volume-up"></i>';
+            break;
+          case 'Content Creation':
+            categoryIcon = '<i class="fas fa-paint-brush"></i>';
+            break;
+          case 'Interoperability':
+            categoryIcon = '<i class="fas fa-exchange-alt"></i>';
+            break;
+          case 'Security':
+            categoryIcon = '<i class="fas fa-shield-alt"></i>';
+            break;
+          case '3D Graphics':
+            categoryIcon = '<i class="fas fa-cube"></i>';
+            break;
+          default:
+            categoryIcon = '<i class="fas fa-tag"></i>';
+        }
       }
-  
-      modalTitle.innerHTML = `${categoryIcon} ${keyword}`;
-      modalContent += `<div class="category-container"><span class="category-tag ${categoryClass}">${definition.category}</span></div>`;
-    }
+
+      modalTitle.innerHTML = `${categoryIcon} ${titleText}`;
+      if (displayedTerm && displayedTerm !== keyword) {
+        modalTitle.innerHTML += ` <span class="alias-indicator">(alias of ${keyword})</span>`;
+      }
+
+      let modalContent = `
+        <p><strong>Definition:</strong> ${descriptionText}</p>
+      `;
+
+      if (aliasesText) {
+        modalContent += `<p><strong>Other aliases:</strong> <span class="alias-text">${aliasesText}</span></p>`;
+      }
+
+      if (definition.category) {
+        const categoryClass = `category-${definition.category
+          .toLowerCase()
+          .replace(/\s+/g, "-")}`;
+        modalContent += `<div class="category-container"><span class="category-tag ${categoryClass}">${definition.category}</span></div>`;
+      }
 
       modalDefinition.innerHTML = modalContent;
 

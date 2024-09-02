@@ -128,6 +128,9 @@
         "GRAPH": {
             "description": "A graph in GPAC represents the entire media processing workflow, consisting of nodes (filters) and edges (connections) that define data flow.",
             "level": "all",
+            "aliases": [
+               
+            ],
           
             "category": "GPAC Core "
         },

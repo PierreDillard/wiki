@@ -28,6 +28,7 @@ function displayKeywords(keywords, cachedDefinitions, allDefinitions, selectedLe
 
             a.addEventListener('click', (event) => {
                 event.preventDefault();
+                console.log("Display term", displayTerm);   
                 if (cachedDefinitions[keywordInfo.term]) {
                     openModal(keywordInfo.term, cachedDefinitions[keywordInfo.term], displayTerm);
                 } else {

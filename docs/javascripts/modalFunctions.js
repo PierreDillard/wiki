@@ -3,12 +3,14 @@ function openModal(keyword, definition, displayedTerm) {
   const modalTitle = document.getElementById("modal-title");
   const modalDefinition = document.getElementById("modal-definition");
   const modalLink = document.getElementById("modal-link");
+  const categoryTagElement = document.getElementById("category-tag");
 
   if (modalTitle && modalDefinition && modalLink) {
-    let descriptionText, aliasesText;
+    let descriptionText, aliasesText, categoryInfo;
     if (typeof definition === "object") {
       descriptionText = definition.description || "Definition not available";
       levelText = definition.level || "N/A";
+      categoryInfo = definition.category;
       aliasesText =
         definition.aliases && definition.aliases.length > 0
           ? definition.aliases
@@ -16,11 +18,11 @@ function openModal(keyword, definition, displayedTerm) {
               .join(", ")
           : "";
 
-      console.log("aliasesText", aliasesText);
-    } else if (typeof definition === "string") {
+      console.log("categoryInfo", categoryInfo);
+   /*  } else if (typeof definition === "string") {
       descriptionText = definition;
       aliasesText = "";
-    } else {
+    } */ } else {
       descriptionText = "Definition not available";
       aliasesText = "";
     }
@@ -36,13 +38,14 @@ function openModal(keyword, definition, displayedTerm) {
       let categoryIcon = '';
       let categoryTag = '';
 
-      const categoryTagElement = document.getElementById("category-tag");
-      if (definition.category) {
-        const categoryClass = `category-tag category-${definition.category
+      if (categoryInfo) {
+        console.log("Generating category tag for:", categoryInfo);
+        const categoryClass = `category-tag category-${categoryInfo
           .toLowerCase()
           .replace(/\s+/g, "-")
           .replace(/^-+|-+$/g, '')}`;
-        categoryTagElement.innerHTML = `<span class="${categoryClass}">${definition.category}</span>`;
+          console.log("Category class:", categoryClass);
+        categoryTagElement.innerHTML = `<span class="${categoryClass}">${categoryInfo}</span>`;
         categoryTagElement.classList.remove("hidden");
         categoryTagElement.classList.add("visible");
 
@@ -75,7 +78,8 @@ function openModal(keyword, definition, displayedTerm) {
             categoryIcon = '<i class="fas fa-tag"></i>';
         }
 
-        categoryTag = `<div class="category-container"><span class="${categoryClass}">${definition.category}</span></div>`;
+      
+        categoryTag = `<div class="category-container"><span class="${categoryClass}">${categoryInfo}</span></div>`;
       } else {
         categoryTagElement.innerHTML = "";
         categoryTagElement.classList.remove("visible");
@@ -83,7 +87,7 @@ function openModal(keyword, definition, displayedTerm) {
       }
 
       modalTitle.innerHTML = `${categoryIcon} ${titleText}`;
-      if (displayedTerm && displayedTerm !== keyword) {
+      if (displayedTerm.toUpperCase() !== keyword.toUpperCase()) {
         modalTitle.innerHTML += ` <span class="alias-indicator">(alias of ${keyword})</span>`;
       }
 

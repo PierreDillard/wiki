@@ -24,12 +24,15 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 16px;
+    text-align: left;
 }
 
 .modal-header i {
     color: #d94412;
     font-size: 20px;
     margin-right: 8px;
+    
+    
 }
 
 .modal-header h2 {
@@ -37,6 +40,7 @@
     font-size: 1 rem;
     font-weight: bold;
     color: #333;
+ 
 }
 
 .modal-content__definition {
@@ -106,7 +110,7 @@
     margin: 0px 0px 15px 0px;
     text-align: center;
     width: 80%;
-    color: #FFFFFF;
+    
     max-width: 250px;
   }
   

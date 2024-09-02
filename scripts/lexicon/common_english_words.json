@@ -1853,5 +1853,11 @@
   "INSTANCE",
   "MATRIX",
   "TRACKER",
-  "PROBED"
+  "PROBED",
+  "MOOF",
+  "MULTIPLEX",
+  "RASTERIZER",
+  "FLUTE",
+  "SAMPLERATE",
+  "BAND"
 ]

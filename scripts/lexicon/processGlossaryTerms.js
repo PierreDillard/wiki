@@ -6,10 +6,7 @@ const config= require ('./config');
 
 
 async function processGlossaryTerms() {
-    console.log('Starting to process glossary terms...');
-    console.log('GLOSSARY_FILE path:', config.IS_IT_GLOSSARY_TERM_FILE);
-    console.log('COMMON_WORDS_FILE path:', config.COMMON_WORDS_FILE);
-    console.log('STOP_WORDS_FILE path:', config.STOP_WORDS_FILE);
+
 
     const glossaryTerms = loadJsonFile(config.IS_IT_GLOSSARY_TERM_FILE)|| {};
     const common_english_words = loadJsonFile(config.COMMON_WORDS_FILE) || [];

@@ -2,6 +2,8 @@
 const { spawn } = require('child_process');
 const path = require('path');
 const config = require('./config');
+const { processGlossaryTerms, scanForNewTerms } = require('./processGlossaryTerms');
+
 const { 
     loadDefinitions, 
     loadCommonEnglishWords, 

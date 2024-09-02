@@ -114,31 +114,51 @@
     max-width: 250px;
   }
   
-  .category-gpac-core { 
+  .category-gpac-core {
     background: linear-gradient(to right, #d94412, #ff6b6b);
   }
-  .category-streaming { 
+  .category-media-processing {
     background: linear-gradient(to right, #ff7043, #ffab91);
   }
-  .category-video-editing { 
+  .category-streaming-technologies {
     background: linear-gradient(to right, #8d6e63, #bcaaa4);
   }
-  .category-audio-processing { 
+  .category-file-formats-and-containers {
     background: linear-gradient(to right, #5c6bc0, #9fa8da);
   }
-  .category-content-creation { 
+  .category-codecs-and-compression {
     background: linear-gradient(to right, #66bb6a, #a5d6a7);
   }
-  .category-interoperability { 
+  .category-networking-and-protocols {
     background: linear-gradient(to right, #26a69a, #80cbc4);
   }
-  .category-security { 
+  .category-graphics-and-rendering {
     background: linear-gradient(to right, #ec407a, #f48fb1);
   }
-  .category-3d-graphics { 
+  .category-audio-processing {
     background: linear-gradient(to right, #7e57c2, #b39ddb);
   }
-  
+  .category-subtitles-and-captioning {
+    background: linear-gradient(to right, #ffa726, #ffcc80);
+  }
+  .category-security-and-encryption {
+    background: linear-gradient(to right, #ef5350, #ef9a9a);
+  }
+  .category-performance-and-optimization {
+    background: linear-gradient(to right, #29b6f6, #81d4fa);
+  }
+  .category-libraries-and-dependencies {
+    background: linear-gradient(to right, #ab47bc, #ce93d8);
+  }
+  .category-standards-and-specifications {
+    background: linear-gradient(to right, #9ccc65, #c5e1a5);
+  }
+  .category-tools-and-utilities {
+    background: linear-gradient(to right, #78909c, #b0bec5);
+  }
+  .category-data-structures-and-formats {
+    background: linear-gradient(to right, #f06292, #f8bbd0);
+  }
   .modal-header {
     display: flex;
     align-items: center;

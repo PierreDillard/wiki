@@ -49,35 +49,7 @@ function openModal(keyword, definition, displayedTerm) {
         categoryTagElement.classList.remove("hidden");
         categoryTagElement.classList.add("visible");
 
-        switch(definition.category) {
-          case 'GPAC Core':
-            categoryIcon = '<i class="fas fa-cogs"></i>';
-            break;
-          case 'Streaming':
-            categoryIcon = '<i class="fas fa-stream"></i>';
-            break;
-          case 'Video Editing':
-            categoryIcon = '<i class="fas fa-film"></i>';
-            break;
-          case 'Audio Processing':
-            categoryIcon = '<i class="fas fa-volume-up"></i>';
-            break;
-          case 'Content Creation':
-            categoryIcon = '<i class="fas fa-paint-brush"></i>';
-            break;
-          case 'Interoperability':
-            categoryIcon = '<i class="fas fa-exchange-alt"></i>';
-            break;
-          case 'Security':
-            categoryIcon = '<i class="fas fa-shield-alt"></i>';
-            break;
-          case '3D Graphics':
-            categoryIcon = '<i class="fas fa-cube"></i>';
-            break;
-          default:
-            categoryIcon = '<i class="fas fa-tag"></i>';
-        }
-
+        categoryIcon = '<i class="fas fa-tag"></i>';
       
         categoryTag = `<div class="category-container"><span class="${categoryClass}">${categoryInfo}</span></div>`;
       } else {

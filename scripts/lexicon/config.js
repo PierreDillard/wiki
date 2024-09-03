@@ -13,6 +13,6 @@ module.exports = {
     IS_IT_GLOSSARY_TERM_FILE: path.join(__dirname, 'is_it_glossary_term.json'),
     COMMON_WORDS_FILE: path.join(__dirname, 'common_english_words.json'),
     TOP_WORDS: 500,
-    MIN_WORD_FREQUENCY: 10,
+    MIN_WORD_FREQUENCY: 5,
     MIN_WORD_LENGTH: 3
 };

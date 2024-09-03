@@ -39,26 +39,26 @@ function openModal(keyword, definition, displayedTerm) {
       let categoryTag = '';
 
       if (categoryInfo) {
-        console.log("Generating category tag for:", categoryInfo);
+      
         const categoryClass = `category-tag category-${categoryInfo
           .toLowerCase()
           .replace(/\s+/g, "-")
           .replace(/^-+|-+$/g, '')}`;
-          console.log("Category class:", categoryClass);
+          
         categoryTagElement.innerHTML = `<span class="${categoryClass}">${categoryInfo}</span>`;
         categoryTagElement.classList.remove("hidden");
         categoryTagElement.classList.add("visible");
 
         categoryIcon = '<i class="fas fa-tag"></i>';
       
-        categoryTag = `<div class="category-container"><span class="${categoryClass}">${categoryInfo}</span></div>`;
+        categoryTag = `<div class="category-container"><span class="${categoryClass}">${categoryInfo} ${categoryIcon}</span></div>`;
       } else {
         categoryTagElement.innerHTML = "";
         categoryTagElement.classList.remove("visible");
         categoryTagElement.classList.add("hidden");
       }
 
-      modalTitle.innerHTML = `${categoryIcon} ${titleText}`;
+      modalTitle.innerHTML = ` ${titleText}`;
       if (displayedTerm.toUpperCase() !== keyword.toUpperCase()) {
         modalTitle.innerHTML += ` <span class="alias-indicator">(alias of ${keyword})</span>`;
       }

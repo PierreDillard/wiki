@@ -77,6 +77,8 @@ repo_url: https://github.com/gpac/gpac/
 plugins:
   - search
   - tags
+  
+  
 hooks:
   - scripts/mkdocs_hooks.py
 markdown_extensions:

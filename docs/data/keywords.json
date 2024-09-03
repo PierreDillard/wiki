@@ -235,7 +235,7 @@
             "description": "HEVC (High Efficiency Video Coding) is a video compression standard designed as a successor to the widely used AVC (H.264).",
             "level": "beginner",
             "aliases": [
-                "H265"
+                "H265","LHVC"
             ],
             "category": "Codecs and Compression"
         },
@@ -263,6 +263,24 @@
                 "MOV"
             ],
             "category": "File Formats and Containers"
+        },
+        "RTCP": {
+            "description": "RTCP (Real-Time Control Protocol) is a companion protocol to RTP (Real-Time Protocol) that provides out-of-band control information for an RTP flow. It is primarily used for quality of service (QoS) monitoring and to convey information about participants in ongoing RTP sessions.",
+            "level": "beginner",
+            "aliases": [
+                "REAL-TIME CONTROL PROTOCOL",
+                "RTP CONTROL PROTOCOL"
+            ],
+            "category": "Networking and Protocols"
+        },
+        "TIMESHIFT" :{
+            "description": "Timeshift refers to the capability of a media player or streaming service to pause, rewind, or fast-forward live broadcast content. This feature allows users to view content on their own schedule without missing any part of the broadcast.",
+            "level": "beginner",
+            "aliases": [
+                "LIVE PAUSE",
+                "DELAYED VIEWING"
+            ],
+            "category": "Streaming Technologies"
         },
         "BITSTREAM": {
             "description": "A bitstream is a sequence of bits that represent encoded media data.",

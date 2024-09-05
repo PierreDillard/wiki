@@ -1,3 +1,7 @@
+---
+hide:
+  - navigation
+---
 
 `encode` is a function that allows you to encode multimedia files into various formats using specified codecs.
 

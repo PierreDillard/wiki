@@ -1,6 +1,5 @@
 
 
-
 `encrypt` is a function that allows you to encrypt multimedia files using specified encryption keys.
 
 ```bash

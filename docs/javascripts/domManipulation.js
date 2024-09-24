@@ -61,6 +61,11 @@ function createCollapseSection(h2) {
         content.push(sibling);
         sibling = sibling.nextElementSibling;
     }
+
+    if (content.length === 0) {
+        h2.classList.add('no-collapse');
+        return;
+    }
     const noCollapse = h2.classList.contains('no-collapse');
     if (noCollapse) {
         return;

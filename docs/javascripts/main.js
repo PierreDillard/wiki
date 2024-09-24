@@ -58,4 +58,16 @@ document.addEventListener('DOMContentLoaded', function () {
           updateOptionsVisibility('beginner');
         }
       });
+      const contributeIcon = document.querySelector('.md-feedback__contribute');
+  const contributeNote = document.querySelector('.md-feedback__contribute-note');
+
+  if (contributeIcon && contributeNote) {
+    contributeIcon.addEventListener('mouseenter', function() {
+      contributeNote.hidden = false;
+    });
+
+    contributeIcon.addEventListener('mouseleave', function() {
+      contributeNote.hidden = true;
+    });
+  }
     });

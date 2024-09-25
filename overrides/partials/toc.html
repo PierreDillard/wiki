@@ -16,13 +16,34 @@
         <span class="md-nav__icon md-icon">   
          
         {{ title }}
+     
       </label>
       <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
         {% for toc_item in toc %}
           {% include "partials/toc-item.html" %}
         {% endfor %}
       </ul>
+      
+      {% if config.extra.analytics %}
+      {% set feedback = config.extra.analytics.feedback %}
+      {% if feedback %}
+        <div class="md-nav__feedback">
+          <p class="feedback-title">{{ feedback.title }}</p>
+          <div class="md-feedback__inner">
+            <div class="md-feedback__list">
+              {% for rating in feedback.ratings %}
+                <button class="md-feedback__icon md-icon" title="{{ rating.name }}" data-md-value="{{ rating.data }}">
+                  {% include ".icons/" ~ rating.icon ~ ".svg" %}
+                </button>
+              {% endfor %}
+              <a href="https://github.com/gpac/wiki/issues" class="md-feedback__icon md-icon md-feedback__contribute" title="Contribute to this page" target="_blank">
+                {% include ".icons/material/plus-circle.svg" %}
+              </a>
+            </div>
+            <div class="md-feedback__note" hidden></div>
+          </div>
+        </div>
+      {% endif %}
     {% endif %}
-  
-  
-  </nav>
+  {% endif %}
+</nav>

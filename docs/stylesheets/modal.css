@@ -10,10 +10,12 @@
 }
 
 .modal-content {
-    background-color: #E8EAED; /* ou une autre couleur suggérée */
+    background-color: #E8EAED; 
     border: 1px solid #e0e0e0;
+    border-left: none;
+    border-bottom: none;
+    box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
     width: 100%;
     transition: opacity 0.25s ease;

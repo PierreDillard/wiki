@@ -333,7 +333,6 @@ function updateOptionsVisibility(level) {
     }
   });
 }
-
 //Levels with search feature
 
 function isSearchResultPage() {

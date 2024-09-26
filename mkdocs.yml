@@ -77,6 +77,10 @@ plugins:
 hooks:
   - scripts/mkdocs_hooks.py
 markdown_extensions:
+- pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
 - admonition
 - attr_list
 - toc:
@@ -84,6 +88,8 @@ markdown_extensions:
 - nl2br
 - sane_lists      
 - md_in_html
+ 
+- pymdownx.snippets
 - pymdownx.details
 - pymdownx.superfences:
       custom_fences:
@@ -115,7 +121,7 @@ nav:
   - Howtos:
      
     - Howtos/howtos.md
-    - Step-by-Step Guide to GPAC:
+    - Command Operations:
       - Filters One-Liners: Howtos/filters-oneliners.md
       - File Inspection: Howtos/inspecting.md
       - Using RAW formats: Howtos/raw-formats.md

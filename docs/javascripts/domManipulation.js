@@ -24,18 +24,23 @@ function initializeGlossaryPage() {
 
 function initializeCollapseSections() {
     const articleInner = document.querySelector('.md-content__inner');
-    const h1Element = articleInner.querySelector('h1');
-    const feedbackForm = articleInner.querySelector('.md-feedback');
+    if (!articleInner) return;
 
-    if (h1Element && feedbackForm) {
-        createArticleContentDiv(h1Element, feedbackForm);
+    // Create article content div
+    const articleContentDiv = document.createElement('div');
+    articleContentDiv.classList.add('article-content');
+
+    // Move all content into the article content div
+    while (articleInner.firstChild) {
+        articleContentDiv.appendChild(articleInner.firstChild);
     }
 
-    const articleContent = document.querySelector('.article-content');
-    if (articleContent) {
-        const h2Elements = articleContent.querySelectorAll('h2');
-        h2Elements.forEach(createCollapseSection);
-    }
+    // Insert the article content div into the article inner
+    articleInner.appendChild(articleContentDiv);
+
+    // Create collapse sections for h2 elements
+    const h2Elements = articleContentDiv.querySelectorAll('h2');
+    h2Elements.forEach(createCollapseSection);
 }
 
 function createArticleContentDiv(h1Element, feedbackForm) {

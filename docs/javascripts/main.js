@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
           const targetUrl = new URL(target.href);
     
           if (currentUrl.pathname !== targetUrl.pathname || !targetUrl.searchParams.has('h')) {
+          
+         
             if (localStorage.getItem('tempExpertMode') === 'true') {
               event.preventDefault();
               revertFromTemporaryExpertMode();
@@ -69,5 +71,26 @@ document.addEventListener('DOMContentLoaded', function () {
     contributeIcon.addEventListener('mouseleave', function() {
       contributeNote.hidden = true;
     });
+ 
   }
+  handleSearchPageCollapse();
     });
+
+    // Open all colapse section if it's a search page
+    function handleSearchPageCollapse() {
+      const isSearchPage = new URLSearchParams(window.location.search).has('h');
+      const wasCollapsed = localStorage.getItem('wasCollapsed');
+  
+      if (isSearchPage) {
+          // Si c'est une page de recherche, ouvrir tous les collapse
+          if (localStorage.getItem('collapseAll') === 'true') {
+              localStorage.setItem('wasCollapsed', 'true');
+              toggleAllSections(false);
+          }
+      } else if (wasCollapsed === 'true') {
+          // Si ce n'est pas une page de recherche et que les sections étaient précédemment fermées
+          localStorage.removeItem('wasCollapsed');
+          toggleAllSections(true);
+      }
+  }
+  window.addEventListener('load', handleSearchPageCollapse);

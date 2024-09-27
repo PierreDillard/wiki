@@ -340,7 +340,8 @@ function isSearchResultPage() {
 }
 
 function setTemporaryExpertMode() {
-const currentLevel = localstroga.getItem('userLevel');
+
+const currentLevel = localStorage.getItem('userLevel');
 if(currentLevel === 'beginner' && isSearchResultPage()) {
   localStorage.setItem('tempExpertMode', 'true');
   localStorage.setItem('userLevel', 'expert');

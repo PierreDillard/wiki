@@ -73,10 +73,10 @@
  .md-typeset .highlight button {
      display: block !important;
  }
-
+/* 
  .md-typeset mark {
     margin: 0 0.3rem;
- }
+ } */
  .md-footer {
      flex-shrink: 0;
  }

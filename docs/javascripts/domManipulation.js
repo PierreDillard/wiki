@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeCollapseSections();
     handleTOCLinks();
     handleInitialHash();
+    initializeHeaderTitle();
  
       
 
@@ -149,4 +150,45 @@ function handleAllSection(section, h2) {
     } else {
         section.removeAttribute('data-was-active');
     }
+}
+
+
+/**
+ * Initializes the header title behavior based on the scroll position.
+ * 
+ * This function selects the header and its related elements, and sets up an event listener
+ * on the window's scroll event. When the user scrolls past a certain threshold, it toggles
+ * the 'show-page-title' class on the header to show or hide the page title.
+
+ * The function also ensures that the class toggling is not performed repeatedly during
+ * the transition period by using a flag (`isTransitioning`) and a timeout.
+ * 
+ * @returns {void}
+ */
+function initializeHeaderTitle() {
+    const header = document.querySelector('.md-header');
+    const siteNameTopic = document.querySelector('.md-header__topic--site-name');
+    const pageTitleTopic = document.querySelector('.md-header__topic--page-title');
+
+    if (!header || !siteNameTopic || !pageTitleTopic) {
+        console.error('Required elements not found for header title initialization');
+        return;
+    }
+
+    const showHeaderTitleThreshold =100;
+    let isTransitioning = false;
+
+    window.addEventListener('scroll', () => {
+        if (isTransitioning) return;
+
+        if (window.scrollY > showHeaderTitleThreshold && !header.classList.contains('show-page-title')) {
+            isTransitioning = true;
+            header.classList.add('show-page-title');
+            setTimeout(() => { isTransitioning = false; }, 100);
+        } else if (window.scrollY <= showHeaderTitleThreshold && header.classList.contains('show-page-title')) {
+            isTransitioning = true;
+            header.classList.remove('show-page-title');
+            setTimeout(() => { isTransitioning = false; }, 100);
+        }
+    });
 }

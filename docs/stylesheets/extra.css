@@ -127,4 +127,28 @@
         background-color: #FFFFFF
     }
 }
+.md-header__topic {
+    position: absolute;
+    width: 100%;
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+}
 
+.md-header__topic--site-name {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.md-header__topic--page-title {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.md-header.show-page-title .md-header__topic--site-name {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.md-header.show-page-title .md-header__topic--page-title {
+    opacity: 1;
+    transform: translateX(0);
+}

@@ -1,3 +1,9 @@
+---
+tags:
+- option
+- data
+---
+
 !!! note
     Preliminary notes: the following instructions will be based on Ubuntu and Debian. It should be easily applicable to other distributions, the only changes should be the name of the packages to be installed, and the package manager used.
 

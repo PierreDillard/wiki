@@ -1,3 +1,16 @@
+---
+tags:
+- stream
+- tile
+- source
+- data
+- option
+- session
+- group
+- mpd
+- dash
+---
+
 # Overview {:data-level="all"}
 
 We discuss here how to implement your custom DASH rate adaptation logic in JS.

@@ -1,3 +1,20 @@
+---
+tags:
+- sink
+- media
+- pid
+- source
+- data
+- output
+- chain
+- input
+- codec
+- option
+- session
+- mp4
+- packets
+---
+
 # Overview {: data-level="all"}
 
 We discuss here how to implement dynamic rate control using [GPAC Filters](Filters). Examples are in Python but API is also available for [JSF](jsfilter) and [NodeJS](nodejs). 

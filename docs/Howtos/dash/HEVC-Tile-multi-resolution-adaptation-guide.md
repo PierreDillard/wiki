@@ -1,3 +1,19 @@
+---
+tags:
+- decoding
+- pid
+- tile
+- source
+- output
+- input
+- profile
+- raw
+- option
+- mp4
+- mpd
+- dash
+---
+
 
 This page gives a quick walk-through on how to build and play tiled HEVC sequences with multiple resolutions
 

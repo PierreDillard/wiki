@@ -1,7 +1,15 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- input
+- output
+- data
+- codec
+- mp4
 ---
+
+
 
 `bitrate` refers to the amount of data processed per unit of time during encoding or streaming. It directly impacts the quality and size of multimedia files.
 

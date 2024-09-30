@@ -1,3 +1,15 @@
+---
+tags:
+- media
+- pid
+- source
+- data
+- output
+- option
+- mp4
+- box
+---
+
 # Overview {:data-level="all"}
 
 We discuss here how to extract items from HEIF file collections. For track extraction, use the regular tools from GPAC.

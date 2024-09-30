@@ -1,3 +1,14 @@
+---
+tags:
+- media
+- frame
+- data
+- input
+- mp4
+- box
+- dash
+---
+
 We have added to GPAC some sample applications demonstrating how to use GPAC to demux MP4 files. 
 
 They are not full applications, just examples taking some MP4 files as input and displaying some information about the media samples contained in the file. 

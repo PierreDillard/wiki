@@ -1,3 +1,24 @@
+---
+tags:
+- media
+- xml
+- source
+- data
+- output
+- chain
+- input
+- encrypt
+- reframer
+- raw
+- option
+- connections
+- session
+- graph
+- mp4
+- property
+- dash
+---
+
 # MP4Box vs gpac {: data-level="all" }
 
 Following the introduction of the filter architecture and the gpac application, you may have a hard time choosing between MP4Box and gpac.

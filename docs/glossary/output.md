@@ -1,7 +1,15 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- decoding
+- media
+- output
+- codec
+- mp4
 ---
+
+
 
 `output` refers to the destination file or format where the result of encoding, decoding, or transcoding processes will be stored.
 

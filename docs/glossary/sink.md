@@ -1,7 +1,19 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- stream
+- sink
+- media
+- chain
+- data
+- output
+- input
+- codec
+- mp4
 ---
+
+
 
 `sink` refers to an output element that receives processed media data. It is usually the endpoint of a media processing pipeline.
 

@@ -1,3 +1,16 @@
+---
+tags:
+- media
+- frame
+- xml
+- encode
+- source
+- encrypt
+- codec
+- mp4
+- dash
+---
+
 When packaging encoded content for DASH, a lot of issues come from misalignment of key-frames across the different encoded qualities. This page describes how to check key-frame alignment. 
 
 **A packager like MP4Box doesn't re-encode your content** 

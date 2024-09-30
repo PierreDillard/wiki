@@ -1,3 +1,12 @@
+---
+tags:
+- stream
+- source
+- raw
+- mp4
+- dash
+---
+
 ## Playback support
 
 The playback support is powered by the open-source [OpenHEVC decoder](https://github.com/OpenHEVC/openHEVC). 

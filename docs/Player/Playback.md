@@ -1,3 +1,12 @@
+---
+tags:
+- stream
+- media
+- source
+- output
+- session
+---
+
 # Introduction
 GPAC can playback content in two main ways:
 

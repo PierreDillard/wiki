@@ -1,3 +1,21 @@
+---
+tags:
+- decoding
+- stream
+- media
+- frame
+- xml
+- source
+- data
+- pid
+- profile
+- codec
+- group
+- scene
+- property
+- box
+---
+
 # NHML Overview
 The `NHML`  (Network Hint Markup Language) format has been developed at Telecom Paris in order to provide import support on media formats not natively supported by GPAC, typically for ISOBMFF file constructions. It is an XML translation and extension of a binary format called [[NHNT Format]] used during the development of MPEG-4 Systems.
 

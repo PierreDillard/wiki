@@ -1,3 +1,17 @@
+---
+tags:
+- stream
+- media
+- frame
+- source
+- data
+- input
+- option
+- group
+- mp4
+- scene
+---
+
 # BT Format {:data-level="all"}
 
 BT stands for BIFS Text and is an exact textual representation of the MPEG-4 BIFS scene. Its syntax is the same as the VRML/X3D (.wrl and .x3dv files) ones for the scene description part, and it has been extended for other MPEG-4 tools (OD, OCI, IPMP).

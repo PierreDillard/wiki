@@ -1,3 +1,12 @@
+---
+tags:
+- media
+- xml
+- data
+- profile
+- scene
+---
+
 # Multimedia scene description {:data-level="all" }
 
 A scene description is a language describing animations, interactivity, 2D and 3D shapes, audio and video relationship in a presentation. 

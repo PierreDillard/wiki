@@ -1,3 +1,13 @@
+---
+tags:
+- media
+- frame
+- input
+- output
+- raw
+- scene
+---
+
 ## Objective
 
 This example shows a basic GPAC player application. It takes an URL as input and outputs it in a terminal.  

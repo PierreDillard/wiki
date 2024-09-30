@@ -1,3 +1,9 @@
+---
+tags:
+- media
+- input
+---
+
 This part of the wiki describes HOWTOs illustrating the various possibilities of GPAC.
 
 Feel free to contribute your own cookbooks for media processing with GPAC !

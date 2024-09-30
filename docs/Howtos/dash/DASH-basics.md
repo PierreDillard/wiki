@@ -1,3 +1,21 @@
+---
+tags:
+- decoding
+- stream
+- media
+- frame
+- xml
+- data
+- chain
+- profile
+- option
+- session
+- mp4
+- mpd
+- box
+- dash
+---
+
 ## DASH Basics: MPD and Segments
 
 Let's quickly summarize how a DASH content is made of:

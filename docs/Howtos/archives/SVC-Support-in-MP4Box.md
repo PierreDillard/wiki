@@ -1,3 +1,14 @@
+---
+tags:
+- stream
+- pid
+- source
+- data
+- raw
+- option
+- mp4
+---
+
 GPAC supports packaging and playback of Scalable Video Coding (SVC) and layered-HEVC (L-HEVC).
 
 

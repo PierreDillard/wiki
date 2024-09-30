@@ -1,7 +1,15 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- decoding
+- input
+- output
+- codec
+- mp4
 ---
+
+
 
 `transcode` is the process of converting a multimedia file from one format to another by decoding and re-encoding the file.
 

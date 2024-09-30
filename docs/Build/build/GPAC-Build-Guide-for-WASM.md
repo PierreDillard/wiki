@@ -1,3 +1,10 @@
+---
+tags:
+- option
+- source
+- data
+---
+
 [**HOME**](Home) » [**Build**](Build-Introduction) » WASM
 
 _This page describes how to build GPAC for WASM/Emscripten._

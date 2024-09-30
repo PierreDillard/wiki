@@ -1,3 +1,11 @@
+---
+tags:
+- option
+- box
+- mp4
+- input
+---
+
 ## Foreword
 
 This feature is deprecated in MP4Box starting from GPAC 0.9.0. You can grab input streams using [gpac](gpac_general):

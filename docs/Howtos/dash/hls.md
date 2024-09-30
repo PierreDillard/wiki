@@ -1,3 +1,19 @@
+---
+tags:
+- stream
+- media
+- frame
+- pid
+- input
+- profile
+- option
+- codec
+- group
+- mpd
+- property
+- dash
+---
+
 # HLS Generation
 
 GPAC can be used to generate HLS rather than MPEG-DASH manifest formats, and can also be used to generate the two manifests in one pass.

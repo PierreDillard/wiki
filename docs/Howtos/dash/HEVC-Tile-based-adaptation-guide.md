@@ -1,3 +1,28 @@
+---
+tags:
+- media
+- source
+- input
+- mp4
+- stream
+- profile
+- option
+- decoding
+- sink
+- pid
+- mpd
+- dash
+- encode
+- frame
+- tile
+- data
+- output
+- chain
+- raw
+- graph
+- session
+---
+
 GPAC supports HEVC tile-based adaptation in DASH. This page gives a quick walk-through on how to build and play such sequences.
 
 # Content Preparation

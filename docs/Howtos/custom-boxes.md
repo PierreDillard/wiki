@@ -1,3 +1,18 @@
+---
+tags:
+- media
+- xml
+- pid
+- data
+- chain
+- source
+- option
+- mp4
+- mpd
+- box
+- dash
+---
+
 # Overview {:data-level="all"}
 
 We discuss here how to customize ISOBMFF files using box patches.  Please first check the XML [Box Patch](BoxPatch) syntax before reading.

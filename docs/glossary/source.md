@@ -1,7 +1,17 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- media
+- chain
+- source
+- output
+- data
+- input
+- mp4
 ---
+
+
 
 
 `source` is a keyword in GPAC representing an input element that provides media data to be processed. It is typically the starting point of a media processing pipeline.

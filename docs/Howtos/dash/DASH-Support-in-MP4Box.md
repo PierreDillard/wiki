@@ -1,3 +1,22 @@
+---
+tags:
+- media
+- xml
+- source
+- data
+- output
+- chain
+- input
+- profile
+- option
+- codec
+- group
+- session
+- mpd
+- box
+- dash
+---
+
 _MP4Box can be used to generate content compliant to the MPEG-DASH specification, aka ISO/IEC 23009-1 available in [ISO Publicly Available Standards](http://standards.iso.org/ittf/PubliclyAvailableStandards/)._
 !!! note
     For more details on what is DASH and HTTP streaming, please refer to [[this post|Fragmentation, segmentation, splitting and interleaving]]. For more help, type [MP4Box -h dash](mp4box-dash-opts)

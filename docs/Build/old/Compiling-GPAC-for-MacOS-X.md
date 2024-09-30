@@ -1,3 +1,10 @@
+---
+tags:
+- link
+- source
+- data
+---
+
 _This page describes how to setup a complete build environment for GPAC using Macports (update: Brew command-line below tested on Mac OS 10.11) in order to generate DMG installer images for both 10.5 and 10.6 versions of MacOS X._
 
 # Getting GPAC source code {: data-level="all"}

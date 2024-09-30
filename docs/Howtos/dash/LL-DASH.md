@@ -1,3 +1,27 @@
+---
+tags:
+- media
+- source
+- input
+- property
+- stream
+- xml
+- profile
+- link
+- option
+- reframer
+- packets
+- mpd
+- dash
+- encode
+- frame
+- data
+- output
+- raw
+- graph
+- session
+---
+
 # Foreword
 Please make sure you are familiar with [DASH terminology](DASH-basics) before reading. 
 

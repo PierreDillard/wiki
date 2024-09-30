@@ -1,3 +1,15 @@
+---
+tags:
+- stream
+- media
+- xml
+- source
+- data
+- pid
+- property
+- box
+---
+
 It is possible to describe bit sequences when importing XML data. This applies to:
 
 - [NHML](NHML-Format): some elements in the format may or must have child bitstream constructors

@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const savedLevel = localStorage.getItem("userLevel") || "expert";
   updateTOCVisibility(savedLevel);
   updateOptionsVisibility(savedLevel);
+  initializeTagNavigation();
 
   let currentPagePath = window.location.pathname;
 
@@ -113,4 +114,19 @@ function initializeFeedback(selector) {
           toggleAllSections(true);
       }
   }
+
+  function initializeTagNavigation() {
+    const wordCloudLinks = document.querySelectorAll('#dynamic-words-cloud a');
+    wordCloudLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const keyword = this.textContent;
+            navigateToTagPage(keyword);
+        });
+    });
+}
+
+function navigateToTagPage(keyword) {
+    window.location.href = `/tags/#${keyword.toLowerCase()}`;
+}
   window.addEventListener('load', handleSearchPageCollapse);

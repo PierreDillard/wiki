@@ -1,3 +1,15 @@
+---
+tags:
+- xml
+- pid
+- data
+- output
+- input
+- mp4
+- mpd
+- dash
+---
+
 # Overview {:data-level="all"}
 
 We discuss here about the ability to deal with dynamic metadata such as SCTE-35 in GPAC Filters.

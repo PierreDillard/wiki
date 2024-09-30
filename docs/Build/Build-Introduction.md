@@ -1,3 +1,8 @@
+---
+tags:
+- option
+---
+
 This section describes how to build GPAC from scratch and how to develop with it. 
 
 You can get pre-compiled binaries on [the GPAC website](https://gpac.io/downloads/gpac-nightly-builds/).

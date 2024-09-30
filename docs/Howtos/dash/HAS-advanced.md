@@ -1,3 +1,26 @@
+---
+tags:
+- media
+- source
+- input
+- mp4
+- property
+- stream
+- xml
+- profile
+- link
+- option
+- sink
+- pid
+- reframer
+- mpd
+- dash
+- frame
+- chain
+- output
+- session
+---
+
 # Foreword
 In this howto, we will study complex use cases for DASH and HLS (and sometimes SmoothStreaming) powered by GPAC.
 

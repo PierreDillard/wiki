@@ -1,3 +1,23 @@
+---
+tags:
+- decoding
+- stream
+- media
+- frame
+- source
+- data
+- output
+- chain
+- encode
+- input
+- raw
+- option
+- group
+- mp4
+- scene
+- property
+---
+
 # Overview {:data-level="all"}
 
 We discuss here how to use the AVMix filter to do offline or live video editing.

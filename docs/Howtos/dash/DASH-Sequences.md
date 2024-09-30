@@ -1,3 +1,20 @@
+---
+tags:
+- decoding
+- stream
+- media
+- frame
+- source
+- data
+- profile
+- raw
+- codec
+- group
+- mp4
+- mpd
+- dash
+---
+
 Telecom Paris has been generating a set of DASH sequences, and is making them available for DASH conformance testing. 
 
 These sequences are distributed under the terms of the [Creative Common by-nc-nd Licence](http://creativecommons.org/licenses/by-nc-nd/3.0).

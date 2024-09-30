@@ -1,3 +1,12 @@
+---
+tags:
+- pid
+- media
+- xml
+- property
+- box
+---
+
 _GPAC allows adding or removing boxes in an ISOBMFF file through patches, in order to customize files. This box patching uses an XML description of where the box should be added or removed, and what the new box content is in case of box addition._
 
 The XML syntax used is:

@@ -25,6 +25,11 @@ function displayKeywords(keywords, cachedDefinitions, allDefinitions, selectedLe
             a.textContent = keyword;
             a.className = sizes[index % sizes.length] + ' ' + colors[index % colors.length];
 
+            a.addEventListener('click', function (event) {
+                event.preventDefault();
+                navigateToTagPage(keyword);
+            });
+
             a.addEventListener('mouseenter', function (event) {
                 event.preventDefault();
                   clearTimeout(closeModalTimer); 
@@ -51,4 +56,8 @@ function displayKeywords(keywords, cachedDefinitions, allDefinitions, selectedLe
     if (displayedKeywordsCount < totalRelevantKeywords) {
         console.warn(`Some relevant keywords (${totalRelevantKeywords - displayedKeywordsCount}) could not be displayed.`);
     }
+}
+
+function navigateToTagPage(keyword) {
+    window.location.href = `/tags/#${keyword.toLowerCase()}`;
 }

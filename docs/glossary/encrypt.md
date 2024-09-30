@@ -1,7 +1,15 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- xml
+- input
+- output
+- encrypt
+- mp4
 ---
+
+
 
 `encrypt` is a function that allows you to encrypt multimedia files using specified encryption keys.
 

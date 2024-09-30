@@ -1,3 +1,13 @@
+---
+tags:
+- stream
+- source
+- profile
+- mp4
+- mpd
+- dash
+---
+
 Apple has announced during WWDC2016 the support for fragmented MP4 files in HLS:
 
 [https://developer.apple.com/videos/play/wwdc2016/504/](https://developer.apple.com/videos/play/wwdc2016/504/)

@@ -1,3 +1,26 @@
+---
+tags:
+- media
+- input
+- codec
+- mp4
+- stream
+- xml
+- profile
+- decoding
+- mpd
+- dash
+- frame
+- chain
+- data
+- output
+- raw
+- graph
+- session
+- group
+- scene
+---
+
 # Foreword {: data-level="all"}
 
 A true multimedia player is a complex system involving networking, media and user interactions management, rasterizing, etc. The following section is a more or less exhaustive list of supported features in the GPAC player.

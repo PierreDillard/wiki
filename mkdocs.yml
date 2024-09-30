@@ -71,8 +71,9 @@ theme:
 repo_url: https://github.com/gpac/gpac/
 plugins:
   - search
-  - tags
-  
+  - tags:
+     tags_file: tags.md
+    
 
 hooks:
   - scripts/mkdocs_hooks.py

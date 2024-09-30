@@ -1,7 +1,18 @@
 ---
 hide:
-  - toc
+- toc
+tags:
+- decoding
+- media
+- data
+- output
+- input
+- raw
+- codec
+- mp4
 ---
+
+
 
 ### **Decoder**
 

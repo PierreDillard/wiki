@@ -1,3 +1,9 @@
+---
+tags:
+- box
+- group
+---
+
 The following table is a detailed listing of supported X3D nodes in GPAC. 
 
 This is not a bug tracker page, in other words it is quite possible that some nodes listed as supported have strange behaviors. In such a case please report on [our tracker](https://github.com/gpac/gpac/issues).

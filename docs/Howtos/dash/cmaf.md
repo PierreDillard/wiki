@@ -1,3 +1,18 @@
+---
+tags:
+- media
+- xml
+- source
+- input
+- profile
+- option
+- codec
+- mp4
+- mpd
+- box
+- dash
+---
+
 # CMAF Generation
 
 GPAC can be used to generate DASH or HLS following the CMAF specification.

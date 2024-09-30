@@ -1,3 +1,20 @@
+---
+tags:
+- media
+- frame
+- source
+- pid
+- output
+- chain
+- input
+- reframer
+- link
+- session
+- mp4
+- mpd
+- dash
+---
+
 # Foreword
 
 In this howto, we will study various setups for DASH transcoding. 

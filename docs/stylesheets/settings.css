@@ -1,6 +1,6 @@
 .md-header__settings {
   position: relative;
-  margin-left: 1rem;
+ 
   
 }
 
@@ -10,6 +10,7 @@
   color: var(--md-primary-bg-color);
   cursor: pointer;
   font-size: 1.2rem;
+  margin-right: 1rem;
 }
 
 .md-header__settings-dropdown {

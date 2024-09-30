@@ -151,8 +151,6 @@ function handleAllSection(section, h2) {
         section.removeAttribute('data-was-active');
     }
 }
-
-
 /**
  * Initializes the header title behavior based on the scroll position.
  * 

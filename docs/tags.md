@@ -1,3 +1,14 @@
 # Tags {.no-collapse}
 
-Following is a list of relevant tags :
+Following is a list of relevant tags:
+
+<button id="returnButton" aria-label="Return to previous page">
+    <i class="fas fa-arrow-left"></i>
+    <span></span>
+</button>
+
+<script>
+document.getElementById('returnButton').addEventListener('click', function() {
+    window.history.back();
+});
+</script>

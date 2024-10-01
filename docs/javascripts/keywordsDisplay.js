@@ -25,10 +25,6 @@ function displayKeywords(keywords, cachedDefinitions, allDefinitions, selectedLe
             a.textContent = keyword;
             a.className = sizes[index % sizes.length] + ' ' + colors[index % colors.length];
 
-            a.addEventListener('click', function (event) {
-                event.preventDefault();
-                navigateToTagPage(keyword);
-            });
 
             a.addEventListener('mouseenter', function (event) {
                 event.preventDefault();

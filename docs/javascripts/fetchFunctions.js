@@ -10,6 +10,8 @@ function fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions) {
 			.then(data => {
 				const allDefinitions = data.definitions;
 				const lexique = Object.keys(allDefinitions);
+
+				
 				findKeywordsInContent(currentPageMdPath, lexique, (filteredKeywords) => {
 					cachedKeywords[currentPageMdPath] = filteredKeywords;
 					setCache('keywordsCache', cachedKeywords);

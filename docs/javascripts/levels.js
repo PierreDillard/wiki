@@ -358,8 +358,7 @@ function updateOptionsVisibility(level) {
     console.error('Error updating options visibility:', error);
   }
 }
-
-// Levels with search feature
+//Levels with search feature
 
 function isSearchResultPage() {
   try {
@@ -371,18 +370,14 @@ function isSearchResultPage() {
 }
 
 function setTemporaryExpertMode() {
-  try {
-    const currentLevel = localStorage.getItem('userLevel');
-    if (currentLevel === 'beginner' && isSearchResultPage()) {
-      localStorage.setItem('tempExpertMode', 'true');
-      localStorage.setItem('userLevel', 'expert');
-      return true;
-    }
-    return false;
-  } catch (error) {
-    console.error('Error setting temporary expert mode:', error);
-    return false;
-  }
+
+const currentLevel = localStorage.getItem('userLevel');
+if(currentLevel === 'beginner' && isSearchResultPage()) {
+  localStorage.setItem('tempExpertMode', 'true');
+  localStorage.setItem('userLevel', 'expert');
+  return true
+}
+return false
 }
 
 function revertFromTemporaryExpertMode() {

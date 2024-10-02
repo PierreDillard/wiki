@@ -1,11 +1,20 @@
 ---
 tags:
-- media
 - xml
-- mp4
-- mpd
+- media
+- data
+- isobmff
+- mpeg
+- isomedia
 - dash
+- mpd
+- stream
+- block
+- segment
+- chunk
+- mp4
 ---
+
 
 _With [our work](https://biblio.telecom-paristech.fr/cgi-bin/download.cgi?id=11076) on [Dynamic Adaptive Streaming over HTTP (DASH)](https://www.slideshare.net/christian.timmerer/http-streaming-of-mpeg-media), in the current version of GPAC (revision 2642 on SVN), we now have many options for interleaving, fragmenting and segmenting ... which may be confusing._
 

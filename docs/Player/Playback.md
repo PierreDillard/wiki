@@ -1,11 +1,20 @@
 ---
 tags:
-- stream
+- bitstream
+- track
+- sequence
 - media
-- source
 - output
+- data
+- bifs
+- stream
+- filter
+- input
+- compositor
 - session
+- source
 ---
+
 
 # Introduction
 GPAC can playback content in two main ways:

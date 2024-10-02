@@ -1,14 +1,24 @@
 ---
 tags:
-- media
-- profile
-- reframer
-- option
-- session
 - mp4
-- mpd
+- media
+- data
+- isobmff
+- isomedia
+- latency
 - dash
+- mpd
+- stream
+- block
+- option
+- segment
+- chunk
+- reframer
+- session
+- profile
+- bitrate
 ---
+
 
 # Foreword
 Please make sure you have read [DASH Low Latency](LL-DASH) and [HLS Generation](hls) before reading this. 

@@ -1,20 +1,33 @@
 ---
 tags:
-- decoding
-- stream
+- data
+- dash
+- option
+- chain
+- block
+- xml
 - media
 - frame
-- xml
-- data
-- chain
-- profile
-- option
 - session
-- mp4
-- mpd
+- profile
+- bitstream
+- isobmff
+- stream
+- sample
+- chunk
+- decoding
+- track
 - box
-- dash
+- sequence
+- binary
+- isomedia
+- mpeg
+- mpd
+- pipeline
+- segment
+- mp4
 ---
+
 
 ## DASH Basics: MPD and Segments
 

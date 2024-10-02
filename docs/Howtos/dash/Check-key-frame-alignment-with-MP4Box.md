@@ -1,15 +1,25 @@
 ---
 tags:
-- media
-- frame
 - xml
 - encode
-- source
-- encrypt
+- media
+- data
+- isobmff
 - codec
-- mp4
+- mpeg
+- ffmpeg
+- isomedia
 - dash
+- stream
+- sample
+- frame
+- encoder
+- encrypt
+- mp4
+- bitrate
+- source
 ---
+
 
 When packaging encoded content for DASH, a lot of issues come from misalignment of key-frames across the different encoded qualities. This page describes how to check key-frame alignment. 
 

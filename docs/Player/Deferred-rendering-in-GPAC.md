@@ -1,8 +1,16 @@
 ---
 tags:
+- h264
+- isomedia
+- isobmff
+- codec
+- sample
 - frame
+- compositor
 - mp4
+- compression
 ---
+
 
 The GPAC compositor can render content in a special mode allowing to debug deferred rendering in 2D. In this mode, only the rectangular regions of the window that have changed since the previous frame are drawn in each frame. 
 

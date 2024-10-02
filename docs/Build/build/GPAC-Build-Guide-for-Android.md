@@ -1,9 +1,11 @@
 ---
 tags:
+- input
 - link
-- source
 - data
+- source
 ---
+
 
 !!! note
     The Android build is a bit complicated. The method described here is the one used for the official Android builds. It is fairly rigid, with some hard-coded paths and versions. It should not be too hard to adapt it to one's own setup, but there is no guarantee that it will work as is on (for example) more recent versions of the ndk/sdk. 

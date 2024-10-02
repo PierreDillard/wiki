@@ -1,9 +1,12 @@
 ---
 tags:
-- property
-- source
+- binary
 - data
+- source
+- property
+- input
 ---
+
 
 !!! note
     To build on Windows, you'll need: 

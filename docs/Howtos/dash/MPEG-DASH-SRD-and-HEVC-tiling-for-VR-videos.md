@@ -1,13 +1,23 @@
 ---
 tags:
-- frame
+- bitstream
+- binary
+- isomedia
+- isobmff
+- codec
+- mpeg
 - tile
-- source
-- session
-- mp4
-- mpd
 - dash
+- mpd
+- frame
+- hevc
+- session
+- input
+- compression
+- mp4
+- source
 ---
+
 
 We were at [MMSys 2016](https://mmsys2016.itec.aau.at/) talking about new nice features in GPAC: support for MPEG-DASH Spatial Relation Description and HEVC motion-constrained tiling!
 We had a [quick poster](https://gpac.io/files/2016/05/ACM-MMSys16-Poster-v1.pdf) presenting our two demos

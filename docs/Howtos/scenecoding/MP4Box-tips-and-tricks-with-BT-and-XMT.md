@@ -1,10 +1,17 @@
 ---
 tags:
+- bitstream
+- xml
+- sequence
+- binary
+- media
+- data
+- macro
 - stream
 - scene
-- xml
-- data
+- track
 ---
+
 
 # Minimal Stream Descriptors for MP4Box (BT and XMT) {:data-level="all"}
 

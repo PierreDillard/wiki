@@ -1,13 +1,27 @@
 ---
 tags:
-- decoding
-- stream
-- media
-- frame
-- source
 - data
+- source
+- media
+- codec
+- nhnt
+- multiplexer
+- frame
+- encoder
+- bitstream
+- stream
+- sample
+- decoding
+- track
+- bitrate
+- sequence
+- encode
+- mpeg
+- decoder
 - mp4
+- input
 ---
+
 
 # NHNT Overview {: data-level="all"}
 The NHNT format has been developed during the MPEG-4 Systems implementation phase, as a way to easily mux unknown media formats to an MP4 file or an MPEG-4 multiplex. The goal was to have the media encoder produce a description of the media time fragmentation (access units and timestamps) that could be reused by a media-unaware MPEG-4 multiplexer.

@@ -1,8 +1,11 @@
 ---
 tags:
 - frame
+- avmix
+- filter
 - source
 ---
+
 
 
 Javascript developers have two options to work with GPAC, the most appropriate solution depends on the project's goal:

@@ -1,13 +1,20 @@
 ---
 tags:
-- media
 - xml
-- profile
-- mp4
-- mpd
+- track
+- media
+- data
+- isobmff
 - box
+- mpeg
+- isomedia
 - dash
+- mpd
+- stream
+- mp4
+- profile
 ---
+
 
 MP4 files (and GPAC) have been using a 3-character-code to indicate the language of a track, following the standard [ISO 639-2:1998](http://en.wikipedia.org/wiki/List_of_ISO_639-2_codes). This way of language tagging has since then been superseded and the current practice is to use an IETF standard called [BCP-47](http://tools.ietf.org/html/bcp47) (Best Current Practice) a.k.a. RFC 5646.
 

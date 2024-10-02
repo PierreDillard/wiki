@@ -1,10 +1,14 @@
 ---
 tags:
-- output
-- option
 - media
+- output
+- data
+- dash
+- stream
+- option
 - source
 ---
+
 
 GPAC comes with a testsuite hosted [here](https://github.com/gpac/testsuite) and present as a submodule of GPAC main repository.
 

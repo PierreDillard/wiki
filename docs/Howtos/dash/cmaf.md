@@ -1,17 +1,29 @@
 ---
 tags:
-- media
-- xml
-- source
-- input
-- profile
-- option
-- codec
-- mp4
-- mpd
-- box
+- h264
+- data
 - dash
+- option
+- isma
+- source
+- xml
+- media
+- codec
+- profile
+- isobmff
+- stream
+- sample
+- encrypt
+- track
+- box
+- isomedia
+- mpd
+- compression
+- mp4
+- manifest
+- input
 ---
+
 
 # CMAF Generation
 

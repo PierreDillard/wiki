@@ -1,18 +1,34 @@
 ---
 tags:
-- decoding
-- media
-- xml
-- source
+- sink
+- ttml
 - data
 - output
-- raw
-- group
-- session
-- mp4
-- box
 - dash
+- filter
+- source
+- xml
+- heif
+- media
+- webvtt
+- frame
+- session
+- raw
+- dump
+- isobmff
+- stream
+- sample
+- group
+- decoding
+- track
+- box
+- binary
+- isomedia
+- mpeg
+- mp4
+- input
 ---
+
 
 There are plenty of [subtitle formats](http://en.wikipedia.org/wiki/Subtitle_(captioning)#Subtitle_formats) and plenty of [types](http://en.wikipedia.org/wiki/Subtitle_(captioning)#Types) and [categories](http://en.wikipedia.org/wiki/Subtitle_(captioning)#Categories) of subtitles. GPAC's support for subtitles is based on the support for the ISO Base Media File Format (ISOBMFF). 
 

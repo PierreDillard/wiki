@@ -1,17 +1,27 @@
 ---
 tags:
-- pid
-- media
-- source
-- chain
+- sink
 - output
-- input
-- reframer
+- data
 - link
+- filter
+- chain
+- connection
+- reframer
+- source
+- heif
+- media
 - connections
+- frame
 - session
+- pid
+- dump
+- stream
+- pipeline
 - graph
+- input
 ---
+
 
 ## About the gpac filters API  
 

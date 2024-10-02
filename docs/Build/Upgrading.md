@@ -1,8 +1,10 @@
 ---
 tags:
-- source
 - data
+- input
+- source
 ---
+
 
 # In source tree building {: data-level="all" }
 If you build GPAC directly in the source tree (i.e., running `./configure && make` in the same directory as the configure script), the following steps must be done when upgrading your code base to a new version of GPAC, or when switching branches:

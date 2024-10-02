@@ -2,9 +2,9 @@
 
 Following is a list of relevant tags:
 
-<button id="returnButton" aria-label="Return to previous page">
+<button id="returnButton" aria-label="Return to previous page"> 
     <i class="fas fa-arrow-left"></i>
-    <span></span>
+    <span>Back</span>
 </button>
 
 <script>

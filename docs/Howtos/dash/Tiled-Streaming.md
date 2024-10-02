@@ -1,20 +1,36 @@
 ---
 tags:
-- stream
-- frame
-- tile
-- source
+- sink
 - output
-- input
+- dash
+- option
+- filter
+- source
+- codec
+- frame
+- encoder
+- compositor
 - profile
 - raw
-- option
-- graph
-- mp4
-- scene
+- dump
+- isobmff
+- tile
+- stream
+- sample
+- track
+- bitrate
+- isomedia
+- mpeg
 - mpd
-- dash
+- hevc
+- scene
+- compression
+- decoder
+- mp4
+- graph
+- input
 ---
+
 
 GPAC supports streaming HEVC tiled DASH videos. In this page, you will find some helpful information to get started with this feature. In the following, we assume the input video has resolution of 3840x2160 and a frame rate of 30 frames/sec.
 

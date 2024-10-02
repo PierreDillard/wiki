@@ -1,8 +1,10 @@
 ---
 tags:
 - box
+- bifs
 - group
 ---
+
 
 The following table is a detailed listing of supported X3D nodes in GPAC. 
 

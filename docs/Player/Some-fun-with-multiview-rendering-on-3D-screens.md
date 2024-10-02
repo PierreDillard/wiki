@@ -1,13 +1,26 @@
 ---
 tags:
-- stream
-- source
+- sink
 - data
 - output
 - option
-- mp4
+- filter
+- opengl
+- source
+- heif
+- media
+- frame
+- compositor
+- bitstream
+- dump
+- stream
+- track
+- sequence
+- mpeg
 - scene
+- mp4
 ---
+
 
 GPAC can support various output type and view number, but requires OpenGL to do so. 
 

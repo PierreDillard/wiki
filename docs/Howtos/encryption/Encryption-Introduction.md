@@ -1,11 +1,17 @@
 ---
 tags:
-- stream
-- media
+- bitstream
 - xml
+- sequence
+- media
 - data
+- stream
+- sample
+- isma
 - encrypt
+- track
 ---
+
 
 GPAC can be used to encrypt or decrypt media streams in a more or less format-agnostic manner, according to the Common Encryption, ISMA E&A and OMA DRM 2.0 specifications. An XML language is used by GPAC to get/set the encryption parameters.
 

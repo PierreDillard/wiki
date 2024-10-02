@@ -1,69 +1,76 @@
 let closeModalTimer;
 
 function keepModalOpen() {
-    clearTimeout(closeModalTimer);
+    try {
+        clearTimeout(closeModalTimer);
+    } catch (error) {
+        console.error("Error in keepModalOpen:", error);
+    }
 }
 
 function startCloseModalTimer() {
-    closeModalTimer = setTimeout(closeModal, 300); 
-}
-function openModal(keyword, definition, event = null) {
-   
-
-    const modal = document.getElementById("modal");
-    const modalTitle = document.getElementById("modal-title");
-    const modalDefinition = document.getElementById("modal-definition");
-    const modalLink = document.getElementById("modal-link");
-
-
-    if (!modalTitle || !modalDefinition || !modalLink) {
-        console.error('Modal elements not found');
-        return;
+    try {
+        closeModalTimer = setTimeout(closeModal, 300);
+    } catch (error) {
+        console.error("Error in startCloseModalTimer:", error);
     }
-     
-    if (modalTitle && modalDefinition && modalLink) {
-        let descriptionText = 'Definition not vailable';
+}
+
+function openModal(keyword, definition, event = null) {
+    try {
+        const modal = document.getElementById("modal");
+        const modalTitle = document.getElementById("modal-title");
+        const modalDefinition = document.getElementById("modal-definition");
+        const modalLink = document.getElementById("modal-link");
+
+        if (!modalTitle || !modalDefinition || !modalLink) {
+            console.error('Modal elements not found');
+            return;
+        }
+
+        let descriptionText = 'Definition not available';
         if (typeof definition === 'string') {
             descriptionText = definition;
         } else if (definition && typeof definition === 'object' && definition.description) {
             descriptionText = definition.description;
-        } 
-        const glossaryPageUrl = `${
-            window.location.origin
-          }/glossary/${keyword.toLowerCase()}/`;
-      
-      modalTitle.textContent = keyword;
-      modalDefinition.textContent = descriptionText;
-      modalLink.href = glossaryPageUrl;
+        }
 
-      modal.style.display = "block";
+        const glossaryPageUrl = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`;
 
-      modal.classList.remove("hidden");
-      modal.style.display = "block";
-      modalLink.classList.remove("hidden"); 
-        
-    } else {
-        console.error('Modal elements not found');
+        modalTitle.textContent = keyword;
+        modalDefinition.textContent = descriptionText;
+        modalLink.href = glossaryPageUrl;
+
+        modal.style.display = "block";
+        modal.classList.remove("hidden");
+        modalLink.classList.remove("hidden");
+
+        setTimeout(() => {
+            modal.classList.add("visible");
+        }, 10);
+
+        modal.addEventListener('mouseenter', keepModalOpen);
+        modal.addEventListener('mouseleave', startCloseModalTimer);
+    } catch (error) {
+        console.error("Error in openModal:", error);
     }
-    setTimeout(() => {
-        modal.classList.add("visible");
-    }, 10);
-
-  
-    modal.addEventListener('mouseenter', keepModalOpen);
-    modal.addEventListener('mouseleave', startCloseModalTimer);
 }
 
 function closeModal() {
-    const modal = document.getElementById("modal");
-    if (modal) {
-        modal.classList.remove("visible");
+    try {
+        const modal = document.getElementById("modal");
+        if (modal) {
+            modal.classList.remove("visible");
 
-        setTimeout(() => {
-            modal.style.display = "none";
-        }, 300); 
+            setTimeout(() => {
+                modal.style.display = "none";
+            }, 300);
+        }
+    } catch (error) {
+        console.error("Error in closeModal:", error);
     }
 }
+
 document.addEventListener("DOMContentLoaded", function () {
     try {
         document.getElementById("close-modal").addEventListener("click", function () {
@@ -72,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 modal.classList.add("hidden");
                 modal.style.display = "none";
             } catch (error) {
-                console.error('Error handling close-modal click event:', error);
+                console.error("Error in close-modal click event:", error);
             }
         });
 
@@ -84,10 +91,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     modal.style.display = "none";
                 }
             } catch (error) {
-                console.error('Error handling modal click event:', error);
+                console.error("Error in modal click event:", error);
             }
         });
 
-    window.openModal = openModal;
-    window.closeModal = closeModal;
+        window.openModal = openModal;
+        window.closeModal = closeModal;
+    } catch (error) {
+        console.error("Error during DOMContentLoaded:", error);
+    }
 });

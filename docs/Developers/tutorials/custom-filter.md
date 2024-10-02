@@ -18,7 +18,7 @@ tags:
 - property
 ---
 
-﻿## Creating a custom GPAC filter
+## Creating a custom GPAC filter
 
 Custom filters are filters created by the app with no associated registry. Therefore there is no internal representation for the custom filter (No filter registry). So capabilities and different behaviors of the custom filter must be specified by the app with the helper callback functions (listed below).
 

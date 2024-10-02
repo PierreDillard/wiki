@@ -152,3 +152,32 @@
     opacity: 1;
     transform: translateX(0);
 }
+
+.highlight {
+    
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    position: relative;
+}
+
+.highlight pre {
+    margin: 0;
+    padding: 0;
+}
+
+.highlight code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.6rem;
+    line-height: 1.5;
+}
+
+.highlight::before {
+    content: attr(data-language);
+    position: absolute;
+    top: 0.3rem;
+    right: 0.5rem;
+    font-size: 0.7rem;
+    color: #abb2bf;
+    text-transform: uppercase;
+}

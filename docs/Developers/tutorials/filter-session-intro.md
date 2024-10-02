@@ -13,7 +13,7 @@ tags:
 - graph
 ---
 
-﻿## About the gpac filters API  
+## About the gpac filters API  
 
 The API enables you to use GPAC capabilities in your own personal code. By calling any filter in gpac’s set of built-in filters, or even create your own personalized custom filters to interact within the media pipelines. This can be useful to interface with other pieces of software or create faster ways of executing some media processing workflows.
 

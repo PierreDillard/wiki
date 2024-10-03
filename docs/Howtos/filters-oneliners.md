@@ -58,9 +58,6 @@ tags:
 
 
 
-# Page Title
-
-Content of the page...
 
 
 

@@ -112,12 +112,7 @@
     display: none !important;
 }
 
-@media (min-width: 1024px) and (max-width: 1439px) {
-    .modal {
-        left: 60%;
-        top:195%;
-    }
-}
+
 .modal-aliases {
     margin-top: 8px;
     font-size: 12px;

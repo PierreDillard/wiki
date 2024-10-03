@@ -103,7 +103,7 @@ function initializeLevelManagement() {
   levelSwitch.checked = savedLevel === "expert";
   updateSwitchLabel();
 
-  /*  addLevelTags();*/
+
 
   filterContent(savedLevel);
   updateTOCVisibility(savedLevel);
@@ -155,27 +155,7 @@ function updateSwitchLabel() {
     console.error('switchLabel ou levelSwitch est undefined');
   }
 }
-/**
- * Adds level tags to elements with data-level attribute.
- */
 
-/* function addLevelTags() {
-  const allContent = document.querySelectorAll("[data-level]");
-  allContent.forEach((element) => {
-    const level = element.dataset.level;
-    if (level && level === 'basic') {
-      return}
-    if (level) {
-      const existingTag = element.querySelector(".level-tag");
-      if (!existingTag) {
-        const tag = document.createElement("span");
-        tag.className = `level-tag level-${level}`;
-        tag.textContent = level.charAt(0).toUpperCase() + level.slice(1);
-        element.insertBefore(tag, element.firstChild);
-      }
-    }
-  });
-} */
 
 /**
  * Content Filtering
@@ -222,7 +202,7 @@ function filterContent(level) {
           }
       });
   } else {
-      // For sections that are not in "Howtos" section
+    
       sections.forEach(section => {
           section.classList.remove('hidden-level');
           const span = section.querySelector('.level-tag');
@@ -294,7 +274,7 @@ function updateTOCVisibility(level) {
       }
   });
   if (beginnerIds.size === 0) {
-    // If no beginner sections, show all TOC items
+
     tocItems.forEach(item => {
       item.style.display = '';
     });

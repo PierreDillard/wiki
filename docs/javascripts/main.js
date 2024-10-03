@@ -118,7 +118,7 @@ function initializeContributeIcon(feedback) {
     }
 }
 
-// Collapse sections
+// Collapse 
 function handleSearchPageCollapse() {
     const isSearchPage = new URLSearchParams(window.location.search).has('h');
     const wasCollapsed = localStorage.getItem('wasCollapsed');

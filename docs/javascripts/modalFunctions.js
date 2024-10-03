@@ -27,6 +27,7 @@ function openModal(keyword, definition, event = null) {
 }
 
 function setModalContent(modalTitle, modalDefinition, modalLink, keyword, definition) {
+  console.log(definition);
   let descriptionText = "Definition not available";
   if (typeof definition === "string") {
     descriptionText = definition;
@@ -42,7 +43,6 @@ function setModalContent(modalTitle, modalDefinition, modalLink, keyword, defini
     window.location.href = tagsPageUrl;
   };
 
-  // Clear previous content
   modalDefinition.innerHTML = '';
 
   // Add description
@@ -55,8 +55,16 @@ function setModalContent(modalTitle, modalDefinition, modalLink, keyword, defini
     const aliasesSection = createAliasesSection(definition.aliases);
     modalDefinition.appendChild(aliasesSection);
   }
+  if(definition.url){
+    
+    modalLink.href = definition.url;
+  } else {
+    modalLink.href = glossaryPageUrl;
 
-  modalLink.href = glossaryPageUrl;
+  }
+
+
+ 
 }
 
 function createAliasesSection(aliases) {

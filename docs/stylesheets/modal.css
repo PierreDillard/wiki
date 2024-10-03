@@ -130,7 +130,7 @@
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    
   }
   
   .modal-aliases li {
@@ -143,11 +143,11 @@
     color: #333!important;
     text-decoration: none;
     background-color: #c5c5c5;
-    padding: 2px 4px;
+    padding: 2px 2px;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    display: inline-flex;
-    align-items: center;
+    /* display: inline-flex; */
+    align-items: self-start;
   }
   
   .alias-link::before {

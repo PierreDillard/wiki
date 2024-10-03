@@ -310,7 +310,8 @@
             "aliases": [
                 "FFENC","FFDEC"
             ],
-            "category": "Libraries and Dependencies "
+            "category": "Libraries and Dependencies ",
+            "url":"https://www.ffmpeg.org/documentation.html"
         },
         "BIFS": {
             "description": "BIFS (Binary Format for Scenes) is a binary format used to represent and encode multimedia scenes, part of the MPEG-4 standard.",
@@ -394,7 +395,8 @@
         "LIBGPAC": {
             "description": "LibGPAC is the core library of GPAC, providing essential functionalities for multimedia processing.",
             "level": "expert",
-            "category": "Libraries and Dependencies "
+            "category": "Libraries and Dependencies ",
+            "url": "https://doxygen.gpac.io/"
         },
         "HEIF": {
             "description": "HEIF (High Efficiency Image File Format) is a file format for individual images and image sequences, based on the HEVC standard.",
@@ -595,7 +597,8 @@
             "aliases": [
                 "GL"
             ],
-            "category": "Graphics and Rendering"
+            "category": "Graphics and Rendering",
+            "url": "https://www.opengl.org/"
         },
         "WEBGL": {
             "description": "WebGL (Web Graphics Library) is a JavaScript API for rendering high-performance interactive 3D and 2D graphics within any compatible web browser without the use of plug-ins.",
@@ -603,7 +606,8 @@
             "aliases": [
                 "Web Graphics Library"
             ],
-            "category": "Graphics and Rendering"
+            "category": "Graphics and Rendering",
+            "url": "https://www.khronos.org/webgl/"
         }
     }
 }

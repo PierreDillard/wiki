@@ -7,6 +7,7 @@ function keepModalOpen() {
 function startCloseModalTimer() {
   closeModalTimer = setTimeout(closeModal, 300);
 }
+
 function openModal(keyword, definition, event = null) {
   const modal = document.getElementById("modal");
   const modalTitle = document.getElementById("modal-title");
@@ -18,42 +19,75 @@ function openModal(keyword, definition, event = null) {
     return;
   }
 
-  if (modalTitle && modalDefinition && modalLink) {
-    let descriptionText = "Definition not vailable";
-    if (typeof definition === "string") {
-      descriptionText = definition;
-    } else if (
-      definition &&
-      typeof definition === "object" &&
-      definition.description
-    ) {
-      descriptionText = definition.description;
-    }
-    const glossaryPageUrl = `${
-      window.location.origin
-    }/glossary/${keyword.toLowerCase()}/`;
-    const tagsPageUrl = `/tags/#${keyword.toLowerCase()}`;
-    modalTitle.textContent = keyword;
-    modalTitle.onclick = function () {
-      window.location.href = tagsPageUrl;
-    };
-    modalDefinition.textContent = descriptionText;
-    modalLink.href = glossaryPageUrl;
-
-    modal.style.display = "block";
-
-    modal.classList.remove("hidden");
-    modal.style.display = "block";
-    modalLink.classList.remove("hidden");
-  } else {
-    console.error("Modal elements not found");
+  let descriptionText = "Definition not available";
+  if (typeof definition === "string") {
+    descriptionText = definition;
+  } else if (
+    definition &&
+    typeof definition === "object" &&
+    definition.description
+  ) {
+    descriptionText = definition.description;
   }
+
+  const glossaryPageUrl = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`;
+  const tagsPageUrl = `/tags/#${keyword.toLowerCase()}`;
+  
+  modalTitle.textContent = keyword;
+  modalTitle.onclick = function () {
+    window.location.href = tagsPageUrl;
+  };
+  
+  // Clear previous content
+  modalDefinition.innerHTML = '';
+  
+  // Add description
+  const descriptionElement = document.createElement('p');
+  descriptionElement.textContent = descriptionText;
+  modalDefinition.appendChild(descriptionElement);
+  
+  // Add aliases section
+  if (definition.aliases && definition.aliases.length > 0) {
+    console.log("Aliases", definition.aliases);
+    const aliasesSection = document.createElement("div");
+    aliasesSection.classList.add("modal-aliases");
+    
+    const aliasesTitle = document.createElement("h3");
+    aliasesTitle.textContent = "See also:";
+    aliasesSection.appendChild(aliasesTitle);
+    
+    const aliasesList = document.createElement("ul");
+    definition.aliases.forEach((alias) => {
+      const aliasItem = document.createElement("li");
+      const aliasLink = createAliasLink(alias);
+      aliasItem.appendChild(aliasLink);
+      aliasesList.appendChild(aliasItem);
+    });
+    
+    aliasesSection.appendChild(aliasesList);
+    modalDefinition.appendChild(aliasesSection);
+  }
+
+  modalLink.href = glossaryPageUrl;
+
+  modal.style.display = "block";
+  modal.classList.remove("hidden");
+  modalLink.classList.remove("hidden");
+
   setTimeout(() => {
     modal.classList.add("visible");
   }, 10);
 
   modal.addEventListener("mouseenter", keepModalOpen);
   modal.addEventListener("mouseleave", startCloseModalTimer);
+}
+
+function createAliasLink(alias) {
+  const link = document.createElement("a");
+  link.textContent = alias;
+  link.href = `/tags/#${alias.toLowerCase()}`;
+  link.className = "alias-link";
+  return link;
 }
 
 function closeModal() {
@@ -73,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.style.display = "none";
   });
 
+
   document.getElementById("modal").addEventListener("click", function (event) {
     if (event.target === event.currentTarget) {
       const modal = document.getElementById("modal");
@@ -83,4 +118,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.openModal = openModal;
   window.closeModal = closeModal;
+});
+
+window.addEventListener('resize', function() {
+  const modal = document.getElementById("modal");
+  if (modal.style.display === "block") {
+    // Recalculate position
+    const wordCloudElement = document.querySelector('.words-cloud');
+    const wordCloudRect = wordCloudElement.getBoundingClientRect();
+    const modalRect = modal.getBoundingClientRect();
+
+    modal.style.left = `${wordCloudRect.left + (wordCloudRect.width - modalRect.width) / 2}px`;
+    modal.style.top = `${wordCloudRect.bottom + window.scrollY + 10}px`;
+  }
 });

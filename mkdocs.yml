@@ -60,7 +60,6 @@ theme:
     - content.code.annotate
     - content.code.copy
     - content.tooltips
-    - navigation.expand
     - navigation.path
     - navigation.tabs
     - navigation.tracking

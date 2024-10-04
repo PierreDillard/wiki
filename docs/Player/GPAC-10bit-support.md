@@ -1,10 +1,11 @@
 ---
 tags:
-- output
 - option
-- decoding
 - opengl
+- decoding
+- output
 ---
+
 
 
 GPAC supports 10bit display and 10bit video decoding. 

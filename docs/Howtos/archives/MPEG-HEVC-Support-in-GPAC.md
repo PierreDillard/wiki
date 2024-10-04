@@ -1,17 +1,18 @@
 ---
 tags:
-- raw
-- isomedia
-- isobmff
-- codec
-- mpeg
-- dash
-- stream
-- hevc
-- compression
 - mp4
 - source
+- isomedia
+- compression
+- isobmff
+- stream
+- raw
+- codec
+- mpeg
+- hevc
+- dash
 ---
+
 
 
 ## Playback support

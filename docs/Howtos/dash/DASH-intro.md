@@ -1,13 +1,14 @@
 ---
 tags:
+- option
+- session
 - media
 - mpeg
-- latency
-- dash
-- option
 - filter
-- session
+- dash
+- latency
 ---
+
 
 
 

@@ -1,21 +1,22 @@
 ---
 tags:
-- bitstream
-- track
-- sequence
-- media
-- dash
-- mpd
-- stream
-- block
-- segment
-- chunk
-- input
-- mp4
-- manifest
 - profile
+- mp4
+- mpd
 - source
+- block
+- input
+- manifest
+- media
+- sequence
+- segment
+- stream
+- bitstream
+- dash
+- chunk
+- track
 ---
+
 
 
 Apple has announced during WWDC2016 the support for fragmented MP4 files in HLS:

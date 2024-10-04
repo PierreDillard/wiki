@@ -1,23 +1,24 @@
 ---
 tags:
+- option
 - mp4
+- profile
+- mpd
+- block
+- session
 - media
+- reframer
+- isomedia
+- segment
 - data
 - isobmff
-- isomedia
-- latency
-- dash
-- mpd
 - stream
-- block
-- option
-- segment
-- chunk
-- reframer
-- session
-- profile
 - bitrate
+- dash
+- chunk
+- latency
 ---
+
 
 
 # Foreword

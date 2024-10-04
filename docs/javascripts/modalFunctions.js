@@ -56,7 +56,7 @@ function setModalContent(modalTitle, modalDefinition, modalLink, keyword, defini
     modalDefinition.appendChild(aliasesSection);
   }
   if(definition.url){
-    
+    console.log(definition.url);
     modalLink.href = definition.url;
   } else {
     modalLink.href = glossaryPageUrl;

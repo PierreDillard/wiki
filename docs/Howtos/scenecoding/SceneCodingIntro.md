@@ -1,15 +1,16 @@
 ---
 tags:
-- xml
+- scene
+- profile
 - media
 - data
+- stream
+- compositor
+- xml
 - mpeg
 - bifs
-- stream
-- scene
-- compositor
-- profile
 ---
+
 
 
 # Multimedia scene description {:data-level="all" }

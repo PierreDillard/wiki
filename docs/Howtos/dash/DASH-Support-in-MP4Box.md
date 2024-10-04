@@ -1,36 +1,37 @@
 ---
 tags:
-- sink
-- data
-- output
-- dash
-- option
-- chain
-- block
-- source
-- xml
-- media
-- codec
-- rebuffer
-- session
-- profile
-- bitstream
-- dump
-- stream
-- sample
-- chunk
-- group
-- buffer
-- track
-- box
-- bitrate
-- binary
-- mpeg
 - mpd
+- data
+- codec
+- buffer
+- sample
+- session
+- stream
+- xml
+- bitstream
+- bitrate
+- dump
+- block
+- media
 - segment
+- group
+- box
+- rebuffer
+- chunk
+- track
+- option
+- profile
 - mp4
+- source
+- chain
 - input
+- binary
+- output
+- mpeg
+- sink
+- dash
 ---
+
 
 
 _MP4Box can be used to generate content compliant to the MPEG-DASH specification, aka ISO/IEC 23009-1 available in [ISO Publicly Available Standards](http://standards.iso.org/ittf/PubliclyAvailableStandards/)._

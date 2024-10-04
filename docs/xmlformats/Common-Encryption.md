@@ -1,33 +1,34 @@
 ---
 tags:
-- packets
-- h264
 - data
-- dash
-- isma
-- property
-- block
-- source
-- xml
-- media
-- codec
-- subsample
-- isobmff
 - tile
-- stream
-- sample
-- chunk
-- group
+- codec
+- isma
 - encrypt
-- track
-- box
-- binary
-- isomedia
-- segment
+- sample
 - compression
+- stream
+- subsample
+- xml
+- block
+- media
+- segment
+- isobmff
+- property
+- group
+- box
+- h264
+- chunk
+- track
 - mp4
+- source
+- packets
 - input
+- isomedia
+- binary
+- dash
 ---
+
 
 
 _MP4Box is able to encrypt and decrypt ISOBMFF files according to CENC specification (ISO/IEC 23001-7:2016), including latest pattern encryption tools introduced in the standard._ 

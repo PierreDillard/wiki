@@ -1,26 +1,27 @@
 ---
 tags:
 - data
-- source
-- media
 - codec
-- nhnt
 - multiplexer
-- frame
-- encoder
-- bitstream
-- stream
 - sample
-- decoding
-- track
+- frame
+- stream
+- encode
+- bitstream
 - bitrate
 - sequence
-- encode
-- mpeg
+- media
 - decoder
+- track
 - mp4
+- source
 - input
+- nhnt
+- decoding
+- mpeg
+- encoder
 ---
+
 
 
 # NHNT Overview {: data-level="all"}

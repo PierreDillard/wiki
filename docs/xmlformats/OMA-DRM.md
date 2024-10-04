@@ -1,12 +1,13 @@
 ---
 tags:
-- xml
-- track
+- mp4
+- encrypt
 - data
 - stream
-- encrypt
-- mp4
+- xml
+- track
 ---
+
 
 
 # OMA DRM authoring {: data-level="all"}

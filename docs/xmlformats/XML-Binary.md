@@ -1,23 +1,24 @@
 ---
 tags:
-- pid
-- xml
-- bitstream
-- track
 - mp4
-- binary
-- media
-- data
-- input
-- isobmff
-- stream
-- sample
-- filter
-- property
 - encrypt
-- box
 - source
+- sample
+- pid
+- input
+- media
+- binary
+- data
+- isobmff
+- xml
+- stream
+- filter
+- bitstream
+- property
+- box
+- track
 ---
+
 
 
 It is possible to describe bit sequences when importing XML data. This applies to:

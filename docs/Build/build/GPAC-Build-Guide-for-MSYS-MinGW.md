@@ -1,9 +1,10 @@
 ---
 tags:
-- data
 - input
+- data
 - source
 ---
+
 
 
 _The following is the guide to build GPAC on Windows using MSYS2 and the MinGW gcc toolchain. It is a bit clunky and will probably only work on x64 and without cross-compilation._

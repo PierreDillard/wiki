@@ -1,16 +1,17 @@
 ---
 tags:
-- xml
-- track
+- profile
+- mp4
+- sample
 - ttml
 - isomedia
 - isobmff
-- dash
 - stream
-- sample
-- mp4
-- profile
+- xml
+- dash
+- track
 ---
+
 
 
 EBU released two specifications recently:

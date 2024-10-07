@@ -3,17 +3,19 @@
     position: absolute;
     margin-top: 10px;
     width: 90%;
-    max-width: 350px;
+    max-width: 250px;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+    display: none;
   
 }
 
 .modal.visible {
-    opacity: 1;
-    visibility: visible;
-    display: block; 
+    opacity: 1!important;
+    visibility: visible!important;
+    display: block!important; 
+    pointer-events: auto !important;
 }
 .modal-content {
     background-color: #E8EAED; 

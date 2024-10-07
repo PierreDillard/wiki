@@ -37,7 +37,7 @@ function fetchDefinitions(keyword, cachedDefinitions,event) {
         .catch(error => console.error('Error fetching definition:', error));
 }
 
-//Get the Markdown content
+
 function fetchMarkdownContent(currentPageMdPath) {
     return fetch(currentPageMdPath)
         .then(response => {

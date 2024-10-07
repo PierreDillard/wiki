@@ -32,7 +32,10 @@ function displayKeywords(keywords, cachedDefinitions, allDefinitions, selectedLe
                 if (cachedDefinitions[keyword]) {
                     openModal(keyword, cachedDefinitions[keyword], event);
                 } else {
-                    fetchDefinitions(keyword, cachedDefinitions, event);
+                    fetchDefinitions(keyword, cachedDefinitions, )
+                    .then(definition => {
+                        openModal(keyword, definition, event);
+                      });
                 }
             });
            

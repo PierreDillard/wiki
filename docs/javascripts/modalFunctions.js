@@ -8,7 +8,7 @@ function startCloseModalTimer() {
   closeModalTimer = setTimeout(closeModal, 300);
 }
 
-function openModal(keyword, definition, event = null) {
+function openModal(keyword, definition, event ) {
   const modal = document.getElementById("modal");
   const modalTitle = document.getElementById("modal-title");
   const modalDefinition = document.getElementById("modal-definition");
@@ -19,7 +19,18 @@ function openModal(keyword, definition, event = null) {
     return;
   }
 
+  console.log("Modal content before update:", modal.innerHTML);
+
   setModalContent(modalTitle, modalDefinition, modalLink, keyword, definition);
+
+  if(event && event.target){
+    const rect = event.target.getBoundingClientRect();
+    modal.style.position = "fixed";
+    modal.style.left = `${rect.left}-50px`;
+    modal.style.top = `${rect.bottom + window.scrollY}px`;
+    console.log("Modal position set to:", modal.style.right, modal.style.top);
+  }
+  console.log("Modal content after update:", modal.innerHTML);
   showModal(modal, modalLink);
 
   modal.addEventListener("mouseenter", keepModalOpen);
@@ -27,7 +38,6 @@ function openModal(keyword, definition, event = null) {
 }
 
 function setModalContent(modalTitle, modalDefinition, modalLink, keyword, definition) {
-  console.log(definition);
   let descriptionText = "Definition not available";
   if (typeof definition === "string") {
     descriptionText = definition;
@@ -45,12 +55,12 @@ function setModalContent(modalTitle, modalDefinition, modalLink, keyword, defini
 
   modalDefinition.innerHTML = '';
 
-  // Add description
+  // Description
   const descriptionElement = document.createElement('p');
   descriptionElement.textContent = descriptionText;
   modalDefinition.appendChild(descriptionElement);
 
-  // Add aliases section
+  // Aliases section
   if (definition.aliases && definition.aliases.length > 0) {
     const aliasesSection = createAliasesSection(definition.aliases);
     modalDefinition.appendChild(aliasesSection);
@@ -91,6 +101,19 @@ function showModal(modal, modalLink) {
   modal.style.display = "block";
   modal.classList.remove("hidden");
   modalLink.classList.remove("hidden");
+
+  modal.offsetHeight;
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      modal.classList.add("visible");
+      console.log("Modal should now be visible");
+      console.log("Modal display after:", modal.style.display);
+      console.log("Modal visibility after:", modal.style.visibility);
+      console.log("Modal opacity after:", modal.style.opacity);
+      console.log("Modal classList:", modal.classList);
+    });
+  });
 
   setTimeout(() => {
     modal.classList.add("visible");

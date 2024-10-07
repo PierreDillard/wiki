@@ -7,7 +7,7 @@
      margin-bottom: 1em;
  }
  :root {
-    --word-cloud-bg-light: linear-gradient(to right, #f8f8f8, #f0f0f0);
+    --word-cloud-bg-light: linear-gradient(to right, #faf7f7, #d7d6d6);
     --word-cloud-border-light: #e0e0e0;
     --word-cloud-shadow-light: rgba(0, 0, 0, 0.05);
     

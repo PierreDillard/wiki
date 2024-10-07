@@ -8,7 +8,7 @@ function startCloseModalTimer() {
   closeModalTimer = setTimeout(closeModal, 300);
 }
 
-function openModal(keyword, definition, event ) {
+function openModal(keyword, definition, event) {
   const modal = document.getElementById("modal");
   const modalTitle = document.getElementById("modal-title");
   const modalDefinition = document.getElementById("modal-definition");
@@ -19,23 +19,26 @@ function openModal(keyword, definition, event ) {
     return;
   }
 
-  console.log("Modal content before update:", modal.innerHTML);
-
   setModalContent(modalTitle, modalDefinition, modalLink, keyword, definition);
 
-  if(event && event.target){
+  if (event && event.target) {
     const rect = event.target.getBoundingClientRect();
-    modal.style.position = "fixed";
-    modal.style.left = `${rect.left}-50px`;
-    modal.style.top = `${rect.bottom + window.scrollY}px`;
-    console.log("Modal position set to:", modal.style.right, modal.style.top);
+    const parentRect = document.querySelector('.words-cloud-container').getBoundingClientRect();
+
+    const offsetLeft = rect.left - parentRect.left;
+    const offsetTop = rect.bottom - parentRect.top;
+
+    modal.style.position = "absolute";
+    modal.style.left = `${offsetLeft - 80 }px`;
+    modal.style.top = `${offsetTop + 40 }px`;
   }
-  console.log("Modal content after update:", modal.innerHTML);
+
   showModal(modal, modalLink);
 
   modal.addEventListener("mouseenter", keepModalOpen);
   modal.addEventListener("mouseleave", startCloseModalTimer);
 }
+
 
 function setModalContent(modalTitle, modalDefinition, modalLink, keyword, definition) {
   let descriptionText = "Definition not available";

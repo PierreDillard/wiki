@@ -1,8 +1,25 @@
 ---
 hide:
-
-  - toc
+- toc
+tags:
+- mp4
+- source
+- transcode
+- input
+- isomedia
+- bitrate
+- isobmff
+- encode
+- output
+- codec
+- hevc
+- sink
+- dump
 ---
+
+
+
+
 
 `encode` is a function that allows you to encode multimedia files into various formats using specified codecs.
 

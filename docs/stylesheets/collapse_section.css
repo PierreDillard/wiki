@@ -14,7 +14,7 @@
 .collapse-section h2 {
     margin: 0;
     padding: 1em;
-    background-color: #e7e6e6;
+    background: var(--collapse-bg-light);
     cursor: pointer;
  /*    display: flex; */
     align-items: center;
@@ -39,7 +39,7 @@
 }
 
 .collapse-section h2:hover {
-    background-color: #dddcdc;
+    background: var(--collapse-hover-bg-light);
 }
 
 .collapse-section.active h2 {
@@ -53,12 +53,12 @@
 
 
 [data-md-color-scheme="slate"] .collapse-section h2 {
-    background-color: #333;
+    background: var(--collapse-bg-dark);
     color: #e0e0e0;
 }
 
 [data-md-color-scheme="slate"] .collapse-section h2:hover {
-    background-color: #3a3a3a;
+    background: var(--collapse-hover-bg-dark);
 }
 
 [data-md-color-scheme="slate"] .collapse-section.active h2 {

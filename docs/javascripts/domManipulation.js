@@ -99,7 +99,7 @@ function createCollapseSection(h2) {
     return collapseSection;
 }
 
-function addCollapseIcon(h2) {
+ function addCollapseIcon(h2) { 
     if (!h2.querySelector('.collapse-icon')) {
         const collapseIcon = document.createElement('span');
         collapseIcon.classList.add('collapse-icon');
@@ -107,7 +107,7 @@ function addCollapseIcon(h2) {
         h2.appendChild(collapseIcon);
     }
 }
-
+ 
 function toggleSection(section) {
     section.classList.toggle('active');
 }

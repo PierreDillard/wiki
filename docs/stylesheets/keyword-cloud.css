@@ -8,6 +8,7 @@
   overflow: hidden;
   margin-bottom: 1rem;
   position: relative;
+  
  
 }
 [data-md-color-scheme="slate"] .words-cloud-container {
@@ -22,6 +23,7 @@
   margin-right: 1rem;
   box-shadow: 0 1px 2px var(--word-cloud-shadow-light);
   transition: all 0.3s ease-in-out;
+  
 }
 
 [data-md-color-scheme="slate"] .words-cloud {

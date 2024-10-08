@@ -1,7 +1,7 @@
 .modal {
     z-index: 1000;
-    position: absolute;
-    margin-top: 10px;
+    position: absolute !important;
+/*     margin-top: 10px; */
     width: 90%;
     width:200px;
     opacity: 0;
@@ -16,6 +16,7 @@
     visibility: visible!important;
     display: block!important; 
     pointer-events: auto !important;
+
 }
 .modal-content {
     background-color: #E8EAED; 

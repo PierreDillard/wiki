@@ -1,6 +1,6 @@
 ---
-hide:
-- toc
+
+
 tags:
 - mp4
 - source
@@ -56,7 +56,7 @@ encode("input.mp4", "output.mp4", "libx264")
 - **output_file**: Path where the encoded file will be saved.
 - **codec**: Codec to be used for encoding (e.g., libx264 for H.264 encoding).
   
-## See Also:
+## See Also 
 - [Codec](codec.md)
 - [Bitrate](bitrate.md)
 - [Transcode](transcode.md) 

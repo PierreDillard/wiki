@@ -1,165 +1,246 @@
-
 const EXPERT_LEVEL = 'expert';
 const BEGINNER_LEVEL = 'beginner';
 
 // initialize functions
 function initializeApp() {
-    initializeSettings();
-    initializeLevelManagement();
-    initializeFeedback('.md-nav__feedback--desktop');
-    initializeFeedback('.md-feedback--mobile');
-    initializeTagNavigation();
-    setupEventListeners();
-    handleInitialPageLoad();
+    try {
+        initializeSettings();
+        initializeLevelManagement();
+        initializeFeedback('.md-nav__feedback--desktop');
+        initializeFeedback('.md-feedback--mobile');
+        initializeTagNavigation();
+        setupEventListeners();
+        handleInitialPageLoad();
+    } catch (error) {
+        console.error("Error in initializeApp:", error);
+    }
 }
 
 function setupEventListeners() {
-    document.body.addEventListener('click', handleNavigation);
-    window.addEventListener('popstate', handlePopState);
-    window.addEventListener('load', handleSearchPageCollapse);
+    try {
+        document.body.addEventListener('click', handleNavigation);
+        window.addEventListener('popstate', handlePopState);
+        window.addEventListener('load', handleSearchPageCollapse);
+    } catch (error) {
+        console.error("Error in setupEventListeners:", error);
+    }
 }
 
 function handleInitialPageLoad() {
-    const savedLevel = localStorage.getItem("userLevel") || EXPERT_LEVEL;
-    updateTOCVisibility(savedLevel);
-    updateOptionsVisibility(savedLevel);
+    try {
+        const savedLevel = localStorage.getItem("userLevel") || EXPERT_LEVEL;
+        updateTOCVisibility(savedLevel);
+        updateOptionsVisibility(savedLevel);
 
-    const currentPagePath = getCurrentPagePath();
-    const cachedKeywords = getCache('keywordsCache');
-    const cachedDefinitions = getCache('definitionsCache');
+        const currentPagePath = getCurrentPagePath();
+        const cachedKeywords = getCache('keywordsCache');
+        const cachedDefinitions = getCache('definitionsCache');
 
-    fetchKeywords(currentPagePath, cachedKeywords, cachedDefinitions);
+        fetchKeywords(currentPagePath, cachedKeywords, cachedDefinitions);
+    } catch (error) {
+        console.error("Error in handleInitialPageLoad:", error);
+    }
 }
 
 // Handlers
 function handleNavigation(event) {
-    const target = event.target.closest('a');
-    if (!isValidNavigationTarget(target)) return;
+    try {
+        const target = event.target.closest('a');
+        if (!isValidNavigationTarget(target)) return;
 
-    const currentUrl = new URL(window.location.href);
-    const targetUrl = new URL(target.href);
+        const currentUrl = new URL(window.location.href);
+        const targetUrl = new URL(target.href);
 
-    if (shouldHandleNavigation(currentUrl, targetUrl)) {
-        handleNavigationChange(event, target);
+        if (shouldHandleNavigation(currentUrl, targetUrl)) {
+            handleNavigationChange(event, target);
+        }
+    } catch (error) {
+        console.error("Error in handleNavigation:", error);
     }
 }
 
 function isValidNavigationTarget(target) {
-    return target && target.href && !target.href.startsWith('javascript:');
+    try {
+        return target && target.href && !target.href.startsWith('javascript:');
+    } catch (error) {
+        console.error("Error in isValidNavigationTarget:", error);
+        return false;
+    }
 }
 
 function shouldHandleNavigation(currentUrl, targetUrl) {
-    return currentUrl.pathname !== targetUrl.pathname || !targetUrl.searchParams.has('h');
+    try {
+        return currentUrl.pathname !== targetUrl.pathname || !targetUrl.searchParams.has('h');
+    } catch (error) {
+        console.error("Error in shouldHandleNavigation:", error);
+        return false;
+    }
 }
 
 function handleNavigationChange(event, target) {
-    if (localStorage.getItem('tempExpertMode') === 'true') {
-        event.preventDefault();
-        revertFromTemporaryExpertMode();
-        updateContentVisibility(BEGINNER_LEVEL);
-        setTimeout(() => {
-            window.location.href = target.href;
-        }, 0);
+    try {
+        if (localStorage.getItem('tempExpertMode') === 'true') {
+            event.preventDefault();
+            revertFromTemporaryExpertMode();
+            updateContentVisibility(BEGINNER_LEVEL);
+            setTimeout(() => {
+                window.location.href = target.href;
+            }, 0);
+        }
+    } catch (error) {
+        console.error("Error in handleNavigationChange:", error);
     }
 }
 
 function handlePopState() {
-    if (!isSearchResultPage() && revertFromTemporaryExpertMode()) {
-        updateContentVisibility(BEGINNER_LEVEL);
+    try {
+        if (!isSearchResultPage() && revertFromTemporaryExpertMode()) {
+            updateContentVisibility(BEGINNER_LEVEL);
+        }
+    } catch (error) {
+        console.error("Error in handlePopState:", error);
     }
 }
 
-// feddback
+// Feedback
 function initializeFeedback(selector) {
-    const feedback = document.querySelector(selector);
-    if (!feedback) return;
+    try {
+        const feedback = document.querySelector(selector);
+        if (!feedback) return;
 
-    const buttons = feedback.querySelectorAll('.md-feedback__icon:not(.md-feedback__contribute)');
-    const note = getFeedbackNote(feedback);
+        const buttons = feedback.querySelectorAll('.md-feedback__icon:not(.md-feedback__contribute)');
+        const note = getFeedbackNote(feedback);
 
-    buttons.forEach(button => {
-        button.addEventListener('click', () => handleFeedbackClick(button, buttons, note));
-    });
+        buttons.forEach(button => {
+            button.addEventListener('click', () => handleFeedbackClick(button, buttons, note));
+        });
 
-    initializeContributeIcon(feedback);
+        initializeContributeIcon(feedback);
+    } catch (error) {
+        console.error("Error in initializeFeedback:", error);
+    }
 }
 
 function getFeedbackNote(feedback) {
-    let note = feedback.querySelector('.md-feedback__note');
-    if (!note) {
-        note = document.createElement('div');
-        note.className = 'md-feedback__note';
-        note.hidden = true;
-        feedback.querySelector('.md-feedback__inner').appendChild(note);
+    try {
+        let note = feedback.querySelector('.md-feedback__note');
+        if (!note) {
+            note = document.createElement('div');
+            note.className = 'md-feedback__note';
+            note.hidden = true;
+            feedback.querySelector('.md-feedback__inner').appendChild(note);
+        }
+        return note;
+    } catch (error) {
+        console.error("Error in getFeedbackNote:", error);
+        return null;
     }
-    return note;
 }
 
 function handleFeedbackClick(button, allButtons, note) {
-    const data = button.getAttribute('data-md-value');
-    const url = `/${window.location.pathname}`;
-    const title = document.querySelector('.md-content__inner h1')?.textContent || '';
+    try {
+        const data = button.getAttribute('data-md-value');
+        const url = `/${window.location.pathname}`;
+        const title = document.querySelector('.md-content__inner h1')?.textContent || '';
 
-    console.log(`Feedback: ${data} for page ${url} (${title})`);
+        console.log(`Feedback: ${data} for page ${url} (${title})`);
 
-    note.textContent = `Thank you for your feedback!`;
-    note.hidden = false;
+        note.textContent = `Thank you for your feedback!`;
+        note.hidden = false;
 
-    allButtons.forEach(btn => btn.disabled = true);
+        allButtons.forEach(btn => btn.disabled = true);
+    } catch (error) {
+        console.error("Error in handleFeedbackClick:", error);
+    }
 }
 
 function initializeContributeIcon(feedback) {
-    const contributeIcon = feedback.querySelector('.md-feedback__contribute');
-    const contributeNote = feedback.querySelector('.md-feedback__contribute-note');
+    try {
+        const contributeIcon = feedback.querySelector('.md-feedback__contribute');
+        const contributeNote = feedback.querySelector('.md-feedback__contribute-note');
 
-    if (contributeIcon && contributeNote) {
-        contributeIcon.addEventListener('mouseenter', () => contributeNote.hidden = false);
-        contributeIcon.addEventListener('mouseleave', () => contributeNote.hidden = true);
+        if (contributeIcon && contributeNote) {
+            contributeIcon.addEventListener('mouseenter', () => contributeNote.hidden = false);
+            contributeIcon.addEventListener('mouseleave', () => contributeNote.hidden = true);
+        }
+    } catch (error) {
+        console.error("Error in initializeContributeIcon:", error);
     }
 }
 
 // Collapse 
 function handleSearchPageCollapse() {
-    const isSearchPage = new URLSearchParams(window.location.search).has('h');
-    const wasCollapsed = localStorage.getItem('wasCollapsed');
+    try {
+        const isSearchPage = new URLSearchParams(window.location.search).has('h');
+        const wasCollapsed = localStorage.getItem('wasCollapsed');
 
-    if (isSearchPage && localStorage.getItem('collapseAll') === 'true') {
-        localStorage.setItem('wasCollapsed', 'true');
-        toggleAllSections(false);
-    } else if (wasCollapsed === 'true') {
-        localStorage.removeItem('wasCollapsed');
-        toggleAllSections(true);
+        if (isSearchPage && localStorage.getItem('collapseAll') === 'true') {
+            localStorage.setItem('wasCollapsed', 'true');
+            toggleAllSections(false);
+        } else if (wasCollapsed === 'true') {
+            localStorage.removeItem('wasCollapsed');
+            toggleAllSections(true);
+        }
+    } catch (error) {
+        console.error("Error in handleSearchPageCollapse:", error);
     }
 }
 
 // Tags navigation
 function initializeTagNavigation() {
-    const wordCloudLinks = document.querySelectorAll('#dynamic-words-cloud a');
-    wordCloudLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            navigateToTagPage(event.target.textContent);
+    try {
+        const wordCloudLinks = document.querySelectorAll('#dynamic-words-cloud a');
+        wordCloudLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                try {
+                    event.preventDefault();
+                    navigateToTagPage(event.target.textContent);
+                } catch (error) {
+                    console.error("Error in wordCloudLinks click event:", error);
+                }
+            });
         });
-    });
+    } catch (error) {
+        console.error("Error in initializeTagNavigation:", error);
+    }
 }
 
 function navigateToTagPage(keyword) {
-    window.location.href = `/tags/#${keyword.toLowerCase()}`;
+    try {
+        window.location.href = `/tags/#${keyword.toLowerCase()}`;
+    } catch (error) {
+        console.error("Error in navigateToTagPage:", error);
+    }
 }
 
 // Utils
 function getCurrentPagePath() {
-    let currentPagePath = window.location.pathname;
-    if (currentPagePath.endsWith('/')) {
-        currentPagePath = currentPagePath.slice(0, -1);
+    try {
+        let currentPagePath = window.location.pathname;
+        if (currentPagePath.endsWith('/')) {
+            currentPagePath = currentPagePath.slice(0, -1);
+        }
+        return currentPagePath.replace('.html', '.md');
+    } catch (error) {
+        console.error("Error in getCurrentPagePath:", error);
+        return '';
     }
-    return currentPagePath.replace('.html', '.md');
 }
 
 function updateContentVisibility(level) {
-    filterContent(level);
-    updateTOCVisibility(level);
-    updateOptionsVisibility(level);
+    try {
+        filterContent(level);
+        updateTOCVisibility(level);
+        updateOptionsVisibility(level);
+    } catch (error) {
+        console.error("Error in updateContentVisibility:", error);
+    }
 }
 
-document.addEventListener('DOMContentLoaded', initializeApp);
+document.addEventListener('DOMContentLoaded', function () {
+    try {
+        initializeApp();
+    } catch (error) {
+        console.error("Error during DOMContentLoaded:", error);
+    }
+});

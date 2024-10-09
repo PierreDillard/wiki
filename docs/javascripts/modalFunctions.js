@@ -205,14 +205,13 @@ window.addEventListener('resize', function() {
       const wordCloudRect = wordCloudElement.getBoundingClientRect();
       const modalRect = modal.getBoundingClientRect();
 
-      // Adjust the left position
+
       modal.style.left = `${wordCloudRect.left + (wordCloudRect.width - modalRect.width) / 2}px`;
 
-      // Get the current computed top position
+     
       const computedStyle = window.getComputedStyle(modal);
       let currentTop = parseFloat(computedStyle.top);
 
-      // Adjust the top position by subtracting 20px
       const newTop = currentTop - 50;
       modal.style.top = `${newTop}px`;
 

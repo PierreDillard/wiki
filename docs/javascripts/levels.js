@@ -1,4 +1,5 @@
-let levelSwitch, switchLabel, currentPageMdPath,collapseAllSwitch,  settingsButton, settingsDropdown;
+let levelSwitch, switchLabel, currentPageMdPath, collapseAllSwitch, settingsButton, settingsDropdown;
+
 /**
  * Settings Management
  * This section contains functions related to initializing and managing user settings.
@@ -8,22 +9,24 @@ let levelSwitch, switchLabel, currentPageMdPath,collapseAllSwitch,  settingsButt
  * Initializes the settings functionality.
  * Sets up event listeners and loads saved preferences.
  */
-
-
 function initializeSettings() {
-  collapseAllSwitch = document.getElementById('collapse-all-switch');
-  settingsButton = document.querySelector('.md-header__settings-button');
-  settingsDropdown = document.querySelector('.md-header__settings-dropdown');
+    try {
+        collapseAllSwitch = document.getElementById('collapse-all-switch');
+        settingsButton = document.querySelector('.md-header__settings-button');
+        settingsDropdown = document.querySelector('.md-header__settings-dropdown');
 
-  const savedLevel = localStorage.getItem('userLevel') || 'expert';
-  const savedCollapseAll = localStorage.getItem('collapseAll') === 'true';
-  collapseAllSwitch.checked = savedCollapseAll;
-  toggleAllSections(savedCollapseAll); 
+        const savedLevel = localStorage.getItem('userLevel') || 'expert';
+        const savedCollapseAll = localStorage.getItem('collapseAll') === 'true';
+        collapseAllSwitch.checked = savedCollapseAll;
+        toggleAllSections(savedCollapseAll);
 
-  collapseAllSwitch.addEventListener('change', handleCollapseAllChange);
-  settingsButton.addEventListener('click', toggleSettingsDropdown);
+        collapseAllSwitch.addEventListener('change', handleCollapseAllChange);
+        settingsButton.addEventListener('click', toggleSettingsDropdown);
 
-  document.addEventListener('click', closeSettingsDropdown);
+        document.addEventListener('click', closeSettingsDropdown);
+    } catch (error) {
+        console.error("Error in initializeSettings:", error);
+    }
 }
 
 /**
@@ -31,26 +34,38 @@ function initializeSettings() {
  * Updates localStorage and toggles all sections accordingly.
  */
 function handleCollapseAllChange() {
-  const collapseAll = collapseAllSwitch.checked;
-  localStorage.setItem('collapseAll', collapseAll);
-  toggleAllSections(collapseAll);
+    try {
+        const collapseAll = collapseAllSwitch.checked;
+        localStorage.setItem('collapseAll', collapseAll);
+        toggleAllSections(collapseAll);
+    } catch (error) {
+        console.error("Error in handleCollapseAllChange:", error);
+    }
 }
 
 /**
  * Toggles the visibility of the settings dropdown.
  */
 function toggleSettingsDropdown() {
-  settingsDropdown.classList.toggle('hidden');
+    try {
+        settingsDropdown.classList.toggle('hidden');
+    } catch (error) {
+        console.error("Error in toggleSettingsDropdown:", error);
+    }
 }
+
 /**
  * Closes the settings dropdown when clicking outside of it.
  * @param {Event} event - The click event
  */
-
 function closeSettingsDropdown(event) {
-  if (!settingsDropdown.contains(event.target) && !settingsButton.contains(event.target)) {
-    settingsDropdown.classList.add('hidden');
-  }
+    try {
+        if (!settingsDropdown.contains(event.target) && !settingsButton.contains(event.target)) {
+            settingsDropdown.classList.add('hidden');
+        }
+    } catch (error) {
+        console.error("Error in closeSettingsDropdown:", error);
+    }
 }
 
 /**
@@ -58,14 +73,18 @@ function closeSettingsDropdown(event) {
  * @param {boolean} collapse - Whether to collapse or expand all sections
  */
 function toggleAllSections(collapse) {
-  const sections = document.querySelectorAll('.collapse-section');
-  sections.forEach(section => {
-    if (collapse) {
-      section.classList.remove('active');
-    } else {
-      section.classList.add('active');
+    try {
+        const sections = document.querySelectorAll('.collapse-section');
+        sections.forEach(section => {
+            if (collapse) {
+                section.classList.remove('active');
+            } else {
+                section.classList.add('active');
+            }
+        });
+    } catch (error) {
+        console.error("Error in toggleAllSections:", error);
     }
-  });
 }
 
 /**
@@ -78,53 +97,57 @@ function toggleAllSections(collapse) {
  * Sets up event listeners and applies initial level settings.
  */
 function initializeLevelManagement() {
- levelSwitch = document.getElementById('level-switch');
- switchLabel = document.querySelector('.switch-label');
+    try {
+        levelSwitch = document.getElementById('level-switch');
+        switchLabel = document.querySelector('.switch-label');
 
-  if (!levelSwitch || !switchLabel) {
-    console.error('Level switch or switch label not found');
-    return;
-  }
-  const savedLevel = localStorage.getItem("userLevel") || "expert";
-  
-  if (isSearchResultPage()) {
-    if (setTemporaryExpertMode()) {
-      filterContent('expert');
-      updateTOCVisibility('expert');
-      updateOptionsVisibility('expert');
+        if (!levelSwitch || !switchLabel) {
+            console.error('Level switch or switch label not found');
+            return;
+        }
+        const savedLevel = localStorage.getItem("userLevel") || "expert";
+
+        if (isSearchResultPage()) {
+            if (setTemporaryExpertMode()) {
+                filterContent('expert');
+                updateTOCVisibility('expert');
+                updateOptionsVisibility('expert');
+            }
+        } else {
+            if (revertFromTemporaryExpertMode()) {
+                filterContent('beginner');
+                updateTOCVisibility('beginner');
+                updateOptionsVisibility('beginner');
+            }
+        }
+        levelSwitch.checked = savedLevel === "expert";
+        updateSwitchLabel();
+
+        filterContent(savedLevel);
+        updateTOCVisibility(savedLevel);
+
+        currentPageMdPath = getCurrentPageMdPath();
+        levelSwitch.addEventListener("change", handleLevelChange);
+    } catch (error) {
+        console.error("Error in initializeLevelManagement:", error);
     }
-  } else {
-    if (revertFromTemporaryExpertMode()) {
-      filterContent('beginner');
-      updateTOCVisibility('beginner');
-      updateOptionsVisibility('beginner');
-    }
-  }
-  levelSwitch.checked = savedLevel === "expert";
-  updateSwitchLabel();
-
-
-
-  filterContent(savedLevel);
-  updateTOCVisibility(savedLevel);
- 
-
-  currentPageMdPath = getCurrentPageMdPath();
-  levelSwitch.addEventListener("change", handleLevelChange); 
 }
-
 
 /**
  * Gets the current page's Markdown path.
  * @returns {string} The current page's Markdown path
  */
-
 function getCurrentPageMdPath() {
-  let currentPagePath = window.location.pathname;
-  if (currentPagePath.endsWith("/")) {
-    currentPagePath = currentPagePath.slice(0, -1);
-  }
-  return currentPagePath.replace(".html", ".md");
+    try {
+        let currentPagePath = window.location.pathname;
+        if (currentPagePath.endsWith("/")) {
+            currentPagePath = currentPagePath.slice(0, -1);
+        }
+        return currentPagePath.replace(".html", ".md");
+    } catch (error) {
+        console.error("Error in getCurrentPageMdPath:", error);
+        return '';
+    }
 }
 
 /**
@@ -132,30 +155,38 @@ function getCurrentPageMdPath() {
  * Updates localStorage and applies new level settings.
  */
 function handleLevelChange() {
-  const selectedLevel = levelSwitch.checked ? "expert" : "beginner";
-  localStorage.setItem("userLevel", selectedLevel);
-  updateSwitchLabel();
-  filterContent(selectedLevel);
-  updateTOCVisibility(selectedLevel);
-  updateOptionsVisibility(selectedLevel);  // Add this line
+    try {
+        const selectedLevel = levelSwitch.checked ? "expert" : "beginner";
+        localStorage.setItem("userLevel", selectedLevel);
+        updateSwitchLabel();
+        filterContent(selectedLevel);
+        updateTOCVisibility(selectedLevel);
+        updateOptionsVisibility(selectedLevel);
 
-  let cachedKeywords = getCache("keywordsCache");
-  let cachedDefinitions = getCache("definitionsCache");
-  fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
+        let cachedKeywords = getCache("keywordsCache");
+        let cachedDefinitions = getCache("definitionsCache");
+        fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
 
-  document.dispatchEvent(new CustomEvent('userLevelChanged', { detail: selectedLevel }));
+        document.dispatchEvent(new CustomEvent('userLevelChanged', { detail: selectedLevel }));
+    } catch (error) {
+        console.error("Error in handleLevelChange:", error);
+    }
 }
+
 /**
  * Updates the switch label text based on the current level.
  */
 function updateSwitchLabel() {
-  if (switchLabel && levelSwitch) { // Vérification des variables
-    switchLabel.textContent = levelSwitch.checked ? "Expert" : "Beginner";
-  } else {
-    console.error('switchLabel ou levelSwitch est undefined');
-  }
+    try {
+        if (switchLabel && levelSwitch) {
+            switchLabel.textContent = levelSwitch.checked ? "Expert" : "Beginner";
+        } else {
+            console.error('switchLabel or levelSwitch is undefined');
+        }
+    } catch (error) {
+        console.error("Error in updateSwitchLabel:", error);
+    }
 }
-
 
 /**
  * Content Filtering
@@ -166,197 +197,227 @@ function updateSwitchLabel() {
  * Checks if the current page is in the Howtos section.
  * @returns {boolean} True if the current page is in the Howtos section
  */
-
 function isHowtosSection() {
-  return window.location.pathname.includes('/Howtos/');
+    try {
+        return window.location.pathname.includes('/Howtos/');
+    } catch (error) {
+        console.error("Error in isHowtosSection:", error);
+        return false;
+    }
 }
+
 /**
  * Filters content based on the user's level.
  * @param {string} level - The user's level ('expert' or 'beginner')
  */
 function filterContent(level) {
-  const articleContent = document.querySelector('.article-content');
-  if (!articleContent) return;
+    try {
+        const articleContent = document.querySelector('.article-content');
+        if (!articleContent) return;
 
-  const sections = articleContent.querySelectorAll('.collapse-section');
-  
-  if (isHowtosSection()) {
-      const hasBeginnerSections = Array.from(sections).some(section => 
-          section.querySelector('h2[data-level="beginner"]')
-      );
+        const sections = articleContent.querySelectorAll('.collapse-section');
 
-      sections.forEach(section => {
-          const h2Element = section.querySelector('h2');
-          const sectionLevel = h2Element ? h2Element.dataset.level : null;
-          const isAllSection = sectionLevel === 'all';
-          const span = section.querySelector('.level-tag');
-          
-          if (level === 'expert' || isAllSection) {
-              handleExpertOrAllSection(section, span, level, isAllSection);
-          } else if (level === 'beginner') {
-              if (hasBeginnerSections) {
-                  handleBeginnerSectionWithTags(section, sectionLevel, isAllSection, span);
-              } else {
-                  handleBeginnerSectionWithoutTags(section, sectionLevel, isAllSection, span);
-              }
-          }
-      });
-  } else {
-    
-      sections.forEach(section => {
-          section.classList.remove('hidden-level');
-          const span = section.querySelector('.level-tag');
-          if (span) span.style.display = 'none';
-      });
-  }
-}
+        if (isHowtosSection()) {
+            const hasBeginnerSections = Array.from(sections).some(section =>
+                section.querySelector('h2[data-level="beginner"]')
+            );
 
-function handleBeginnerSectionWithTags(
-  section,
-  sectionLevel,
-  isAllSection,
-  span
-) {
-  if (sectionLevel === "beginner" || isAllSection) {
-    section.classList.remove("hidden-level");
-    if (span) {
-      span.style.display = sectionLevel === "beginner" ? "" : "none";
-    }
-  } else {
-    section.classList.add("hidden-level");
-  }
-}
+            sections.forEach(section => {
+                const h2Element = section.querySelector('h2');
+                const sectionLevel = h2Element ? h2Element.dataset.level : null;
+                const isAllSection = sectionLevel === 'all';
+                const span = section.querySelector('.level-tag');
 
-function handleBeginnerSectionWithoutTags(
-  section,
-  sectionLevel,
-  isAllSection,
-  span
-) {
-  section.classList.remove("hidden-level");
-  if (span) {
-    span.style.display = "none";
-  }
-}
-
-//Remove tag "expert" and "all"
-function handleExpertOrAllSection(section, span, level, isAllSection) {
-  section.classList.remove("hidden-level");
-  if (span && (level === "expert" || isAllSection)) {
-    span.style.display = "none";
-  }
-}
-function updateTOCVisibility(level) {
-
-  if (!document.body) {
-    console.warn('Document body not ready, deferring TOC update');
-    return;
-  }
-  if (level !== 'beginner') {
-   
-      document.querySelectorAll('.md-nav__item').forEach(item => {
-          item.style.display = '';
-      });
-      return;
-  }
-
-
-
-  const h2Elements = document.querySelectorAll('h2[data-level]');
-  const tocItems = document.querySelectorAll('.md-nav__item');
- 
-
-  const beginnerIds = new Set();
-  const sectionWithSubsections = new Set();
-  h2Elements.forEach(h2 => {
-      if (h2.getAttribute('data-level') === 'beginner' && h2.id) {
-          beginnerIds.add(h2.id);
-      }
-  });
-  if (beginnerIds.size === 0) {
-
-    tocItems.forEach(item => {
-      item.style.display = '';
-    });
-  } else {
-
-   // Hide non-beginner TOC items and show beginner ones.
-   tocItems.forEach(item => {
-    const link = item.querySelector('a.md-nav__link');
-    if (link) {
-      const href = link.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        const id = href.slice(1);  
-        if (!beginnerIds.has(id)) {
-          item.style.display = 'none';
+                if (level === 'expert' || isAllSection) {
+                    handleExpertOrAllSection(section, span, level, isAllSection);
+                } else if (level === 'beginner') {
+                    if (hasBeginnerSections) {
+                        handleBeginnerSectionWithTags(section, sectionLevel, isAllSection, span);
+                    } else {
+                        handleBeginnerSectionWithoutTags(section, sectionLevel, isAllSection, span);
+                    }
+                }
+            });
         } else {
-          item.style.display = '';
+            sections.forEach(section => {
+                section.classList.remove('hidden-level');
+                const span = section.querySelector('.level-tag');
+                if (span) span.style.display = 'none';
+            });
         }
-      }
+    } catch (error) {
+        console.error("Error in filterContent:", error);
     }
-  });
 }
-  
-}
-function updateOptionsVisibility(level) {
-  const optionDivs = document.querySelectorAll('.option');
-  optionDivs.forEach(div => {
-    const aElement = div.querySelector('a[id]');
-    if (level === 'beginner') {
-      if (aElement && aElement.getAttribute('data-level') === 'basic') {
-        div.style.display = '';
-      } else {
-        div.style.display = 'none';
-      }
-    } else {
-      div.style.display = '';
-    }
-  });
-}
-//Levels with search feature
 
+function handleBeginnerSectionWithTags(section, sectionLevel, isAllSection, span) {
+    try {
+        if (sectionLevel === "beginner" || isAllSection) {
+            section.classList.remove("hidden-level");
+            if (span) {
+                span.style.display = sectionLevel === "beginner" ? "" : "none";
+            }
+        } else {
+            section.classList.add("hidden-level");
+        }
+    } catch (error) {
+        console.error("Error in handleBeginnerSectionWithTags:", error);
+    }
+}
+
+function handleBeginnerSectionWithoutTags(section, sectionLevel, isAllSection, span) {
+    try {
+        section.classList.remove("hidden-level");
+        if (span) {
+            span.style.display = "none";
+        }
+    } catch (error) {
+        console.error("Error in handleBeginnerSectionWithoutTags:", error);
+    }
+}
+
+// Remove tag "expert" and "all"
+function handleExpertOrAllSection(section, span, level, isAllSection) {
+    try {
+        section.classList.remove("hidden-level");
+        if (span && (level === "expert" || isAllSection)) {
+            span.style.display = "none";
+        }
+    } catch (error) {
+        console.error("Error in handleExpertOrAllSection:", error);
+    }
+}
+
+function updateTOCVisibility(level) {
+    try {
+        if (!document.body) {
+            console.warn('Document body not ready, deferring TOC update');
+            return;
+        }
+        if (level !== 'beginner') {
+            document.querySelectorAll('.md-nav__item').forEach(item => {
+                item.style.display = '';
+            });
+            return;
+        }
+
+        const h2Elements = document.querySelectorAll('h2[data-level]');
+        const tocItems = document.querySelectorAll('.md-nav__item');
+
+        const beginnerIds = new Set();
+        const sectionWithSubsections = new Set();
+        h2Elements.forEach(h2 => {
+            if (h2.getAttribute('data-level') === 'beginner' && h2.id) {
+                beginnerIds.add(h2.id);
+            }
+        });
+        if (beginnerIds.size === 0) {
+            tocItems.forEach(item => {
+                item.style.display = '';
+            });
+        } else {
+            // Hide non-beginner TOC items and show beginner ones.
+            tocItems.forEach(item => {
+                const link = item.querySelector('a.md-nav__link');
+                if (link) {
+                    const href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        const id = href.slice(1);
+                        if (!beginnerIds.has(id)) {
+                            item.style.display = 'none';
+                        } else {
+                            item.style.display = '';
+                        }
+                    }
+                }
+            });
+        }
+    } catch (error) {
+        console.error("Error in updateTOCVisibility:", error);
+    }
+}
+
+function updateOptionsVisibility(level) {
+    try {
+        const optionDivs = document.querySelectorAll('.option');
+        optionDivs.forEach(div => {
+            const aElement = div.querySelector('a[id]');
+            if (level === 'beginner') {
+                if (aElement && aElement.getAttribute('data-level') === 'basic') {
+                    div.style.display = '';
+                } else {
+                    div.style.display = 'none';
+                }
+            } else {
+                div.style.display = '';
+            }
+        });
+    } catch (error) {
+        console.error("Error in updateOptionsVisibility:", error);
+    }
+}
+
+// Levels with search feature
 function isSearchResultPage() {
-  return new URLSearchParams(window.location.search).has('h');
+    try {
+        return new URLSearchParams(window.location.search).has('h');
+    } catch (error) {
+        console.error("Error in isSearchResultPage:", error);
+        return false;
+    }
 }
 
 function setTemporaryExpertMode() {
-
-const currentLevel = localStorage.getItem('userLevel');
-if(currentLevel === 'beginner' && isSearchResultPage()) {
-  localStorage.setItem('tempExpertMode', 'true');
-  localStorage.setItem('userLevel', 'expert');
-  return true
-}
-return false
+    try {
+        const currentLevel = localStorage.getItem('userLevel');
+        if (currentLevel === 'beginner' && isSearchResultPage()) {
+            localStorage.setItem('tempExpertMode', 'true');
+            localStorage.setItem('userLevel', 'expert');
+            return true;
+        }
+        return false;
+    } catch (error) {
+        console.error("Error in setTemporaryExpertMode:", error);
+        return false;
+    }
 }
 
 function revertFromTemporaryExpertMode() {
-  if (localStorage.getItem('tempExpertMode') === 'true') {
-    localStorage.setItem('userLevel', 'beginner');
-    localStorage.removeItem('tempExpertMode');
-    return true
-  }
-  return false
+    try {
+        if (localStorage.getItem('tempExpertMode') === 'true') {
+            localStorage.setItem('userLevel', 'beginner');
+            localStorage.removeItem('tempExpertMode');
+            return true;
+        }
+        return false;
+    } catch (error) {
+        console.error("Error in revertFromTemporaryExpertMode:", error);
+        return false;
+    }
 }
+
 /**
  * Event Listeners
  * This section sets up the main event listeners when the DOM is loaded.
  */
 document.addEventListener("DOMContentLoaded", function () {
- 
-  initializeSettings();
-  initializeLevelManagement();
-  const savedLevel = localStorage.getItem("userLevel") || "expert";
-  updateTOCVisibility(savedLevel);
-  updateOptionsVisibility(savedLevel);
+    try {
+        initializeSettings();
+        initializeLevelManagement();
+        const savedLevel = localStorage.getItem("userLevel") || "expert";
+        updateTOCVisibility(savedLevel);
+        updateOptionsVisibility(savedLevel);
 
-  let cachedKeywords = getCache("keywordsCache");
-  let cachedDefinitions = getCache("definitionsCache");
+        let cachedKeywords = getCache("keywordsCache");
+        let cachedDefinitions = getCache("definitionsCache");
 
-  fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
+        fetchKeywords(currentPageMdPath, cachedKeywords, cachedDefinitions);
 
-  const levelSwitch = document.getElementById('level-switch');
-  if (levelSwitch) {
-      levelSwitch.addEventListener('change', handleLevelChange);
-  }
+        const levelSwitch = document.getElementById('level-switch');
+        if (levelSwitch) {
+            levelSwitch.addEventListener('change', handleLevelChange);
+        }
+    } catch (error) {
+        console.error("Error during DOMContentLoaded:", error);
+    }
 });

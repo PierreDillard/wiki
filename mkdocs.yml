@@ -29,6 +29,7 @@ extra_css:
   - stylesheets/levels.css
   - stylesheets/settings.css
   - stylesheets/tags.css
+  - stylesheets/code.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css
 theme:
   name: material

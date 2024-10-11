@@ -51,7 +51,7 @@ function setModalContent(modalTitle, modalDefinition, modalLink, keyword, defini
       descriptionText = definition.description;
     }
 
-    const glossaryPageUrl = `${window.location.origin}/glossary/${keyword.toLowerCase()}/`;
+    const glossaryPageUrl = `${window.location.origin}/glossary//`;
     const tagsPageUrl = `/tags/#${keyword.toLowerCase()}`;
 
     modalTitle.textContent = keyword;

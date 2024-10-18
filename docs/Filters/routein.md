@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# ROUTE input  
+# MABR & ROUTE input  
   
 Register name used to load filter: __routein__  
 This filter may be automatically loaded during graph resolution.  
@@ -153,7 +153,7 @@ route add -net 239.255.1.4/32 -interface vboxnet0
 </div>  
   
 <div markdown class="option">  
-<a id="repair_url" data-level="basic">__repair_url__</a> (cstr): repair url  
+<a id="repair_urls" data-level="basic">__repair_urls__</a> (strl): repair servers urls  
 </div>  
 <div markdown class="option">  
 <a id="max_sess" data-level="basic">__max_sess__</a> (uint, default: _1_): max number of concurrent HTTP repair sessions  

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Media Reframer  
+# Media reframer  
   
 Register name used to load filter: __reframer__  
 This filter is not checked during graph resolution and needs explicit loading.  
@@ -265,6 +265,9 @@ _Note: In these modes, [splitrange](#splitrange) and [xadjust](#xadjust) are imp
 - frags: only forward frames marked as fragment start  
 </div>  
   
+<div markdown class="option">  
+<a id="sapcue">__sapcue__</a> (uint, default: _0_): treat SAPs smaller than or equal to this value as cue points  
+</div>  
 <div markdown class="option">  
 <a id="rmseek">__rmseek__</a> (bool, default: _false_, updatable): remove seek flag of all sent packets  
 </div>  

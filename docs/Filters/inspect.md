@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# Inspect packets  
+# Packet inspector  
   
 Register name used to load filter: __inspect__  
 This filter is not checked during graph resolution and needs explicit loading.  

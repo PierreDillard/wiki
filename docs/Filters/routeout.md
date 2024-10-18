@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# ROUTE output  
+# MABR & ROUTE output  
   
 Register name used to load filter: __routeout__  
 This filter may be automatically loaded during graph resolution.  

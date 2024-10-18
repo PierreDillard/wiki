@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# HTTP Server  
+# HTTP server  
   
 Register name used to load filter: __httpout__  
 This filter may be automatically loaded during graph resolution.  
@@ -313,5 +313,11 @@ This will:
 </div>  
 <div markdown class="option">  
 <a id="cte">__cte__</a> (bool, default: _true_): use chunked transfer-encoding mode when possible  
+</div>  
+<div markdown class="option">  
+<a id="maxs">__maxs__</a> (uint, default: _50M_): maximum upload size allowed in bytes  
+</div>  
+<div markdown class="option">  
+<a id="norange">__norange__</a> (bool, default: _false_): disable byte range support in GET (reply 200 on partial requests)  
 </div>  
   

@@ -1,6 +1,6 @@
 <!-- automatically generated - do not edit, patch gpac/applications/gpac/gpac.c -->
 
-# DASH and HLS segmenter  
+# DASH & HLS segmenter  
   
 Register name used to load filter: __dasher__  
 This filter may be automatically loaded during graph resolution.  
@@ -797,7 +797,7 @@ The segmenter adds the following properties to the output PIDs:
 <a id="pswitch">__pswitch__</a> (enum, default: _single_): period switch control mode  
 
 - single: change period if PID configuration changes  
-- force: force period switch at each PID reconfiguration instead of absorbing PID reconfiguration (for splicing or add insertion not using periodID)  
+- force: force period switch at each PID reconfiguration instead of absorbing PID reconfiguration (for splicing or ad insertion not using periodID)  
 - stsd: change period if PID configuration changes unless new configuration was advertised in initial config  
 </div>  
   
@@ -829,6 +829,9 @@ The segmenter adds the following properties to the output PIDs:
   
 <div markdown class="option">  
 <a id="tpl_force">__tpl_force__</a> (bool, default: _false_): use template string as is without trying to add extension or solve conflicts in names  
+</div>  
+<div markdown class="option">  
+<a id="inband_event" data-level="basic">__inband_event__</a> (bool, default: _false_): insert a default inband event stream in the DASH manifest  
 </div>  
 <div markdown class="option">  
 <a id="ttml_agg">__ttml_agg__</a> (bool, default: _false_): force aggregation of TTML samples of a DASH segment into a single sample  

@@ -74,7 +74,8 @@ InitialObjectDescriptor | bool |  | PID is declared in the IOD for MPEG-4 | PIOD
 Unframed | bool |  | The media data is not framed, i.e. each packet is not a complete AU/frame or is not in internal format (e.g. annexB for avc/hevc, adts for aac) | PFRM    
 UnframedAU | bool |  | The unframed media still has correct AU boundaries: one packet is one full AU, but the packet format might not be the internal one (e.g. annexB for avc/hevc, adts for aac) | PFRF    
 LATM | bool |  | Media is unframed AAC in LATM format | LATM    
-Duration | lfrac |  | Media duration (a negative value means an estimated duration based on rate) | PDUR    
+Duration | lfrac |  | Media duration | PDUR    
+EstimatedDuration | bool |  | Media duration is an estimated duration based on rate | EDUR    
 NumFrames | uint | D | Number of frames in the stream | NFRM    
 FrameOffset | uint | D | Index of first frame in the stream (used for reporting) | FRMO    
 ConstantFrameSize | uint |  | Size of the frames for constant frame size streams | CFRS    
@@ -291,7 +292,8 @@ IsManifest | uint | D | PID is a HAS manifest (MSB=1 if live)  <br/>
 - 0: not a manifest  <br/>- 1: DASH manifest  <br/>- 2: HLS manifest  <br/>- 3: GHI(X) manifest | PHSM    
 Sparse | bool | D | PID has potentially empty times between packets | PSPA    
 CharSet | str | D | Character set for input text PID | PCHS    
-ForcedSub | uint | D | PID or Packet is forced sub  <br/>0: not forced  <br/>1: forced frame  <br/>2: all frames are forced (PID only) | PFCS    
+ForcedSub | uint | D | PID or Packet is forced sub  <br/>
+- 0: not forced  <br/>- 1: forced frame  <br/>- 2: all frames are forced (PID only) | PFCS    
 ChapTimes | uintl | D | Chapter start times | CHPT    
 ChapNames | strl | D | Chapter names | CHPN    
 IsChap | bool | D | Subtitle PID is chapter (for QT-like chapters) | PCHP    
@@ -860,6 +862,11 @@ mqtt | httpin |  n/a
 pop3 | httpin |  n/a  
 pop3s | httpin |  n/a  
 rtmp | httpin |  n/a  
+rtmpe | httpin |  n/a  
+rtmps | httpin |  n/a  
+rtmpt | httpin |  n/a  
+rtmpte | httpin |  n/a  
+rtmpts | httpin |  n/a  
 rtsp | httpin rtpin | rtspout  
 scp | httpin |  n/a  
 sftp | httpin |  n/a  

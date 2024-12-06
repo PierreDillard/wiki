@@ -1,9 +1,9 @@
 {#-
   This file was automatically generated - do not edit
--#}
-{% import "partials/language.html" as lang with context %}
-<!doctype html>
-<html lang="{{ lang.t('language') }}" class="no-js">
+ -#}
+ {% import "partials/language.html" as lang with context %}
+ <!doctype html>
+ <html lang="{{ lang.t('language') }}" class="no-js">
   <head>
     {% block site_meta %}
       <meta charset="utf-8">
@@ -44,13 +44,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-    <link rel="stylesheet" href="{{ 'assets/stylesheets/main.0253249f.min.css' | url }}">
-      {% if config.theme.palette %}
-        {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.06af60db.min.css' | url }}">
-      {% endif %}
-  
-      {% include "partials/icons.html" %}
+       {% include "partials/icons.html" %}
     {% endblock %}
     {% block libs %}
       {% for script in config.extra.polyfills %}
@@ -82,9 +76,11 @@
       {% endfor %}
     {% endif %}
     {% block extrahead %}{% endblock %}
-   
-
-
+  
+ 
+ 
+ 
+ 
   </head>
   {% set direction = config.theme.direction or lang.t("direction") %}
   {% if config.theme.palette %}
@@ -100,7 +96,7 @@
     <body dir="{{ direction }}">
   {% endif %}
     {% set features = config.theme.features or [] %}
-   
+  
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -154,7 +150,7 @@
           {% endif %}
         {% endif %}
       {% endblock %}
-      <main class="md-main" data-md-component="main">  
+      <main class="md-main" data-md-component="main"> 
         <div class="md-main__inner md-grid">
           {% block site_nav %}
             {% if nav %}
@@ -163,18 +159,18 @@
               {% endif %}
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }}>
                 <div class="md-sidebar__scrollwrap">
-                
+               
                   <div class="md-sidebar__inner">
                     <button id="toggle-button" class="toggle-btn" data-md-tooltip="Switch between Navigation and Table of Contents">
                       <i class="fas fa-exchange-alt"></i>
                     </button>
-                
+               
                     <div id="toc-content">
                       {% include "partials/toc.html" %}
                     </div>
                     <div id="nav-content" style="display: none;">
                       {% include "partials/nav.html" %}
-                    </div> 
+                    </div>
                   </div>
                 </div>
               </div>
@@ -183,119 +179,33 @@
               {% if page.meta and page.meta.hide %}
                 {% set hidden = "hidden" if "toc" in page.meta.hide %}
               {% endif %}
-            
+           
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" {{ hidden }}>
                 <div class="keywords-cloud-container">
                   {% include "partials/keywords-cloud.html" %}
                 </div>
                 <div class="md-sidebar__scrollwrap">
-               
+              
                   <div class="md-sidebar__inner">
-                    
+                   
                     <nav class="md-nav md-nav--secondary">
-                 
+                
                       <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
                         {% include "partials/toc.html" %}
                       </ul>
-                   
-                    </nav>
-                 
                   
+                    </nav>
+                
+                 
                   </div>
                 </div>
                 {% if config.extra.analytics %}
                 {% set feedback = config.extra.analytics.feedback %}
                 {% if feedback %}
-                <div class="md-nav__feedback md-nav__feedback--desktop">
-                  <form class="md-feedback" name="feedback" hidden>
-                    <fieldset>
-                      <legend class="md-feedback__title">
-                        {{ feedback.title }}
-                      </legend>
-                      <div class="md-feedback__inner">
-                        <div class="md-feedback__list">
-                          {% for rating in feedback.ratings %}
-                            <button 
-                              class="md-feedback__icon md-icon" 
-                              type="submit" 
-                              title="{{ rating.name }}" 
-                              data-md-value="{{ rating.data }}"
-                            >
-                              {% include ".icons/" ~ rating.icon ~ ".svg" %}
-                            </button>
-                          {% endfor %}
-                          <a href="https://github.com/gpac/wiki/issues" 
-                             class="md-feedback__icon md-icon md-feedback__contribute" 
-                             title="Contribute to this page" 
-                             target="_blank"
-                          >
-                            {% include ".icons/material/plus-circle.svg" %}
-                          </a>
-                        </div>
-                        <div class="md-feedback__note">
-                          {% for rating in feedback.ratings %}
-                            <div data-md-value="{{ rating.data }}" hidden>
-                              {{ rating.note }}
-                              {% if not rating.note %}
-                                Thanks for your feedback!
-                              {% endif %}
-                            </div>
-                          {% endfor %}
-                          <div class="md-feedback__contribute-note" hidden>
-                            Contribute to improve this page
-                          </div>
-                        </div>
-                      </div>
-                    </fieldset>
-                  </form>
-                </div>
-            
-                {# Mobile feedback section - same structure #}
-                <div class="md-feedback md-feedback--mobile">
-                  <form class="md-feedback" name="feedback" hidden>
-                    <fieldset>
-                      <legend class="md-feedback__title">
-                        {{ feedback.title }}
-                      </legend>
-                      <div class="md-feedback__inner">
-                        <div class="md-feedback__list">
-                          {% for rating in feedback.ratings %}
-                            <button 
-                              class="md-feedback__icon md-icon" 
-                              type="submit" 
-                              title="{{ rating.name }}" 
-                              data-md-value="{{ rating.data }}"
-                            >
-                              {% include ".icons/" ~ rating.icon ~ ".svg" %}
-                            </button>
-                          {% endfor %}
-                          <a href="https://github.com/gpac/wiki/issues" 
-                             class="md-feedback__icon md-icon md-feedback__contribute" 
-                             title="Contribute to this page" 
-                             target="_blank"
-                          >
-                            {% include ".icons/material/plus-circle.svg" %}
-                          </a>
-                        </div>
-                        <div class="md-feedback__note">
-                          {% for rating in feedback.ratings %}
-                            <div data-md-value="{{ rating.data }}" hidden>
-                              {{ rating.note }}
-                              {% if not rating.note %}
-                                Thanks for your feedback!
-                              {% endif %}
-                            </div>
-                          {% endfor %}
-                          <div class="md-feedback__contribute-note" hidden>
-                            Contribute to improve this page
-                          </div>
-                        </div>
-                      </div>
-                    </fieldset>
-                  </form>
-                </div>
+                {% include "partials/feedback.html" %}
+              
+                {% endif %}
               {% endif %}
-            {% endif %}
               </div>
             {% endif %}
           {% endblock %}
@@ -303,37 +213,16 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 {% block content %}
-                  {% include "partials/content.html" %}
+        
                 {% endblock %}
               </article>
             </div>
           {% endblock %}
           {% include "partials/javascripts/content.html" %}
         </div>
-        {% if config.extra.analytics %}
-          {% set feedback = config.extra.analytics.feedback %}
-          {% if feedback %}
-            <div class="md-feedback md-feedback--mobile">
-              <p>{{ feedback.title }}</p>
-              <div class="md-feedback__inner">
-                <div class="md-feedback__list">
-                  {% for rating in feedback.ratings %}
-                    <button class="md-feedback__icon md-icon" title="{{ rating.name }}" data-md-value="{{ rating.data }}">
-                      {% include ".icons/" ~ rating.icon ~ ".svg" %}
-                    </button>
-                  {% endfor %}
-                  <a href="https://github.com/gpac/wiki/issues" class="md-feedback__icon md-icon md-feedback__contribute" title="Contribute to this page" target="_blank">
-                    {% include ".icons/material/plus-circle.svg" %}
-                  </a>
-                </div>
-                <div class="md-feedback__note" hidden></div>
-              </div>
-            </div>
-          {% endif %}
-        {% endif %}
-        
-        
-        
+    
+       
+       
         {% if "navigation.top" in features %}
           {% include "partials/top.html" %}
         {% endif %}
@@ -360,49 +249,15 @@
       {% include "partials/javascripts/consent.html" %}
     {% endif %}
     {% block config %}
-      {%- set app = {
-        "base": base_url,
-        "features": features,
-        "translations": {},
-        "search": "assets/javascripts/workers/search.6ce7567c.min.js" | url
-      } -%}
-      {%- if config.extra.version -%}
-        {%- set mike = config.plugins.get("mike") -%}
-        {%- if not mike or mike.config.version_selector -%}
-          {%- set _ = app.update({ "version": config.extra.version }) -%}
-        {%- endif -%}
-      {%- endif -%}
-      {%- if config.extra.tags -%}
-        {%- set _ = app.update({ "tags": config.extra.tags }) -%}
-      {%- endif -%}
-      {%- set translations = app.translations -%}
-      {%- for key in [
-        "clipboard.copy",
-        "clipboard.copied",
-        "search.result.placeholder",
-        "search.result.none",
-        "search.result.one",
-        "search.result.other",
-        "search.result.more.one",
-        "search.result.more.other",
-        "search.result.term.missing",
-        "select.version"
-      ] -%}
-        {%- set _ = translations.update({ key: lang.t(key) }) -%}
-      {%- endfor -%}
-      <script id="__config" type="application/json">
-        {{- app | tojson -}}
-      </script>
+ 
+ 
     {% endblock %}
     {% block scripts %}
-    <script src="{{ 'assets/javascripts/bundle.83f73b43.min.js' | url }}"></script>
-   
-      <script type="module" src="{{ 'javascripts/main.js' | url }}"></script>
-      {% for script in config.extra_javascript %}
-        {{ script | script_tag }}
-      {% endfor %}
+ 
+ 
     {% endblock %}
-   
-</body>
+  
+ </body>
   </body>
-</html>
+ </html>
+ 

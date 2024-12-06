@@ -1,23 +1,35 @@
-{% extends "base.html" %}
-
-{% block scripts %}
+{#-
+  This file is an override of the original base.html
+  It includes only custom blocks. Do not edit the original base.html directly.
+ -#}
+ 
+ 
+ {% extends "base.html" %}
+ 
+ 
+ {# Block Scripts: Ajout de vos scripts personnalisés #}
+ {% block scripts %}
   <script src="{{ 'assets/javascripts/bundle.83f73b43.min.js' | url }}"></script>
   <script type="module" src="{{ 'javascripts/main.js' | url }}"></script>
   {% for script in config.extra_javascript %}
     {{ script | script_tag }}
   {% endfor %}
-{% endblock %}
-
-{% block styles %}
+ {% endblock %}
+ 
+ 
+ {# Block Styles: Ajout de vos feuilles de style personnalisées #}
+ {% block styles %}
   <link rel="stylesheet" href="{{ 'assets/stylesheets/main.0253249f.min.css' | url }}">
   {% if config.theme.palette %}
     {% set palette = config.theme.palette %}
     <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.06af60db.min.css' | url }}">
   {% endif %}
   {% include "partials/icons.html" %}
-{% endblock %}
-
-{% block config %}
+ {% endblock %}
+ 
+ 
+ {# Block Config: Ajout ou modification de configuration JSON #}
+ {% block config %}
   {%- set app = {
     "base": base_url,
     "features": features,
@@ -51,10 +63,13 @@
   <script id="__config" type="application/json">
     {{- app | tojson -}}
   </script>
-{% endblock %}
-
-{% block content %}
-<article class="md-content__inner md-typeset">
+ {% endblock %}
+ 
+ 
+ {# Block Content: Personnalisation de la zone de contenu principal si nécessaire #}
+ {% block content %}
+ <article class="md-content__inner md-typeset">
   {{ page.content }}
-</article>
-{% endblock %}
+ </article>
+ {% endblock %}
+ 

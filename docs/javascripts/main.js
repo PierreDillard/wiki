@@ -211,17 +211,22 @@ function navigateToTagPage(keyword) {
 // Utils
 function getCurrentPagePath() {
     try {
+        // Get the current path from window.location
         let currentPagePath = window.location.pathname;
+        
+        // Remove trailing slash if present
         if (currentPagePath.endsWith('/')) {
             currentPagePath = currentPagePath.slice(0, -1);
         }
+        
+        // Convert .html to .md for internal processing
         return currentPagePath.replace('.html', '.md');
     } catch (error) {
         console.error("Error in getCurrentPagePath:", error);
-        return '';
+        // Return a safe fallback
+        return '/index.md';
     }
 }
-
 function updateContentVisibility(level) {
     try {
         filterContent(level);

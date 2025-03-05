@@ -9,6 +9,7 @@ import markdown
 import os
 from pathlib import Path
 import logging as logger
+import shutil
 
 FIX_MARDOWN_FILES = False
 SAVE_BROKEN_FILELIST = False
@@ -236,3 +237,39 @@ def fix_md_headings(md_content):
 
 if __name__ == "__main__":
    gh_wiki_cleanup()
+
+
+def on_post_build(config):
+    site_dir = config['site_dir']
+    assets_dir = os.path.join(site_dir, 'assets')
+    css_dir = os.path.join(assets_dir, 'stylesheets')
+    js_dir = os.path.join(assets_dir, 'javascripts')
+    workers_dir = os.path.join(assets_dir, 'javascripts/workers')
+
+    # Rename CSS files
+    for filename in os.listdir(css_dir):
+        if filename.startswith('main.') and filename.endswith('.min.css'):
+            old_file = os.path.join(css_dir, filename)
+            new_file = os.path.join(css_dir, 'main.min.css')
+            shutil.copyfile(old_file, new_file)
+            os.remove(old_file)
+        elif filename.startswith('palette.') and filename.endswith('.min.css'):
+            old_file = os.path.join(css_dir, filename)
+            new_file = os.path.join(css_dir, 'palette.min.css')
+            shutil.copyfile(old_file, new_file)
+            os.remove(old_file)
+
+    # Rename JavaScript files
+    for filename in os.listdir(js_dir):
+        if filename.startswith('bundle.') and filename.endswith('.min.js'):
+            old_file = os.path.join(js_dir, filename)
+            new_file = os.path.join(js_dir, 'bundle.min.js')
+            shutil.copyfile(old_file, new_file)
+            os.remove(old_file)
+  
+    for filename in os.listdir(workers_dir):
+        if filename.startswith('search.') and filename.endswith('.js'):
+            old_file = os.path.join(workers_dir, filename)
+            new_file = os.path.join(workers_dir, 'search.min.js')
+            shutil.copyfile(old_file, new_file)
+            os.remove(old_file) 

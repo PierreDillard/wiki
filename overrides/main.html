@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block scripts %}
-  <script src="{{ 'assets/javascripts/bundle.83f73b43.min.js' | url }}"></script>
+  <!-- Utilisation d'un nom de fichier statique pour le bundle JavaScript -->
+  <script src="{{ 'assets/javascripts/bundle.min.js' | url }}"></script>
   <script type="module" src="{{ 'javascripts/main.js' | url }}"></script>
   {% for script in config.extra_javascript %}
     {{ script | script_tag }}
@@ -9,10 +10,11 @@
 {% endblock %}
 
 {% block styles %}
-  <link rel="stylesheet" href="{{ 'assets/stylesheets/main.0253249f.min.css' | url }}">
+  <!-- Référence aux feuilles de style sans hash codé en dur -->
+  <link rel="stylesheet" href="{{ 'assets/stylesheets/main.min.css' | url }}">
   {% if config.theme.palette %}
     {% set palette = config.theme.palette %}
-    <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.06af60db.min.css' | url }}">
+    <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.min.css' | url }}">
   {% endif %}
   {% include "partials/icons.html" %}
 {% endblock %}
@@ -22,7 +24,7 @@
     "base": base_url,
     "features": features,
     "translations": {},
-    "search": "assets/javascripts/workers/search.6ce7567c.min.js" | url
+    "search": "assets/javascripts/workers/search.min.js" | url
   } -%}
   {%- if config.extra.version -%}
     {%- set mike = config.plugins.get("mike") -%}

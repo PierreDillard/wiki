@@ -44,14 +44,24 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-    <link rel="stylesheet" href="{{ 'assets/stylesheets/main.0253249f.min.css' | url }}">
-      {% if config.theme.palette %}
-        {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.06af60db.min.css' | url }}">
-      {% endif %}
+    <!-- Styles principaux -->
+    <link rel="stylesheet" href="{{ 'assets/stylesheets/main.min.css' | url }}">
+    
+    <!-- Palette de couleurs -->
+    {% if config.theme.palette %}
+      {% set palette = config.theme.palette %}
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.min.css' | url }}">
+    {% endif %}
+    
+    <!-- Icônes -->
+    {% include "partials/icons.html" %}
+    
+    <!-- Fichiers CSS supplémentaires définis dans mkdocs.yml -->
+    {% for path in config.extra_css %}
+      <link rel="stylesheet" href="{{ path | url }}">
+    {% endfor %}
+  {% endblock %}
   
-      {% include "partials/icons.html" %}
-    {% endblock %}
     {% block libs %}
       {% for script in config.extra.polyfills %}
         {{ script | script_tag }}
@@ -92,13 +102,14 @@
     {% if not palette is mapping %}
       {% set palette = palette | first %}
     {% endif %}
-    {% set scheme  = palette.scheme  | d("default", true) %}
+    {% set scheme = palette.scheme | d("default", true) %}
     {% set primary = palette.primary | d("indigo", true) %}
-    {% set accent  = palette.accent  | d("indigo", true) %}
+    {% set accent = palette.accent | d("indigo", true) %}
     <body dir="{{ direction }}" data-md-color-scheme="{{ scheme | replace(' ', '-') }}" data-md-color-primary="{{ primary | replace(' ', '-') }}" data-md-color-accent="{{ accent | replace(' ', '-') }}">
   {% else %}
     <body dir="{{ direction }}">
   {% endif %}
+  
     {% set features = config.theme.features or [] %}
    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -395,14 +406,19 @@
     </script>
   {% endblock %}
   
-    {% block scripts %}
-    <script src="{{ 'assets/javascripts/bundle.83f73b43.min.js' | url }}"></script>
-   
-      <script type="module" src="{{ 'javascripts/main.js' | url }}"></script>
-      {% for script in config.extra_javascript %}
-        {{ script | script_tag }}
-      {% endfor %}
-    {% endblock %}
+  {% block scripts %}
+  <!-- Script principal du bundle -->
+  <script src="{{ 'assets/javascripts/bundle.min.js' | url }}"></script>
+  
+  <!-- Script pour la recherche -->
+  <script type="module" src="{{ 'assets/javascripts/workers/search.min.js' | url }}"></script>
+  
+  <!-- Scripts supplémentaires -->
+  {% for script in config.extra_javascript %}
+    <script src="{{ script | url }}"></script>
+  {% endfor %}
+{% endblock %}
+
    
 </body>
   </body>

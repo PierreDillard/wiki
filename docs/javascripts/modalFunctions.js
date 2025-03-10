@@ -51,7 +51,7 @@ function setModalContent(modalTitle, modalDefinition, modalLink, keyword, defini
       descriptionText = definition.description;
     }
 
-    const glossaryPageUrl = `${window.location.origin}/glossary/${keyword.toLowerCase()}`;
+    const glossaryPermalinkUrl = `${window.location.origin}/glossary/#${keyword.toLowerCase()}`;
     const tagsPageUrl = `/tags/#${keyword.toLowerCase()}`;
 
     modalTitle.textContent = keyword;
@@ -71,8 +71,9 @@ function setModalContent(modalTitle, modalDefinition, modalLink, keyword, defini
       const aliasesSection = createAliasesSection(definition.aliases);
       modalDefinition.appendChild(aliasesSection);
     }
-    if (definition.glossaryPage) {
-      modalLink.href = definition.url || glossaryPageUrl;
+    if ( definition && definition.glossaryPage === true) {
+     
+      modalLink.href = definition.url || glossaryPermalinkUrl;
       modalLink.style.display = "inline-block";
     } else {
       modalLink.style.display = "none";

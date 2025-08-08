@@ -124,21 +124,61 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+/* Styles for the search switch */
+.search-mode-item {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-mode-label {
+  min-width: 60px;
+  text-align: right;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Classes for search modes */
+.search-mode-algolia .md-search {
+  display: none !important;
+}
+
+.search-mode-algolia .algolia-search-container {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.search-mode-native .md-search {
+  display: block !important;
+}
+
+.search-mode-native .algolia-search-container {
+  display: none !important;
+}
+
+/* Algolia container */
+.algolia-search-container {
+  position: fixed;
+  top: 10px;
+  left: 57%;
+  z-index: 9999;
+  display: none;
+}
 @media screen and (max-width: 1024px) {
   .md-header__settings-dropdown {
-    padding: 0rem 0.5rem;
-    width: 211%;
-    left: -120%;
-    top: 110%;
-    font-size: 0.7rem;
+  padding: 0rem 0.5rem;
+  width: 211%;
+  left: -120%;
+  top: 110%;
+  font-size: 0.7rem;
   }
   .md-header__settings-button {
-    margin-right: 2rem;
+  margin-right: 2rem;
   }
   .md-header__settings-item {
-    margin: 0rem;
+  margin: 0rem;
   }
   .md-header__settings-item {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
   }
 }

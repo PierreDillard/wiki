@@ -39,13 +39,7 @@
         </div>
       </div>
     </div>
-  <!--   <div class="switch-container">
-      <label class="switch">
-        <input type="checkbox" id="level-switch">
-        <span class="slider round" data-md-tooltip="Switch between Beginner and Expert levels"></span>
-      </label>
-      <span class="switch-label" data-md-tooltip="Current content level"></span>
-    </div> -->
+
     {% if config.theme.palette %}
       {% if not config.theme.palette is mapping %}
       
@@ -69,9 +63,7 @@
         {% include "partials/source.html" %}
       </div>
     {% endif %}
-   <!--  <div class="md-header__option md-header__option--mobile">
-      {% include "partials/palette.html" %}
-    </div> -->
+
     <div class="md-header__settings">
       <button class="md-header__settings-button" aria-label="Settings" title="Settings"> 
         <i class="fas fa-cog"></i>
@@ -95,6 +87,16 @@
             <span class="slider round"></span>
           </label>
         </div>
+        <div class="md-header__settings-item search-mode-item">
+          <label for="search-mode-label" class="switch-label" aria-label="Search Mode">Algolia Search</label>
+   
+          <label class="switch">
+            <input type="checkbox" id="search-mode-switch">
+            <span class="slider round"></span>
+          </label>
+         
+
+</div>
         <div class="md-header__settings-item">
           <label class="switch-label">Dark Mode</label>
           {% include "partials/palette.html" %}

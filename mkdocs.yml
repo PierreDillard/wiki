@@ -5,6 +5,7 @@ extra:
   keywords_file: 'data/keywords.json'
 extra_javascript:
    - javascripts/levels.js
+   - javascripts/searchSwitch.js
    - javascripts/main.js
    - javascripts/fetchFunctions.js
    - javascripts/domManipulation.js
@@ -74,6 +75,8 @@ algolia:
   app_id: !ENV ALGOLIA_APP_ID
   api_key: !ENV ALGOLIA_API_KEY
   index_name: gpac
+  search_switch:
+  default_algolia: false
 
 hooks:
   - scripts/mkdocs_hooks.py

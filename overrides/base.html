@@ -405,44 +405,26 @@
     {% if config.algolia %}
       <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
       <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function() {
-        const searchInput = document.querySelector('.md-search');
-        const algoliaContainer = document.createElement('div');
-        algoliaContainer.className = 'algolia-container';
-        document.body.appendChild(algoliaContainer);
-
-        if (searchInput) {
-          // Remove existing event listeners by replacing the element
-          const newSearchInput = searchInput.cloneNode(true);
-          searchInput.parentNode.replaceChild(newSearchInput, searchInput);
-
-          docsearch({
-            appId: '{{ config.algolia.app_id }}',
-            apiKey: '{{ config.algolia.api_key }}',
-            indexName: '{{ config.algolia.index_name }}',
-            container: algoliaContainer,
-            transformItems(items) {
-              return items.map((item) => ({
-                  ...item,
-                  hierarchy: Object.entries(item.hierarchy).reduce((acc, [key, value]) => {
-                    if (value) {
-                      acc[key] = value.trim().replace('¶', '');
-                    } else {
-                      acc[key] = value;
-                    }
-                    return acc;
-                  }, {}),
-                }
-              ));
-            }
-          });
-
-          newSearchInput.addEventListener('click', function() {
-            const algoliaButton = document.querySelector('.algolia-container button');
-            if (algoliaButton) algoliaButton.click();
-          });
-        }
-      });
+        window.ALGOLIA_CONFIG = {
+          app_id: '{{ config.algolia.app_id }}',
+          api_key: '{{ config.algolia.api_key }}',
+          index_name: '{{ config.algolia.index_name }}',
+          default_algolia: '{{ config.algolia.default_algolia | tojson }}',
+        };
+        
+        window.ALGOLIA_TRANSFORM_ITEMS = function(items) {
+          return items.map((item) => ({
+            ...item,
+            hierarchy: Object.entries(item.hierarchy || {}).reduce((acc, [key, value]) => {
+              if (value) {
+                acc[key] = value.trim().replace('¶', '');
+              } else {
+                acc[key] = value;
+              }
+              return acc;
+            }, {}),
+          }));
+        };
       </script>
     {% endif %}
   </body>
